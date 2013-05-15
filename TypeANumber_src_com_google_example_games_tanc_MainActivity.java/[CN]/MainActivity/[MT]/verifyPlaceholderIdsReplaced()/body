@@ -1,0 +1,9 @@
+{
+  final boolean CHECK_PKGNAME=true;
+  if (CHECK_PKGNAME && (getPackageName().startsWith("com.google.example.")))   return false;
+  int res_ids[]=new int[]{R.string.app_id,R.string.achievement_arrogant,R.string.achievement_bored,R.string.achievement_humble,R.string.achievement_leet,R.string.achievement_prime,R.string.leaderboard_easy,R.string.leaderboard_hard};
+  for (  int i : res_ids) {
+    if (getString(i).equalsIgnoreCase("ReplaceMe"))     return false;
+  }
+  return true;
+}

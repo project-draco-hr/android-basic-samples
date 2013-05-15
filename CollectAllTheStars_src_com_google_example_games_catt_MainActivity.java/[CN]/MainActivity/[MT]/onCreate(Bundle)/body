@@ -1,0 +1,15 @@
+{
+  log("onCreate.");
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  loadLocal();
+  for (  int id : LEVEL_BUTTON_IDS) {
+    findViewById(id).setOnClickListener(this);
+  }
+  findViewById(R.id.button_next_world).setOnClickListener(this);
+  findViewById(R.id.button_prev_world).setOnClickListener(this);
+  findViewById(R.id.button_sign_in).setOnClickListener(this);
+  findViewById(R.id.button_sign_out).setOnClickListener(this);
+  ((RatingBar)findViewById(R.id.gameplay_rating)).setOnRatingBarChangeListener(this);
+  setSignInMessages(getString(R.string.signing_in),getString(R.string.signing_out));
+}

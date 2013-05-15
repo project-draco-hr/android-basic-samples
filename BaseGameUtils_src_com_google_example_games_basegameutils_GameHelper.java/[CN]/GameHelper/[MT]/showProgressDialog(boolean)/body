@@ -1,0 +1,10 @@
+{
+  String message=signIn ? mSigningInMessage : mSigningOutMessage;
+  if (mProgressDialog == null) {
+    if (getContext() == null)     return;
+    mProgressDialog=new ProgressDialog(getContext());
+  }
+  mProgressDialog.setMessage(message == null ? "" : message);
+  mProgressDialog.setIndeterminate(true);
+  mProgressDialog.show();
+}

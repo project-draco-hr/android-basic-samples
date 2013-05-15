@@ -1,0 +1,12 @@
+{
+  debugLog("onDisconnected.");
+  mConnectionResult=null;
+  mAutoSignIn=false;
+  mSignedIn=false;
+  mSignInError=false;
+  mInvitationId=null;
+  mConnectedClients=CLIENT_NONE;
+  if (mListener != null) {
+    mListener.onSignInFailed();
+  }
+}

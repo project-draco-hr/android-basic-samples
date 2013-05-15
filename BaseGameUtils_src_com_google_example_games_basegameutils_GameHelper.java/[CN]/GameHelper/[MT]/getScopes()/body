@@ -1,0 +1,14 @@
+{
+  StringBuilder scopeStringBuilder=new StringBuilder();
+  int clientsToUse=mRequestedClients;
+  if (0 != (clientsToUse & CLIENT_GAMES)) {
+    addToScope(scopeStringBuilder,Scopes.GAMES);
+  }
+  if (0 != (clientsToUse & CLIENT_PLUS)) {
+    addToScope(scopeStringBuilder,Scopes.PLUS_LOGIN);
+  }
+  if (0 != (clientsToUse & CLIENT_APPSTATE)) {
+    addToScope(scopeStringBuilder,Scopes.APP_STATE);
+  }
+  return scopeStringBuilder.toString();
+}

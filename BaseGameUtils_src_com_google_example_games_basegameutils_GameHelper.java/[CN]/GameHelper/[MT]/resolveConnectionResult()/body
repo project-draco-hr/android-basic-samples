@@ -1,0 +1,18 @@
+{
+  debugLog("resolveConnectionResult: trying to resolve result: " + mConnectionResult);
+  if (mConnectionResult.hasResolution()) {
+    debugLog("result has resolution. Starting it.");
+    try {
+      mExpectingActivityResult=true;
+      mConnectionResult.startResolutionForResult(mActivity,RC_RESOLVE);
+    }
+ catch (    SendIntentException e) {
+      debugLog("SendIntentException.");
+      connectCurrentClient();
+    }
+  }
+ else {
+    debugLog("resolveConnectionResult: result has no resolution. Giving up.");
+    giveUp();
+  }
+}

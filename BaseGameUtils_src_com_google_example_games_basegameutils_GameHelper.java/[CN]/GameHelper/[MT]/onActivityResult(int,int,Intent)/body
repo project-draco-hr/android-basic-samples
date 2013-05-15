@@ -1,0 +1,14 @@
+{
+  if (requestCode == RC_RESOLVE) {
+    mExpectingActivityResult=false;
+    debugLog("onActivityResult, req " + requestCode + " response "+ responseCode);
+    if (responseCode == Activity.RESULT_OK) {
+      debugLog("responseCode == RESULT_OK. So connecting.");
+      connectCurrentClient();
+    }
+ else {
+      debugLog("responseCode != RESULT_OK, so not reconnecting.");
+      giveUp();
+    }
+  }
+}

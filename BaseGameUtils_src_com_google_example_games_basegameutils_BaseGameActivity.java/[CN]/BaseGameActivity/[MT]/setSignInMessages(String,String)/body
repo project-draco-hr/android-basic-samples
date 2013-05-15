@@ -1,0 +1,4 @@
+{
+  mHelper.setSigningInMessage(signingInMessage);
+  mHelper.setSigningOutMessage(signingOutMessage);
+}

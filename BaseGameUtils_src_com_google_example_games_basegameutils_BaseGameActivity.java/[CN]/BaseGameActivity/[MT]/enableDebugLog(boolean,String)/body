@@ -1,0 +1,3 @@
+{
+  mHelper.enableDebugLog(enabled,tag);
+}

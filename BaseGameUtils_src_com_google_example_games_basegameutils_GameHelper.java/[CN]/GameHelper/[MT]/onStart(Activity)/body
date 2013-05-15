@@ -1,0 +1,14 @@
+{
+  mActivity=act;
+  debugLog("onStart.");
+  if (mExpectingActivityResult) {
+    debugLog("onStart: won't connect because we're expecting activity result.");
+  }
+ else   if (!mAutoSignIn) {
+    debugLog("onStart: not signing in because user specifically signed out.");
+  }
+ else {
+    debugLog("onStart: connecting clients.");
+    startConnections();
+  }
+}

@@ -1,0 +1,14 @@
+{
+  mConnectionResult=null;
+  mAutoSignIn=false;
+  mSignedIn=false;
+  mSignInError=false;
+  if (mPlusClient != null && mPlusClient.isConnected()) {
+    mPlusClient.clearDefaultAccount();
+  }
+  if (mGamesClient != null && mGamesClient.isConnected()) {
+    showProgressDialog(false);
+    mGamesClient.signOut(this);
+  }
+  killConnections(CLIENT_ALL & ~CLIENT_GAMES);
+}

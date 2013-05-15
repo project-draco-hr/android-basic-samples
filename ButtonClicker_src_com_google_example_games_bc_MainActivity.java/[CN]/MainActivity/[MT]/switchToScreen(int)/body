@@ -1,0 +1,17 @@
+{
+  for (  int id : SCREENS) {
+    findViewById(id).setVisibility(screenId == id ? View.VISIBLE : View.GONE);
+  }
+  mCurScreen=screenId;
+  boolean showInvPopup;
+  if (mIncomingInvitationId == null) {
+    showInvPopup=false;
+  }
+ else   if (mMultiplayer) {
+    showInvPopup=(mCurScreen == R.id.screen_main);
+  }
+ else {
+    showInvPopup=(mCurScreen == R.id.screen_main || mCurScreen == R.id.screen_game);
+  }
+  findViewById(R.id.invitation_popup).setVisibility(showInvPopup ? View.VISIBLE : View.GONE);
+}

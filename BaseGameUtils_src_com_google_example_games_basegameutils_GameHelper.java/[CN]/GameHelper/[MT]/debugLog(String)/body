@@ -1,0 +1,3 @@
+{
+  if (mDebugLog)   Log.d(mDebugTag,message);
+}

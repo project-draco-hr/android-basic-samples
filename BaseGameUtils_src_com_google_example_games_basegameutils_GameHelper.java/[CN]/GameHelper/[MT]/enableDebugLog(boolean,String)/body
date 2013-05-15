@@ -1,0 +1,4 @@
+{
+  mDebugLog=enabled;
+  mDebugTag=tag;
+}

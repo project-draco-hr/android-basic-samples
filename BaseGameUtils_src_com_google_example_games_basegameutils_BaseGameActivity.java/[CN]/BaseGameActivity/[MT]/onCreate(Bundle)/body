@@ -1,0 +1,5 @@
+{
+  super.onCreate(b);
+  mHelper=new GameHelper(this);
+  mHelper.setup(this,mRequestedClients);
+}

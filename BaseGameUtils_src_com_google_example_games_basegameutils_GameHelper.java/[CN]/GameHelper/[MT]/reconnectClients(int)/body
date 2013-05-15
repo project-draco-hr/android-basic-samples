@@ -1,0 +1,16 @@
+{
+  showProgressDialog(true);
+  if ((whatClients & CLIENT_GAMES) != 0 && mGamesClient != null && mGamesClient.isConnected()) {
+    mConnectedClients&=~CLIENT_GAMES;
+    mGamesClient.reconnect();
+  }
+  if ((whatClients & CLIENT_APPSTATE) != 0 && mAppStateClient != null && mAppStateClient.isConnected()) {
+    mConnectedClients&=~CLIENT_APPSTATE;
+    mAppStateClient.reconnect();
+  }
+  if ((whatClients & CLIENT_PLUS) != 0 && mPlusClient != null && mPlusClient.isConnected()) {
+    mConnectedClients&=~CLIENT_PLUS;
+    mPlusClient.disconnect();
+    mPlusClient.connect();
+  }
+}

@@ -1,0 +1,15 @@
+{
+  mConnectionResult=result;
+  debugLog("onConnectionFailed: result " + result.getErrorCode());
+  dismissDialog();
+  if (!mUserInitiatedSignIn) {
+    debugLog("onConnectionFailed: since user didn't initiate sign-in, failing now.");
+    mConnectionResult=result;
+    if (mListener != null) {
+      mListener.onSignInFailed();
+    }
+    return;
+  }
+  debugLog("onConnectionFailed: since user initiated sign-in, trying to resolve problem.");
+  resolveConnectionResult();
+}

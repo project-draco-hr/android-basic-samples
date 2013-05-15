@@ -1,0 +1,25 @@
+{
+  int pendingClients=mRequestedClients & ~mConnectedClients;
+  if (pendingClients == 0) {
+    debugLog("All clients now connected. Sign-in successful.");
+    succeedSignIn();
+    return;
+  }
+  showProgressDialog(true);
+  if (mGamesClient != null && (0 != (pendingClients & CLIENT_GAMES))) {
+    debugLog("Connecting GamesClient.");
+    mClientCurrentlyConnecting=CLIENT_GAMES;
+  }
+ else   if (mPlusClient != null && (0 != (pendingClients & CLIENT_PLUS))) {
+    debugLog("Connecting PlusClient.");
+    mClientCurrentlyConnecting=CLIENT_PLUS;
+  }
+ else   if (mAppStateClient != null && (0 != (pendingClients & CLIENT_APPSTATE))) {
+    debugLog("Connecting AppStateClient.");
+    mClientCurrentlyConnecting=CLIENT_APPSTATE;
+  }
+ else {
+    throw new AssertionError("Not all clients connected, yet no one is next. R=" + mRequestedClients + ", C="+ mConnectedClients);
+  }
+  connectCurrentClient();
+}

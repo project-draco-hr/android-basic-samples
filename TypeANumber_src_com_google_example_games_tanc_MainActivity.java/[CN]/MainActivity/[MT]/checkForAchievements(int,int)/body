@@ -1,0 +1,19 @@
+{
+  if (isPrime(finalScore)) {
+    mOutbox.mPrimeAchievement=true;
+    achievementToast(getString(R.string.achievement_prime_toast_text));
+  }
+  if (requestedScore == 9999) {
+    mOutbox.mArrogantAchievement=true;
+    achievementToast(getString(R.string.achievement_arrogant_toast_text));
+  }
+  if (requestedScore == 0) {
+    mOutbox.mHumbleAchievement=true;
+    achievementToast(getString(R.string.achievement_humble_toast_text));
+  }
+  if (finalScore == 1337) {
+    mOutbox.mLeetAchievement=true;
+    achievementToast(getString(R.string.achievement_leet_toast_text));
+  }
+  mOutbox.mBoredSteps++;
+}

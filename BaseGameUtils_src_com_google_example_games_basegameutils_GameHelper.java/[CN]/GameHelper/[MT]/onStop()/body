@@ -1,0 +1,9 @@
+{
+  debugLog("onStop: disconnecting clients.");
+  killConnections(CLIENT_ALL);
+  mSignedIn=false;
+  mSignInError=false;
+  dismissDialog();
+  mProgressDialog=null;
+  mActivity=null;
+}

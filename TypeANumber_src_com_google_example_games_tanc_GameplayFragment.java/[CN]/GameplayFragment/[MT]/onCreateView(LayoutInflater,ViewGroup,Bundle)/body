@@ -1,0 +1,7 @@
+{
+  View v=inflater.inflate(R.layout.fragment_gameplay,container,false);
+  for (  int i : MY_BUTTONS) {
+    ((Button)v.findViewById(i)).setOnClickListener(this);
+  }
+  return v;
+}

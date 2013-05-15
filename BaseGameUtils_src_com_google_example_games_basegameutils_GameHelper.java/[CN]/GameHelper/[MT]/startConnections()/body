@@ -1,0 +1,5 @@
+{
+  mConnectedClients=CLIENT_NONE;
+  mInvitationId=null;
+  connectNextClient();
+}

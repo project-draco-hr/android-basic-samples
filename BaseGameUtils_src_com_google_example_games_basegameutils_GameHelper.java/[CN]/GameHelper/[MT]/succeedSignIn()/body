@@ -1,0 +1,10 @@
+{
+  debugLog("All requested clients connected. Sign-in succeeded!");
+  mSignedIn=true;
+  mSignInError=false;
+  mAutoSignIn=true;
+  dismissDialog();
+  if (mListener != null) {
+    mListener.onSignInSucceeded();
+  }
+}

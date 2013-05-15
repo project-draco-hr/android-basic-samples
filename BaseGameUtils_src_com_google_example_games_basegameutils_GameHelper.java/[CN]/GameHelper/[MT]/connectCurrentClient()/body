@@ -1,0 +1,13 @@
+{
+switch (mClientCurrentlyConnecting) {
+case CLIENT_GAMES:
+    mGamesClient.connect();
+  break;
+case CLIENT_APPSTATE:
+mAppStateClient.connect();
+break;
+case CLIENT_PLUS:
+mPlusClient.connect();
+break;
+}
+}
