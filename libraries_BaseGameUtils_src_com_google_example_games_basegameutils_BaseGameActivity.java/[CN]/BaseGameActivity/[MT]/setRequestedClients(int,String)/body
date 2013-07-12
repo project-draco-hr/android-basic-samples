@@ -1,3 +1,4 @@
 {
   mRequestedClients=requestedClients;
+  mAdditionalScopes=additionalScopes;
 }

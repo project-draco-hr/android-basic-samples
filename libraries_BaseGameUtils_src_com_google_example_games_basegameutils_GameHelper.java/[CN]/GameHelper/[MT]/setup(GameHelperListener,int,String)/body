@@ -11,6 +11,11 @@
   if (0 != (clientsToUse & CLIENT_APPSTATE)) {
     scopesVector.add(Scopes.APP_STATE);
   }
+  if (null != additionalScopes) {
+    for (    String scope : additionalScopes) {
+      scopesVector.add(scope);
+    }
+  }
   mScopes=new String[scopesVector.size()];
   scopesVector.copyInto(mScopes);
   if (0 != (clientsToUse & CLIENT_GAMES)) {
