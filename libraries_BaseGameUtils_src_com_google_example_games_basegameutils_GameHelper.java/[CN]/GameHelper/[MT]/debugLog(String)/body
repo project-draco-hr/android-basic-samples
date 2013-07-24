@@ -1,3 +1,5 @@
 {
-  if (mDebugLog)   Log.d(mDebugTag,message);
+  if (mDebugLog) {
+    Log.d(mDebugTag,message);
+  }
 }

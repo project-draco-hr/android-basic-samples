@@ -1,6 +1,8 @@
 {
   debugLog("Making error dialog for error: " + errorCode);
   Dialog errorDialog=GooglePlayServicesUtil.getErrorDialog(errorCode,mActivity,RC_UNUSED,null);
-  if (errorDialog != null)   return errorDialog;
+  if (errorDialog != null) {
+    return errorDialog;
+  }
   return (new AlertDialog.Builder(getContext())).setMessage(mUnknownErrorMessage).setNeutralButton(android.R.string.ok,null).create();
 }

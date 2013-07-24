@@ -19,15 +19,15 @@
   mScopes=new String[scopesVector.size()];
   scopesVector.copyInto(mScopes);
   if (0 != (clientsToUse & CLIENT_GAMES)) {
-    debugLog("onCreate: creating GamesClient");
+    debugLog("setup: creating GamesClient");
     mGamesClient=new GamesClient.Builder(getContext(),this,this).setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL).setScopes(mScopes).create();
   }
   if (0 != (clientsToUse & CLIENT_PLUS)) {
-    debugLog("onCreate: creating GamesPlusClient");
+    debugLog("setup: creating GamesPlusClient");
     mPlusClient=new PlusClient.Builder(getContext(),this,this).setScopes(mScopes).build();
   }
   if (0 != (clientsToUse & CLIENT_APPSTATE)) {
-    debugLog("onCreate: creating AppStateClient");
+    debugLog("setup: creating AppStateClient");
     mAppStateClient=new AppStateClient.Builder(getContext(),this,this).setScopes(mScopes).create();
   }
 }
