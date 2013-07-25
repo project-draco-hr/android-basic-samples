@@ -1,11 +1,9 @@
 {
+  assertState("succeedSignIn",STATE_CONNECTING,STATE_CONNECTED);
   debugLog("All requested clients connected. Sign-in succeeded!");
-  mSignedIn=true;
-  mSignInError=false;
+  setState(STATE_CONNECTED);
+  mSignInFailureReason=null;
   mAutoSignIn=true;
   mUserInitiatedSignIn=false;
-  dismissDialog();
-  if (mListener != null) {
-    mListener.onSignInSucceeded();
-  }
+  notifyListener(true);
 }

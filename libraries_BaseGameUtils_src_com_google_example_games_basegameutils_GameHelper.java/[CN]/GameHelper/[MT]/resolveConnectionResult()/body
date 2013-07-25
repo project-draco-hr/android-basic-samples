@@ -1,18 +1,23 @@
 {
+  assertState("resolveConnectionResult",STATE_CONNECTING);
+  if (mExpectingResolution) {
+    debugLog("We're already expecting the result of a previous resolution.");
+    return;
+  }
   debugLog("resolveConnectionResult: trying to resolve result: " + mConnectionResult);
   if (mConnectionResult.hasResolution()) {
-    debugLog("result has resolution. Starting it.");
+    debugLog("Result has resolution. Starting it.");
     try {
-      mExpectingActivityResult=true;
+      mExpectingResolution=true;
       mConnectionResult.startResolutionForResult(mActivity,RC_RESOLVE);
     }
  catch (    SendIntentException e) {
-      debugLog("SendIntentException.");
+      debugLog("SendIntentException, so connecting again.");
       connectCurrentClient();
     }
   }
  else {
     debugLog("resolveConnectionResult: result has no resolution. Giving up.");
-    giveUp();
+    giveUp(new SignInFailureReason(mConnectionResult.getErrorCode()));
   }
 }

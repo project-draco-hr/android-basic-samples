@@ -1,4 +1,5 @@
 {
+  assertState("connectCurrentClient",STATE_CONNECTING);
 switch (mClientCurrentlyConnecting) {
 case CLIENT_GAMES:
     mGamesClient.connect();

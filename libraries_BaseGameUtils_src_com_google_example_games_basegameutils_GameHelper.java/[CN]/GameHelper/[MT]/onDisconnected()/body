@@ -1,12 +1,13 @@
 {
   debugLog("onDisconnected.");
-  mConnectionResult=null;
-  mAutoSignIn=false;
-  mSignedIn=false;
-  mSignInError=false;
-  mInvitationId=null;
-  mConnectedClients=CLIENT_NONE;
-  if (mListener != null) {
-    mListener.onSignInFailed();
+  if (mState == STATE_DISCONNECTED) {
+    debugLog("onDisconnected is expected, so no action taken.");
+    return;
   }
+  Log.w(mDebugTag,"*** Unexpectedly disconnected. Severing remaining connections.");
+  killConnections();
+  mSignInFailureReason=null;
+  assertState("onDisconnected@2",STATE_DISCONNECTED);
+  debugLog("Making extraordinary call to onSignInFailed callback");
+  notifyListener(false);
 }

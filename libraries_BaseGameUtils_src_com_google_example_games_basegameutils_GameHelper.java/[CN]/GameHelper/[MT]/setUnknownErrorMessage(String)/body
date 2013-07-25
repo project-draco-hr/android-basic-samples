@@ -1,3 +1,4 @@
 {
+  debugLog("Setting unknown error message to: " + message);
   mUnknownErrorMessage=message;
 }

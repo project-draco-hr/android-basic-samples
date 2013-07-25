@@ -1,6 +1,8 @@
 {
+  assertState("setup",STATE_UNCONFIGURED);
   mListener=listener;
   mRequestedClients=clientsToUse;
+  debugLog("Setup: requested clients: " + mRequestedClients);
   Vector<String> scopesVector=new Vector<String>();
   if (0 != (clientsToUse & CLIENT_GAMES)) {
     scopesVector.add(Scopes.GAMES);
@@ -18,6 +20,10 @@
   }
   mScopes=new String[scopesVector.size()];
   scopesVector.copyInto(mScopes);
+  debugLog("setup: scopes:");
+  for (  String scope : mScopes) {
+    debugLog("  - " + scope);
+  }
   if (0 != (clientsToUse & CLIENT_GAMES)) {
     debugLog("setup: creating GamesClient");
     mGamesClient=new GamesClient.Builder(getContext(),this,this).setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL).setScopes(mScopes).create();
@@ -30,4 +36,5 @@
     debugLog("setup: creating AppStateClient");
     mAppStateClient=new AppStateClient.Builder(getContext(),this,this).setScopes(mScopes).create();
   }
+  setState(STATE_DISCONNECTED);
 }

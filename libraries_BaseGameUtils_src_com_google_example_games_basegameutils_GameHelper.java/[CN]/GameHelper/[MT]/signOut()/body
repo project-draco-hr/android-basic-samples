@@ -1,14 +1,16 @@
 {
-  mConnectionResult=null;
-  mAutoSignIn=false;
-  mSignedIn=false;
-  mSignInError=false;
+  if (mState == STATE_DISCONNECTED) {
+    debugLog("signOut: state was already DISCONNECTED, ignoring.");
+    return;
+  }
   if (mPlusClient != null && mPlusClient.isConnected()) {
+    debugLog("Clearing default account on PlusClient.");
     mPlusClient.clearDefaultAccount();
   }
   if (mGamesClient != null && mGamesClient.isConnected()) {
-    showProgressDialog(false);
-    mGamesClient.signOut(this);
+    debugLog("Signing out from GamesClient.");
+    mGamesClient.signOut();
   }
-  killConnections(CLIENT_ALL & ~CLIENT_GAMES);
+  debugLog("Proceeding with disconnection.");
+  killConnections();
 }

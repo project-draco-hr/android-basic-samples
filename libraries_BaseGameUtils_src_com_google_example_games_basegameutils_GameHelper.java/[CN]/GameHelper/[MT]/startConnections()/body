@@ -1,5 +1,7 @@
 {
-  mConnectedClients=CLIENT_NONE;
+  assertState("startConnections",STATE_DISCONNECTED);
+  debugLog("Starting connections.");
+  setState(STATE_CONNECTING);
   mInvitationId=null;
   connectNextClient();
 }

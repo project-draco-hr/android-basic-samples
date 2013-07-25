@@ -1,19 +1,24 @@
 {
-  if (mSignedIn)   return;
+  if (mState == STATE_CONNECTED) {
+    notifyListener(true);
+    return;
+  }
+  assertState("beginUserInitiatedSignIn",STATE_DISCONNECTED);
+  debugLog("Starting USER-INITIATED sign-in flow.");
   mAutoSignIn=true;
   int result=GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
   debugLog("isGooglePlayServicesAvailable returned " + result);
   if (result != ConnectionResult.SUCCESS) {
     debugLog("Google Play services not available. Show error dialog.");
-    Dialog errorDialog=getErrorDialog(result);
-    errorDialog.show();
-    if (mListener != null)     mListener.onSignInFailed();
+    mSignInFailureReason=new SignInFailureReason(result,0);
+    showFailureDialog();
+    notifyListener(false);
     return;
   }
   mUserInitiatedSignIn=true;
   if (mConnectionResult != null) {
     debugLog("beginUserInitiatedSignIn: continuing pending sign-in flow.");
-    showProgressDialog(true);
+    setState(STATE_CONNECTING);
     resolveConnectionResult();
   }
  else {

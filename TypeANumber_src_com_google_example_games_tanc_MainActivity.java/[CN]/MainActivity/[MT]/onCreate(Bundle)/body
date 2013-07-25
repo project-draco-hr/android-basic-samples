@@ -9,5 +9,4 @@
   mWinFragment.setListener(this);
   getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,mMainMenuFragment).commit();
   mOutbox.loadLocal(this);
-  setSignInMessages(getString(R.string.signing_in),getString(R.string.signing_out));
 }

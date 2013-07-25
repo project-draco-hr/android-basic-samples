@@ -1,0 +1,21 @@
+{
+  assertState("killConnections",STATE_CONNECTED,STATE_CONNECTING);
+  debugLog("killConnections: killing connections.");
+  mConnectionResult=null;
+  mSignInFailureReason=null;
+  if (mGamesClient != null && mGamesClient.isConnected()) {
+    debugLog("Disconnecting GamesClient.");
+    mGamesClient.disconnect();
+  }
+  if (mPlusClient != null && mPlusClient.isConnected()) {
+    debugLog("Disconnecting PlusClient.");
+    mPlusClient.disconnect();
+  }
+  if (mAppStateClient != null && mAppStateClient.isConnected()) {
+    debugLog("Disconnecting AppStateClient.");
+    mAppStateClient.disconnect();
+  }
+  mConnectedClients=CLIENT_NONE;
+  debugLog("killConnections: all clients disconnected.");
+  setState(STATE_DISCONNECTED);
+}

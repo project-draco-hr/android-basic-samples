@@ -1,3 +1,4 @@
 {
+  assertState("getInvitationId",STATE_CONNECTED);
   return mInvitationId;
 }

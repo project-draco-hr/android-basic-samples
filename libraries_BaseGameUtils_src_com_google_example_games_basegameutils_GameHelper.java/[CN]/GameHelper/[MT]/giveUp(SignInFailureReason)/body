@@ -1,0 +1,9 @@
+{
+  assertState("giveUp",STATE_CONNECTING);
+  mAutoSignIn=false;
+  killConnections();
+  assertState("giveUp@2",STATE_DISCONNECTED);
+  mSignInFailureReason=reason;
+  showFailureDialog();
+  notifyListener(false);
+}

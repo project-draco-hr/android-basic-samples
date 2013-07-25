@@ -1,14 +1,26 @@
 {
   mActivity=act;
-  debugLog("onStart.");
-  if (mExpectingActivityResult) {
-    debugLog("onStart: won't connect because we're expecting activity result.");
-  }
- else   if (!mAutoSignIn) {
-    debugLog("onStart: not signing in because user specifically signed out.");
-  }
+  debugLog("onStart, state = " + STATE_NAMES[mState]);
+  assertState("onStart",STATE_DISCONNECTED,STATE_CONNECTING,STATE_CONNECTED);
+switch (mState) {
+case STATE_DISCONNECTED:
+    if (mAutoSignIn) {
+      debugLog("onStart: Now connecting clients.");
+      startConnections();
+    }
  else {
-    debugLog("onStart: connecting clients.");
-    startConnections();
-  }
+      debugLog("onStart: Not connecting (user specifically signed out).");
+    }
+  break;
+case STATE_CONNECTING:
+debugLog("onStart: connection process in progress, no action taken.");
+break;
+case STATE_CONNECTED:
+debugLog("onStart: already connected (unusual, but ok).");
+break;
+default :
+String msg="onStart: BUG: unexpected state " + STATE_NAMES[mState];
+Log.e(mDebugTag,msg);
+throw new IllegalStateException(msg);
+}
 }

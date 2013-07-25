@@ -1,6 +1,0 @@
-{
-  dismissDialog();
-  if (mGamesClient.isConnected()) {
-    mGamesClient.disconnect();
-  }
-}

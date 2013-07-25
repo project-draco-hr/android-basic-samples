@@ -1,0 +1,23 @@
+{
+  for (  int expectedState : expectedStates) {
+    if (mState == expectedState) {
+      return;
+    }
+  }
+  StringBuilder sb=new StringBuilder();
+  sb.append("GameHelper: operation attempted at incorrect state. ");
+  sb.append("Operation: ").append(operation).append(". ");
+  sb.append("State: ").append(STATE_NAMES[mState]).append(". ");
+  if (expectedStates.length == 1) {
+    sb.append("Expected state: ").append(STATE_NAMES[expectedStates[0]]).append(".");
+  }
+ else {
+    sb.append("Expected states:");
+    for (    int expectedState : expectedStates) {
+      sb.append(" ").append(STATE_NAMES[expectedState]);
+    }
+    sb.append(".");
+  }
+  Log.e(mDebugTag,"*** " + sb.toString());
+  throw new IllegalStateException(sb.toString());
+}
