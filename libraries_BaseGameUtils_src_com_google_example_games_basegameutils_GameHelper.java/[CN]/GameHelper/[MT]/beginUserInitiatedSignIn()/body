@@ -1,9 +1,13 @@
 {
   if (mState == STATE_CONNECTED) {
+    logWarn("beginUserInitiatedSignIn() called when already connected. " + "Calling listener directly to notify of success.");
     notifyListener(true);
     return;
   }
-  assertState("beginUserInitiatedSignIn",STATE_DISCONNECTED);
+ else   if (mState == STATE_CONNECTING) {
+    logWarn("beginUserInitiatedSignIn() called when already connecting. " + "Be patient! You can only call this method after you get an " + "onSignInSucceeded() or onSignInFailed() callback. Suggestion: disable "+ "the sign-in button on startup and also when it's clicked, and re-enable "+ "when you get the callback.");
+    return;
+  }
   debugLog("Starting USER-INITIATED sign-in flow.");
   mAutoSignIn=true;
   int result=GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());

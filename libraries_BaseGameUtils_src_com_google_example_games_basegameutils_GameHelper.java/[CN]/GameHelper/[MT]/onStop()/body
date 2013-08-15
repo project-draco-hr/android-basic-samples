@@ -1,6 +1,6 @@
 {
   debugLog("onStop, state = " + STATE_NAMES[mState]);
-  assertState("onStop",STATE_DISCONNECTED,STATE_CONNECTING,STATE_CONNECTED);
+  assertConfigured("onStop");
 switch (mState) {
 case STATE_CONNECTED:
 case STATE_CONNECTING:
@@ -12,7 +12,7 @@ debugLog("onStop: not connected, so no action taken.");
 break;
 default :
 String msg="onStop: BUG: unexpected state " + STATE_NAMES[mState];
-Log.e(mDebugTag,msg);
+logError(msg);
 throw new IllegalStateException(msg);
 }
 mActivity=null;

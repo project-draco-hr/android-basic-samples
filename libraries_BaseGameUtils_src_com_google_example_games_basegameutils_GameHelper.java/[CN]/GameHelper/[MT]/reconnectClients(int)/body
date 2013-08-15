@@ -1,5 +1,5 @@
 {
-  assertState("reconnectClients",STATE_CONNECTED);
+  checkState(TYPE_DEVELOPER_ERROR,"reconnectClients","reconnectClients should " + "only be called when connected. Proceeding anyway.",STATE_CONNECTED);
   boolean actuallyReconnecting=false;
   if ((whatClients & CLIENT_GAMES) != 0 && mGamesClient != null && mGamesClient.isConnected()) {
     debugLog("Reconnecting GamesClient.");
@@ -14,7 +14,7 @@
     mAppStateClient.reconnect();
   }
   if ((whatClients & CLIENT_PLUS) != 0 && mPlusClient != null && mPlusClient.isConnected()) {
-    Log.w(mDebugTag,"GameHelper is ignoring your request to reconnect " + "PlusClient because this is unnecessary.");
+    logWarn("GameHelper is ignoring your request to reconnect " + "PlusClient because this is unnecessary.");
   }
   if (actuallyReconnecting) {
     setState(STATE_CONNECTING);

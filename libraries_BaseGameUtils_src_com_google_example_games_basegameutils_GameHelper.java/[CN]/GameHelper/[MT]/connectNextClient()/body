@@ -1,15 +1,15 @@
 {
   debugLog("connectNextClient: requested clients: " + mRequestedClients + ", connected clients: "+ mConnectedClients);
   if (mGamesClient != null && mGamesClient.isConnected() && (0 == (mConnectedClients & CLIENT_GAMES))) {
-    Log.w(mDebugTag,"*** WARNING: GamesClient was already connected. Fixing.");
+    logWarn("GamesClient was already connected. Fixing.");
     mConnectedClients|=CLIENT_GAMES;
   }
   if (mPlusClient != null && mPlusClient.isConnected() && (0 == (mConnectedClients & CLIENT_PLUS))) {
-    Log.w(mDebugTag,"*** WARNING: PlusClient was already connected. Fixing.");
+    logWarn("PlusClient was already connected. Fixing.");
     mConnectedClients|=CLIENT_PLUS;
   }
   if (mAppStateClient != null && mAppStateClient.isConnected() && (0 == (mConnectedClients & CLIENT_APPSTATE))) {
-    Log.w(mDebugTag,"*** WARNING: AppStateClient was already connected. Fixing");
+    logWarn("AppStateClient was already connected. Fixing");
     mConnectedClients|=CLIENT_APPSTATE;
   }
   int pendingClients=mRequestedClients & ~mConnectedClients;

@@ -1,11 +1,20 @@
 {
   for (  int expectedState : expectedStates) {
     if (mState == expectedState) {
-      return;
+      return true;
     }
   }
   StringBuilder sb=new StringBuilder();
-  sb.append("GameHelper: operation attempted at incorrect state. ");
+  if (type == TYPE_DEVELOPER_ERROR) {
+    sb.append("GameHelper: you attempted an operation at an invalid. ");
+  }
+ else {
+    sb.append("GameHelper: bug detected. Please report it at our bug tracker ");
+    sb.append("https://github.com/playgameservices/android-samples/issues. ");
+    sb.append("Please include the last couple hundred lines of logcat output ");
+    sb.append("and describe the operation that caused this. ");
+  }
+  sb.append("Explanation: ").append(warning);
   sb.append("Operation: ").append(operation).append(". ");
   sb.append("State: ").append(STATE_NAMES[mState]).append(". ");
   if (expectedStates.length == 1) {
@@ -18,6 +27,6 @@
     }
     sb.append(".");
   }
-  Log.e(mDebugTag,"*** " + sb.toString());
-  throw new IllegalStateException(sb.toString());
+  logWarn(sb.toString());
+  return false;
 }

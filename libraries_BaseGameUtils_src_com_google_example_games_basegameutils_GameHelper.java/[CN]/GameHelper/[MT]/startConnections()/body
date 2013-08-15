@@ -1,5 +1,7 @@
 {
-  assertState("startConnections",STATE_DISCONNECTED);
+  if (!checkState(TYPE_GAMEHELPER_BUG,"startConnections","startConnections should " + "only get called when disconnected.",STATE_DISCONNECTED)) {
+    return;
+  }
   debugLog("Starting connections.");
   setState(STATE_CONNECTING);
   mInvitationId=null;

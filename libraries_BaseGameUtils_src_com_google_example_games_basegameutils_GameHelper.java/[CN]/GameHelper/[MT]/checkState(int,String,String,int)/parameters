@@ -1,2 +1,4 @@
+int type
 String operation
+String warning
 int expectedStates

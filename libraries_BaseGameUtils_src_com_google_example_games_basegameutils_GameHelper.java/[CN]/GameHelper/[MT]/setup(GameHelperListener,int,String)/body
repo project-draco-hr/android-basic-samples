@@ -1,5 +1,9 @@
 {
-  assertState("setup",STATE_UNCONFIGURED);
+  if (mState != STATE_UNCONFIGURED) {
+    String error="GameHelper: you called GameHelper.setup() twice. You can only call " + "it once.";
+    logError(error);
+    throw new IllegalStateException(error);
+  }
   mListener=listener;
   mRequestedClients=clientsToUse;
   debugLog("Setup: requested clients: " + mRequestedClients);

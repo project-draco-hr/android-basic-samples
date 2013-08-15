@@ -1,5 +1,11 @@
 {
-  assertState("connectCurrentClient",STATE_CONNECTING);
+  if (mState == STATE_DISCONNECTED) {
+    logWarn("GameHelper got disconnected during connection process. Aborting.");
+    return;
+  }
+  if (!checkState(TYPE_GAMEHELPER_BUG,"connectCurrentClient","connectCurrentClient " + "should only get called when connecting.",STATE_CONNECTING)) {
+    return;
+  }
 switch (mClientCurrentlyConnecting) {
 case CLIENT_GAMES:
     mGamesClient.connect();
