@@ -1,5 +1,5 @@
 {
-  final boolean CHECK_PKGNAME=false;
+  final boolean CHECK_PKGNAME=true;
   if (CHECK_PKGNAME && getPackageName().startsWith("com.google.example."))   return false;
   int res_ids[]=new int[]{R.string.app_id,R.string.trivial_victory_achievement_id};
   for (  int i : res_ids) {
