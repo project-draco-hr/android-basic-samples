@@ -1,0 +1,6 @@
+{
+  super.onCreate(savedInstanceState);
+  mHelper=new GameHelper(this);
+  mHelper.enableDebugLog(true,"EndlessTunnel:GameHelper");
+  mHelper.setup(this,GameHelper.CLIENT_GAMES | GameHelper.CLIENT_APPSTATE);
+}

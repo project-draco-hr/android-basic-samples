@@ -1,0 +1,6 @@
+{
+  mBaseScore=baseScore;
+  for (  ScoreEntry entry : mScoreEntries) {
+    entry.update();
+  }
+}

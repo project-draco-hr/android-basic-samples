@@ -1,0 +1,17 @@
+{
+  debugLog("onConnectionFailed");
+  mConnectionResult=result;
+  debugLog("Connection failure:");
+  debugLog("   - code: " + errorCodeToString(mConnectionResult.getErrorCode()));
+  debugLog("   - resolvable: " + mConnectionResult.hasResolution());
+  debugLog("   - details: " + mConnectionResult.toString());
+  if (!mUserInitiatedSignIn) {
+    debugLog("onConnectionFailed: since user didn't initiate sign-in, failing now.");
+    mConnectionResult=result;
+    setState(STATE_DISCONNECTED);
+    notifyListener(false);
+    return;
+  }
+  debugLog("onConnectionFailed: since user initiated sign-in, resolving problem.");
+  resolveConnectionResult();
+}

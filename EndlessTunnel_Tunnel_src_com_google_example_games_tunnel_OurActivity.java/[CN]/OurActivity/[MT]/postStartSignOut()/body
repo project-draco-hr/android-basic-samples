@@ -1,0 +1,4 @@
+{
+  mSignInInitDone=false;
+  super.postStartSignOut();
+}

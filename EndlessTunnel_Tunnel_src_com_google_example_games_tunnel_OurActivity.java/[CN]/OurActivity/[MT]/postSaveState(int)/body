@@ -1,0 +1,12 @@
+{
+  runOnUiThread(new Runnable(){
+    @Override public void run(){
+      AppStateClient client=mHelper.getAppStateClient();
+      if (client.isConnected()) {
+        Log.d(TAG,"Saving level to cloud: " + level);
+        client.updateState(OUR_STATE_KEY,encodeLevel(level));
+      }
+    }
+  }
+);
+}

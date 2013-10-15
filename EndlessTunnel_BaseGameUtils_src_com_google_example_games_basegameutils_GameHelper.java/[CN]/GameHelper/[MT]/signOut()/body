@@ -1,0 +1,16 @@
+{
+  if (mState == STATE_DISCONNECTED) {
+    debugLog("signOut: state was already DISCONNECTED, ignoring.");
+    return;
+  }
+  if (mPlusClient != null && mPlusClient.isConnected()) {
+    debugLog("Clearing default account on PlusClient.");
+    mPlusClient.clearDefaultAccount();
+  }
+  if (mGamesClient != null && mGamesClient.isConnected()) {
+    debugLog("Signing out from GamesClient.");
+    mGamesClient.signOut();
+  }
+  debugLog("Proceeding with disconnection.");
+  killConnections();
+}

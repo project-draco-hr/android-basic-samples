@@ -1,0 +1,4 @@
+{
+  Log.d("BaseGameNativeActivity","Sign-in succeeded. Reporting to native code.");
+  native_ReportSignInState(true,false);
+}

@@ -1,0 +1,9 @@
+{
+  int i;
+  for (i=0; i < mScoreEntries.size(); i++) {
+    if (mScoreEntries.get(i).id.equals(id)) {
+      return mScoreEntries.get(i);
+    }
+  }
+  return null;
+}

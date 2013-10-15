@@ -1,0 +1,9 @@
+{
+  runOnUiThread(new Runnable(){
+    @Override public void run(){
+      native_ReportSignInState(false,true);
+      mHelper.beginUserInitiatedSignIn();
+    }
+  }
+);
+}

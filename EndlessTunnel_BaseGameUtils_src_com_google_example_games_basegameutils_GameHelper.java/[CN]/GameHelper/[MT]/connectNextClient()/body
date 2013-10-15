@@ -1,0 +1,38 @@
+{
+  debugLog("connectNextClient: requested clients: " + mRequestedClients + ", connected clients: "+ mConnectedClients);
+  if (mGamesClient != null && mGamesClient.isConnected() && (0 == (mConnectedClients & CLIENT_GAMES))) {
+    logWarn("GamesClient was already connected. Fixing.");
+    mConnectedClients|=CLIENT_GAMES;
+  }
+  if (mPlusClient != null && mPlusClient.isConnected() && (0 == (mConnectedClients & CLIENT_PLUS))) {
+    logWarn("PlusClient was already connected. Fixing.");
+    mConnectedClients|=CLIENT_PLUS;
+  }
+  if (mAppStateClient != null && mAppStateClient.isConnected() && (0 == (mConnectedClients & CLIENT_APPSTATE))) {
+    logWarn("AppStateClient was already connected. Fixing");
+    mConnectedClients|=CLIENT_APPSTATE;
+  }
+  int pendingClients=mRequestedClients & ~mConnectedClients;
+  debugLog("Pending clients: " + pendingClients);
+  if (pendingClients == 0) {
+    debugLog("All clients now connected. Sign-in successful!");
+    succeedSignIn();
+    return;
+  }
+  if (mGamesClient != null && (0 != (pendingClients & CLIENT_GAMES))) {
+    debugLog("Connecting GamesClient.");
+    mClientCurrentlyConnecting=CLIENT_GAMES;
+  }
+ else   if (mPlusClient != null && (0 != (pendingClients & CLIENT_PLUS))) {
+    debugLog("Connecting PlusClient.");
+    mClientCurrentlyConnecting=CLIENT_PLUS;
+  }
+ else   if (mAppStateClient != null && (0 != (pendingClients & CLIENT_APPSTATE))) {
+    debugLog("Connecting AppStateClient.");
+    mClientCurrentlyConnecting=CLIENT_APPSTATE;
+  }
+ else {
+    throw new AssertionError("Not all clients connected, yet no one is next. R=" + mRequestedClients + ", C="+ mConnectedClients);
+  }
+  connectCurrentClient();
+}

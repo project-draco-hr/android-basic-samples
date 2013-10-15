@@ -1,0 +1,5 @@
+{
+  String savePath=getFilesDir().getAbsolutePath();
+  Log.d(TAG,"Save path (internal memory): " + savePath);
+  return savePath;
+}

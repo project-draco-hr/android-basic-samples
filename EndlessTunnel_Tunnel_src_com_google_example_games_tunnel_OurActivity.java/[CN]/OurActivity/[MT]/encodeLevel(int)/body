@@ -1,0 +1,6 @@
+{
+  byte[] data=new byte[2];
+  data[0]=0x01;
+  data[1]=(byte)level;
+  return data;
+}

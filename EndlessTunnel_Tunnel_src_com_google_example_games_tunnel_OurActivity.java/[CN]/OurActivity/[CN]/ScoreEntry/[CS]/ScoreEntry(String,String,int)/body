@@ -1,0 +1,6 @@
+{
+  this.id=id;
+  this.shown=(score <= mBaseScore);
+  this.name=name;
+  this.score=score;
+}

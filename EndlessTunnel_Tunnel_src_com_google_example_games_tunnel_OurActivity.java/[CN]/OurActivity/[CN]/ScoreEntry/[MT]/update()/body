@@ -1,0 +1,3 @@
+{
+  this.shown=(score <= mBaseScore);
+}

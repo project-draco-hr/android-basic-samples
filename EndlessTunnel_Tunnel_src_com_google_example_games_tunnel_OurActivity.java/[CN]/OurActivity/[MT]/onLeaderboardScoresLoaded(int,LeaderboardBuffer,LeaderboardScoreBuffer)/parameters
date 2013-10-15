@@ -1,0 +1,3 @@
+int statusCode
+LeaderboardBuffer leaderboard
+LeaderboardScoreBuffer scores

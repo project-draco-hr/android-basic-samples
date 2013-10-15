@@ -1,0 +1,3 @@
+{
+  return InputDevice.getDevice(deviceId).getMotionRange(MotionEvent.AXIS_X,source).getMax();
+}

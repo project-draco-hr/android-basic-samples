@@ -1,0 +1,14 @@
+{
+  super.onSignInSucceeded();
+  if (!mSignInInitDone) {
+    mSignInInitDone=true;
+    GamesClient gamesClient=mHelper.getGamesClient();
+    mMyId=gamesClient.getCurrentPlayerId();
+    gamesClient.loadPlayerCenteredScores(this,LEADERBOARD_ID,LeaderboardVariant.TIME_SPAN_ALL_TIME,LeaderboardVariant.COLLECTION_PUBLIC,MAX_SCORES_TO_LOAD);
+    gamesClient.loadPlayerCenteredScores(this,LEADERBOARD_ID,LeaderboardVariant.TIME_SPAN_ALL_TIME,LeaderboardVariant.COLLECTION_SOCIAL,MAX_SCORES_TO_LOAD);
+    gamesClient.loadTopScores(this,LEADERBOARD_ID,LeaderboardVariant.TIME_SPAN_ALL_TIME,LeaderboardVariant.COLLECTION_PUBLIC,MAX_SCORES_TO_LOAD);
+    gamesClient.loadTopScores(this,LEADERBOARD_ID,LeaderboardVariant.TIME_SPAN_ALL_TIME,LeaderboardVariant.COLLECTION_SOCIAL,MAX_SCORES_TO_LOAD);
+    Log.d(TAG,"Loading state from cloud.");
+    mHelper.getAppStateClient().loadState(this,OUR_STATE_KEY);
+  }
+}

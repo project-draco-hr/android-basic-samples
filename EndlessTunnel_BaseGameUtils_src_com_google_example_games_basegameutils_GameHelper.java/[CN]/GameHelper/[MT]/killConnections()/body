@@ -1,0 +1,23 @@
+{
+  if (!checkState(TYPE_GAMEHELPER_BUG,"killConnections","killConnections() should only " + "get called while connected or connecting.",STATE_CONNECTED,STATE_CONNECTING)) {
+    return;
+  }
+  debugLog("killConnections: killing connections.");
+  mConnectionResult=null;
+  mSignInFailureReason=null;
+  if (mGamesClient != null && mGamesClient.isConnected()) {
+    debugLog("Disconnecting GamesClient.");
+    mGamesClient.disconnect();
+  }
+  if (mPlusClient != null && mPlusClient.isConnected()) {
+    debugLog("Disconnecting PlusClient.");
+    mPlusClient.disconnect();
+  }
+  if (mAppStateClient != null && mAppStateClient.isConnected()) {
+    debugLog("Disconnecting AppStateClient.");
+    mAppStateClient.disconnect();
+  }
+  mConnectedClients=CLIENT_NONE;
+  debugLog("killConnections: all clients disconnected.");
+  setState(STATE_DISCONNECTED);
+}

@@ -1,0 +1,6 @@
+{
+  String oldStateName=STATE_NAMES[mState];
+  String newStateName=STATE_NAMES[newState];
+  mState=newState;
+  debugLog("State change " + oldStateName + " -> "+ newStateName);
+}

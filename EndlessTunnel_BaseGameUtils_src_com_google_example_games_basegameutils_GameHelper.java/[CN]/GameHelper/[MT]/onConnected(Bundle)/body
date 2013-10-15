@@ -1,0 +1,15 @@
+{
+  debugLog("onConnected: connected! client=" + mClientCurrentlyConnecting);
+  mConnectedClients|=mClientCurrentlyConnecting;
+  debugLog("Connected clients updated to: " + mConnectedClients);
+  if (mClientCurrentlyConnecting == CLIENT_GAMES && connectionHint != null) {
+    debugLog("onConnected: connection hint provided. Checking for invite.");
+    Invitation inv=connectionHint.getParcelable(GamesClient.EXTRA_INVITATION);
+    if (inv != null && inv.getInvitationId() != null) {
+      debugLog("onConnected: connection hint has a room invite!");
+      mInvitationId=inv.getInvitationId();
+      debugLog("Invitation ID: " + mInvitationId);
+    }
+  }
+  connectNextClient();
+}

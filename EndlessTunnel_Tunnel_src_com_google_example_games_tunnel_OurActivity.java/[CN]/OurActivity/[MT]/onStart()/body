@@ -1,0 +1,12 @@
+{
+  super.onStart();
+  if (!mInputDevicesScanned) {
+    mInputDevicesScanned=true;
+    if (android.os.Build.VERSION.SDK_INT >= 16) {
+      scanInputDevicesJB();
+    }
+ else {
+      Log.d(TAG,"Can't scan input devices because API < 16.");
+    }
+  }
+}
