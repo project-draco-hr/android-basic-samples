@@ -1,4 +1,0 @@
-{
-  mParticipants=room.getParticipants();
-  updatePeerScoresDisplay();
-}

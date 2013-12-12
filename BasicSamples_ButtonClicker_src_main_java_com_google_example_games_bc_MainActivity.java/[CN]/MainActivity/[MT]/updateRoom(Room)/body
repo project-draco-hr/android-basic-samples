@@ -1,0 +1,8 @@
+{
+  if (room != null) {
+    mParticipants=room.getParticipants();
+  }
+  if (mParticipants != null) {
+    updatePeerScoresDisplay();
+  }
+}
