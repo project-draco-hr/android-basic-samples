@@ -1,0 +1,30 @@
+{
+  debugLog("****");
+  debugLog("****");
+  debugLog("**** APP NOT CORRECTLY CONFIGURED TO USE GOOGLE PLAY GAME SERVICES");
+  debugLog("**** This is usually caused by one of these reasons:");
+  debugLog("**** (1) Your package name and certificate fingerprint do not match");
+  debugLog("****     the client ID you registered in Developer Console.");
+  debugLog("**** (2) Your App ID was incorrectly entered.");
+  debugLog("**** (3) Your game settings have not been published and you are ");
+  debugLog("****     trying to log in with an account that is not listed as");
+  debugLog("****     a test account.");
+  debugLog("****");
+  Context ctx=getContext();
+  if (ctx == null) {
+    debugLog("*** (no Context, so can't print more debug info)");
+    return;
+  }
+  debugLog("**** To help you debug, here is the information about this app");
+  debugLog("**** Package name         : " + getContext().getPackageName());
+  debugLog("**** Cert SHA1 fingerprint: " + getSHA1CertFingerprint());
+  debugLog("**** App ID from          : " + getAppIdFromResource());
+  debugLog("****");
+  debugLog("**** Check that the above information matches your setup in ");
+  debugLog("**** Developer Console. Also, check that you're logging in with the");
+  debugLog("**** right account (it should be listed in the Testers section if");
+  debugLog("**** your project is not yet published).");
+  debugLog("****");
+  debugLog("**** For more information, refer to the troubleshooting guide:");
+  debugLog("****   http://developers.google.com/games/services/android/troubleshooting");
+}

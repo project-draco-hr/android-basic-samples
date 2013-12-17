@@ -1,0 +1,31 @@
+{
+  Context ctx=getContext();
+  if (ctx == null) {
+    debugLog("*** No context. Can't show failure dialog.");
+    return;
+  }
+  debugLog("Making error dialog for failure: " + mSignInFailureReason);
+  Dialog errorDialog=null;
+  int errorCode=mSignInFailureReason.getServiceErrorCode();
+  int actResp=mSignInFailureReason.getActivityResultCode();
+switch (actResp) {
+case GamesActivityResultCodes.RESULT_APP_MISCONFIGURED:
+    errorDialog=makeSimpleDialog(ctx.getString(R.string.gamehelper_app_misconfigured));
+  printMisconfiguredDebugInfo();
+break;
+case GamesActivityResultCodes.RESULT_SIGN_IN_FAILED:
+errorDialog=makeSimpleDialog(ctx.getString(R.string.gamehelper_sign_in_failed));
+break;
+case GamesActivityResultCodes.RESULT_LICENSE_FAILED:
+errorDialog=makeSimpleDialog(ctx.getString(R.string.gamehelper_license_failed));
+break;
+default :
+errorDialog=GooglePlayServicesUtil.getErrorDialog(errorCode,mActivity,RC_UNUSED,null);
+if (errorDialog == null) {
+debugLog("No standard error dialog available. Making fallback dialog.");
+errorDialog=makeSimpleDialog(ctx.getString(R.string.gamehelper_unknown_error) + " " + errorCodeToString(errorCode));
+}
+}
+debugLog("Showing error dialog.");
+errorDialog.show();
+}

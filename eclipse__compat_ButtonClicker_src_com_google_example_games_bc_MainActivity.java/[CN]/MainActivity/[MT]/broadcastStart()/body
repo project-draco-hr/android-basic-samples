@@ -1,0 +1,10 @@
+{
+  if (!mMultiplayer)   return;
+  mMsgBuf[0]='S';
+  mMsgBuf[1]=(byte)0;
+  for (  Participant p : mParticipants) {
+    if (p.getParticipantId().equals(mMyId))     continue;
+    if (p.getStatus() != Participant.STATUS_JOINED)     continue;
+    getGamesClient().sendReliableRealTimeMessage(null,mMsgBuf,mRoomId,p.getParticipantId());
+  }
+}

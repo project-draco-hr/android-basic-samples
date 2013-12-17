@@ -1,0 +1,4 @@
+{
+  super.onActivityResult(request,response,data);
+  mHelper.onActivityResult(request,response,data);
+}

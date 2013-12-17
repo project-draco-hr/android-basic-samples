@@ -1,0 +1,13 @@
+{
+  enableDebugLog(ENABLE_DEBUG,TAG);
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  mMainMenuFragment=new MainMenuFragment();
+  mGameplayFragment=new GameplayFragment();
+  mWinFragment=new WinFragment();
+  mMainMenuFragment.setListener(this);
+  mGameplayFragment.setListener(this);
+  mWinFragment.setListener(this);
+  getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,mMainMenuFragment).commit();
+  mOutbox.loadLocal(this);
+}

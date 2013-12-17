@@ -1,0 +1,35 @@
+{
+  if (!isSignedIn()) {
+    mOutbox.saveLocal(this);
+    return;
+  }
+  if (mOutbox.mPrimeAchievement) {
+    getGamesClient().unlockAchievement(getString(R.string.achievement_prime));
+    mOutbox.mPrimeAchievement=false;
+  }
+  if (mOutbox.mArrogantAchievement) {
+    getGamesClient().unlockAchievement(getString(R.string.achievement_arrogant));
+    mOutbox.mArrogantAchievement=false;
+  }
+  if (mOutbox.mHumbleAchievement) {
+    getGamesClient().unlockAchievement(getString(R.string.achievement_humble));
+    mOutbox.mHumbleAchievement=false;
+  }
+  if (mOutbox.mLeetAchievement) {
+    getGamesClient().unlockAchievement(getString(R.string.achievement_leet));
+    mOutbox.mLeetAchievement=false;
+  }
+  if (mOutbox.mBoredSteps > 0) {
+    getGamesClient().incrementAchievement(getString(R.string.achievement_really_bored),mOutbox.mBoredSteps);
+    getGamesClient().incrementAchievement(getString(R.string.achievement_bored),mOutbox.mBoredSteps);
+  }
+  if (mOutbox.mEasyModeScore >= 0) {
+    getGamesClient().submitScore(getString(R.string.leaderboard_easy),mOutbox.mEasyModeScore);
+    mOutbox.mEasyModeScore=-1;
+  }
+  if (mOutbox.mHardModeScore >= 0) {
+    getGamesClient().submitScore(getString(R.string.leaderboard_hard),mOutbox.mHardModeScore);
+    mOutbox.mHardModeScore=-1;
+  }
+  mOutbox.saveLocal(this);
+}

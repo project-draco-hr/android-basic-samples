@@ -1,0 +1,8 @@
+{
+  if (mHardMode && mOutbox.mHardModeScore < finalScore) {
+    mOutbox.mHardModeScore=finalScore;
+  }
+ else   if (!mHardMode && mOutbox.mEasyModeScore < finalScore) {
+    mOutbox.mEasyModeScore=finalScore;
+  }
+}

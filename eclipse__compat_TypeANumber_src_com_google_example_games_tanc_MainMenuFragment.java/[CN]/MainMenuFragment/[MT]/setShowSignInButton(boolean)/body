@@ -1,0 +1,4 @@
+{
+  mShowSignIn=showSignIn;
+  updateUi();
+}

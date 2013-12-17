@@ -1,0 +1,13 @@
+{
+  Log.d(TAG,"Leaving room.");
+  mSecondsLeft=0;
+  stopKeepingScreenOn();
+  if (mRoomId != null) {
+    getGamesClient().leaveRoom(this,mRoomId);
+    mRoomId=null;
+    switchToScreen(R.id.screen_wait);
+  }
+ else {
+    switchToMainScreen();
+  }
+}

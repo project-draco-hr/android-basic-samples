@@ -1,0 +1,6 @@
+{
+  mSecondsLeft=GAME_DURATION;
+  mScore=0;
+  mParticipantScore.clear();
+  mFinishedParticipants.clear();
+}

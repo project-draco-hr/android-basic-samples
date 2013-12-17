@@ -1,0 +1,8 @@
+{
+  if (isSignedIn()) {
+    startActivityForResult(getGamesClient().getAllLeaderboardsIntent(),RC_UNUSED);
+  }
+ else {
+    showAlert(getString(R.string.leaderboards_not_available));
+  }
+}
