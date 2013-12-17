@@ -1,0 +1,3 @@
+{
+  return mLevelStars.keySet().size() == 0;
+}

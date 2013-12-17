@@ -1,0 +1,6 @@
+{
+  if (!checkState(TYPE_DEVELOPER_ERROR,"getInvitationId","Invitation ID is only available when connected " + "(after getting the onSignInSucceeded callback).",STATE_CONNECTED)) {
+    return null;
+  }
+  return mInvitationId;
+}

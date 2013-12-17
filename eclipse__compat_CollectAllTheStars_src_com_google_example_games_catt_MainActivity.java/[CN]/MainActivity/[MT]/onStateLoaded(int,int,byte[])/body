@@ -1,0 +1,27 @@
+{
+  mLoadingDialog.dismiss();
+switch (statusCode) {
+case AppStateClient.STATUS_OK:
+    mSaveGame=mSaveGame.unionWith(new SaveGame(localData));
+  mAlreadyLoadedState=true;
+hideAlertBar();
+break;
+case AppStateClient.STATUS_STATE_KEY_NOT_FOUND:
+mAlreadyLoadedState=true;
+hideAlertBar();
+break;
+case AppStateClient.STATUS_NETWORK_ERROR_NO_DATA:
+showAlertBar(R.string.no_data_warning);
+break;
+case AppStateClient.STATUS_NETWORK_ERROR_STALE_DATA:
+showAlertBar(R.string.stale_data_warning);
+break;
+case AppStateClient.STATUS_CLIENT_RECONNECT_REQUIRED:
+reconnectClients(BaseGameActivity.CLIENT_APPSTATE);
+break;
+default :
+showAlertBar(R.string.load_error_warning);
+break;
+}
+updateUi();
+}

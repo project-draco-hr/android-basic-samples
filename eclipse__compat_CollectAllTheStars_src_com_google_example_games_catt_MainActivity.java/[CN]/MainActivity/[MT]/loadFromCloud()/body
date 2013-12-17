@@ -1,0 +1,4 @@
+{
+  mLoadingDialog.show();
+  getAppStateClient().loadState(this,OUR_STATE_KEY);
+}

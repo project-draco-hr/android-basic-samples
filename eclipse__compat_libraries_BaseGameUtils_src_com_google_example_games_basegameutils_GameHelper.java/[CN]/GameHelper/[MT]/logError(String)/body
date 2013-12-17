@@ -1,0 +1,3 @@
+{
+  Log.e(mDebugTag,"*** GameHelper ERROR: " + message);
+}

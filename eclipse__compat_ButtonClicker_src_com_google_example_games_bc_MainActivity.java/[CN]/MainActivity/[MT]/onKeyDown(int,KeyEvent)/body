@@ -1,0 +1,7 @@
+{
+  if (keyCode == KeyEvent.KEYCODE_BACK && mCurScreen == R.id.screen_game) {
+    leaveRoom();
+    return true;
+  }
+  return super.onKeyDown(keyCode,e);
+}

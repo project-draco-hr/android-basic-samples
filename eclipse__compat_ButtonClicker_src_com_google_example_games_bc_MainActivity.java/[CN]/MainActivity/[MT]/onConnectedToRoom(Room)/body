@@ -1,0 +1,9 @@
+{
+  Log.d(TAG,"onConnectedToRoom.");
+  mRoomId=room.getRoomId();
+  mParticipants=room.getParticipants();
+  mMyId=room.getParticipantId(getGamesClient().getCurrentPlayerId());
+  Log.d(TAG,"Room ID: " + mRoomId);
+  Log.d(TAG,"My ID " + mMyId);
+  Log.d(TAG,"<< CONNECTED TO ROOM>>");
+}

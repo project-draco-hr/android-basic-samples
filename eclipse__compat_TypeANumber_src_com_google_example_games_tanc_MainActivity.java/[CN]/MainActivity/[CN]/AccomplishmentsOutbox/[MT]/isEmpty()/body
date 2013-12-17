@@ -1,0 +1,3 @@
+{
+  return !mPrimeAchievement && !mHumbleAchievement && !mLeetAchievement&& !mArrogantAchievement&& mBoredSteps == 0 && mEasyModeScore < 0 && mHardModeScore < 0;
+}

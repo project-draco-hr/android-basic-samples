@@ -1,0 +1,26 @@
+{
+  checkState(TYPE_DEVELOPER_ERROR,"reconnectClients","reconnectClients should " + "only be called when connected. Proceeding anyway.",STATE_CONNECTED);
+  boolean actuallyReconnecting=false;
+  if ((whatClients & CLIENT_GAMES) != 0 && mGamesClient != null && mGamesClient.isConnected()) {
+    debugLog("Reconnecting GamesClient.");
+    actuallyReconnecting=true;
+    mConnectedClients&=~CLIENT_GAMES;
+    mGamesClient.reconnect();
+  }
+  if ((whatClients & CLIENT_APPSTATE) != 0 && mAppStateClient != null && mAppStateClient.isConnected()) {
+    debugLog("Reconnecting AppStateClient.");
+    actuallyReconnecting=true;
+    mConnectedClients&=~CLIENT_APPSTATE;
+    mAppStateClient.reconnect();
+  }
+  if ((whatClients & CLIENT_PLUS) != 0 && mPlusClient != null && mPlusClient.isConnected()) {
+    logWarn("GameHelper is ignoring your request to reconnect " + "PlusClient because this is unnecessary.");
+  }
+  if (actuallyReconnecting) {
+    setState(STATE_CONNECTING);
+  }
+ else {
+    debugLog("No reconnections needed, so behaving as if sign in just succeeded");
+    notifyListener(true);
+  }
+}

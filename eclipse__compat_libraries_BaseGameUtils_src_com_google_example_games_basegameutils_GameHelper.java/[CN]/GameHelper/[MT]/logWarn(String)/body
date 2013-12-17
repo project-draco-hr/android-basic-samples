@@ -1,0 +1,3 @@
+{
+  Log.w(mDebugTag,"!!! GameHelper WARNING: " + message);
+}

@@ -1,0 +1,4 @@
+{
+  mWaitRoomDismissedFromCode=true;
+  finishActivity(RC_WAITING_ROOM);
+}

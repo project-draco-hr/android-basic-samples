@@ -1,0 +1,3 @@
+{
+  return getLevelStars(String.valueOf(world) + "-" + String.valueOf(level));
+}

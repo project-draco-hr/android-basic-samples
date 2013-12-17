@@ -1,0 +1,4 @@
+{
+  mGreeting=greeting;
+  updateUi();
+}

@@ -1,0 +1,4 @@
+{
+  mRoomId=null;
+  showGameError();
+}

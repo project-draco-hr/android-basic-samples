@@ -1,0 +1,9 @@
+{
+  int finalScore=mHardMode ? requestedScore / 2 : requestedScore;
+  mWinFragment.setFinalScore(finalScore);
+  mWinFragment.setExplanation(mHardMode ? getString(R.string.hard_mode_explanation) : getString(R.string.easy_mode_explanation));
+  checkForAchievements(requestedScore,finalScore);
+  updateLeaderboards(finalScore);
+  pushAccomplishments();
+  switchToFragment(mWinFragment);
+}
