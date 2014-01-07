@@ -13,9 +13,4 @@
       mFinishedParticipants.add(rtm.getSenderParticipantId());
     }
   }
- else   if (buf[0] == 'S') {
-    Log.d(TAG,"Starting game because we got a start message.");
-    dismissWaitingRoom();
-    startGame(true);
-  }
 }

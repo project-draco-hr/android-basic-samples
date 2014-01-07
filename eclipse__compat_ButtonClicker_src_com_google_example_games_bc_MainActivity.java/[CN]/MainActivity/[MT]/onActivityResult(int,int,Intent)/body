@@ -8,10 +8,8 @@ case RC_INVITATION_INBOX:
 handleInvitationInboxResult(responseCode,intent);
 break;
 case RC_WAITING_ROOM:
-if (mWaitRoomDismissedFromCode) break;
 if (responseCode == Activity.RESULT_OK) {
-Log.d(TAG,"Starting game because user requested via waiting room UI.");
-broadcastStart();
+Log.d(TAG,"Starting game (waiting room returned OK).");
 startGame(true);
 }
  else if (responseCode == GamesActivityResultCodes.RESULT_LEFT_ROOM) {

@@ -1,6 +1,5 @@
 {
-  mWaitRoomDismissedFromCode=false;
-  final int MIN_PLAYERS=2;
+  final int MIN_PLAYERS=Integer.MAX_VALUE;
   Intent i=getGamesClient().getRealTimeWaitingRoomIntent(room,MIN_PLAYERS);
   startActivityForResult(i,RC_WAITING_ROOM);
 }
