@@ -1,0 +1,3 @@
+{
+  Toast.makeText(this,"An invitation was removed.",TOAST_DELAY).show();
+}

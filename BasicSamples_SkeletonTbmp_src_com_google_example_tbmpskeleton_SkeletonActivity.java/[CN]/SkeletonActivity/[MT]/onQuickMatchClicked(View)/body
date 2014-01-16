@@ -1,0 +1,6 @@
+{
+  Bundle autoMatchCriteria=RoomConfig.createAutoMatchCriteria(1,1,0);
+  TurnBasedMatchConfig tbmc=TurnBasedMatchConfig.builder().setAutoMatchCriteria(autoMatchCriteria).build();
+  showSpinner();
+  getGamesClient().createTurnBasedMatch(this,tbmc);
+}

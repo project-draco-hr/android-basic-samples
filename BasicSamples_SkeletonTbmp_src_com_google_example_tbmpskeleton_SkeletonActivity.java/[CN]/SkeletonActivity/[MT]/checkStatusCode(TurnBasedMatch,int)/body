@@ -1,0 +1,34 @@
+{
+switch (statusCode) {
+case GamesClient.STATUS_OK:
+    return true;
+case GamesClient.STATUS_NETWORK_ERROR_OPERATION_DEFERRED:
+  Toast.makeText(this,"Stored action for later.  (Please remove this toast before release.)",TOAST_DELAY).show();
+return true;
+case GamesClient.STATUS_MULTIPLAYER_ERROR_NOT_TRUSTED_TESTER:
+showErrorMessage(match,statusCode,R.string.status_multiplayer_error_not_trusted_tester);
+break;
+case GamesClient.STATUS_MATCH_ERROR_ALREADY_REMATCHED:
+showErrorMessage(match,statusCode,R.string.match_error_already_rematched);
+break;
+case GamesClient.STATUS_NETWORK_ERROR_OPERATION_FAILED:
+showErrorMessage(match,statusCode,R.string.network_error_operation_failed);
+break;
+case GamesClient.STATUS_CLIENT_RECONNECT_REQUIRED:
+showErrorMessage(match,statusCode,R.string.client_reconnect_required);
+break;
+case GamesClient.STATUS_INTERNAL_ERROR:
+showErrorMessage(match,statusCode,R.string.internal_error);
+break;
+case GamesClient.STATUS_MATCH_ERROR_INACTIVE_MATCH:
+showErrorMessage(match,statusCode,R.string.match_error_inactive_match);
+break;
+case GamesClient.STATUS_MATCH_ERROR_LOCALLY_MODIFIED:
+showErrorMessage(match,statusCode,R.string.match_error_locally_modified);
+break;
+default :
+showErrorMessage(match,statusCode,R.string.unexpected_status);
+Log.d(TAG,"Did not have warning or string to deal with: " + statusCode);
+}
+return false;
+}

@@ -1,0 +1,35 @@
+{
+  mMatch=match;
+  int status=match.getStatus();
+  int turnStatus=match.getTurnStatus();
+switch (status) {
+case TurnBasedMatch.MATCH_STATUS_CANCELED:
+    showWarning("Canceled!","This game was canceled!");
+  return;
+case TurnBasedMatch.MATCH_STATUS_EXPIRED:
+showWarning("Expired!","This game is expired.  So sad!");
+return;
+case TurnBasedMatch.MATCH_STATUS_AUTO_MATCHING:
+showWarning("Waiting for auto-match...","We're still waiting for an automatch partner.");
+return;
+case TurnBasedMatch.MATCH_STATUS_COMPLETE:
+if (turnStatus == TurnBasedMatch.MATCH_TURN_STATUS_COMPLETE) {
+showWarning("Complete!","This game is over; someone finished it, and so did you!  There is nothing to be done.");
+break;
+}
+showWarning("Complete!","This game is over; someone finished it!  You can only finish it now.");
+}
+switch (turnStatus) {
+case TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN:
+mTurnData=SkeletonTurn.unpersist(mMatch.getData());
+setGameplayUI();
+return;
+case TurnBasedMatch.MATCH_TURN_STATUS_THEIR_TURN:
+showWarning("Alas...","It's not your turn.");
+break;
+case TurnBasedMatch.MATCH_TURN_STATUS_INVITED:
+showWarning("Good inititative!","Still waiting for invitations.\n\nBe patient!");
+}
+mTurnData=null;
+setViewVisibility();
+}
