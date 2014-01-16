@@ -1,0 +1,8 @@
+{
+  mTurnData=new SkeletonTurn();
+  mTurnData.data="First turn";
+  mMatch=match;
+  String myParticipantId=mMatch.getParticipantId(getGamesClient().getCurrentPlayerId());
+  showSpinner();
+  getGamesClient().takeTurn(this,match.getMatchId(),mTurnData.persist(),myParticipantId);
+}

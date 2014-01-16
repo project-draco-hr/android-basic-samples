@@ -1,0 +1,11 @@
+{
+  dismissSpinner();
+  if (!checkStatusCode(match,statusCode)) {
+    return;
+  }
+  if (match.getData() != null) {
+    updateMatch(match);
+    return;
+  }
+  startMatch(match);
+}

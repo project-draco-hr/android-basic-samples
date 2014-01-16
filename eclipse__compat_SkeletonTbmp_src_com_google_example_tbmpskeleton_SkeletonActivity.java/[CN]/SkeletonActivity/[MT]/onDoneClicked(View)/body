@@ -1,0 +1,9 @@
+{
+  showSpinner();
+  String nextParticipantId=getNextParticipantId();
+  mTurnData.turnCounter+=1;
+  mTurnData.data=mDataView.getText().toString();
+  showSpinner();
+  getGamesClient().takeTurn(this,mMatch.getMatchId(),mTurnData.persist(),nextParticipantId);
+  mTurnData=null;
+}

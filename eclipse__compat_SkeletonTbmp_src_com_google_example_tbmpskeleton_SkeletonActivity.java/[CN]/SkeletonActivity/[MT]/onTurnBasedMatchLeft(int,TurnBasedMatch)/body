@@ -1,0 +1,8 @@
+{
+  dismissSpinner();
+  if (!checkStatusCode(match,statusCode)) {
+    return;
+  }
+  isDoingTurn=(match.getTurnStatus() == TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN);
+  showWarning("Left","You've left this match.");
+}
