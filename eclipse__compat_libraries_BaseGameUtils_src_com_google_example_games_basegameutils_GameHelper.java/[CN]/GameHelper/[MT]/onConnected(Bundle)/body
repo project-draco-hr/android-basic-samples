@@ -1,4 +1,5 @@
 {
+  mTurnBasedMatch=null;
   debugLog("onConnected: connected! client=" + mClientCurrentlyConnecting);
   mConnectedClients|=mClientCurrentlyConnecting;
   debugLog("Connected clients updated to: " + mConnectedClients);
@@ -9,6 +10,11 @@
       debugLog("onConnected: connection hint has a room invite!");
       mInvitationId=inv.getInvitationId();
       debugLog("Invitation ID: " + mInvitationId);
+    }
+    debugLog("onConnected: connection hint provided. Checking for TBMP game.");
+    TurnBasedMatch match=connectionHint.getParcelable(GamesClient.EXTRA_TURN_BASED_MATCH);
+    if (match != null) {
+      mTurnBasedMatch=match;
     }
   }
   connectNextClient();

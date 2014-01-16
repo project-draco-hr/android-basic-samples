@@ -30,7 +30,7 @@
   }
   if (0 != (clientsToUse & CLIENT_GAMES)) {
     debugLog("setup: creating GamesClient");
-    mGamesClient=new GamesClient.Builder(getContext(),this,this).setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL).setScopes(mScopes).create();
+    mGamesClient=new GamesClient.Builder(getContext(),this,this).setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL).setScopes(mScopes).setShowConnectingPopup(true).create();
   }
   if (0 != (clientsToUse & CLIENT_PLUS)) {
     debugLog("setup: creating GamesPlusClient");
