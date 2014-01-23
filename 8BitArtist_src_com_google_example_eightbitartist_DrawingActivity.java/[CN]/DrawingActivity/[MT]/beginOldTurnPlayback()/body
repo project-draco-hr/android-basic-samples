@@ -1,0 +1,10 @@
+{
+  mDrawView.clear(false);
+  if (mTurnData.replayTurn != null) {
+    mTurnData.replayTurn.playback(this,true);
+  }
+ else {
+    Log.d(TAG,"Bug, tried to replay without a replay.");
+    beginGuessingTurnPlayback();
+  }
+}

@@ -1,0 +1,15 @@
+{
+  AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
+  alertDialogBuilder.setMessage("Do you want a rematch?");
+  alertDialogBuilder.setCancelable(false).setPositiveButton("Sure, rematch!",new DialogInterface.OnClickListener(){
+    @Override public void onClick(    DialogInterface dialog,    int id){
+      rematch();
+    }
+  }
+).setNegativeButton("No thanks.",new DialogInterface.OnClickListener(){
+    @Override public void onClick(    DialogInterface dialog,    int id){
+      quitMatch();
+    }
+  }
+);
+}

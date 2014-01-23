@@ -1,0 +1,6 @@
+{
+  super(context,attrs);
+  grid=new short[GRID_SIZE][GRID_SIZE];
+  setOnTouchListener(this);
+  setAnimating(true);
+}

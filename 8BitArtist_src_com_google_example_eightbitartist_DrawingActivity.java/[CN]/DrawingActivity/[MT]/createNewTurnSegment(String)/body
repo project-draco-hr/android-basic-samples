@@ -1,0 +1,24 @@
+{
+  TurnSegment retVal;
+  int turnNum=(mTurnData.guessingTurn == null ? 0 : mTurnData.guessingTurn.turnNumber + 1);
+  if (turnNum >= 5) {
+    getGamesClient().unlockAchievement(getResources().getString(R.string.achievement_5_turns));
+  }
+  if (turnNum >= 10) {
+    getGamesClient().unlockAchievement(getResources().getString(R.string.achievement_10_turns));
+  }
+  retVal=new TurnSegment(turnNum,participantId);
+  ArrayList<String> subsetWords=new ArrayList<String>();
+  Collections.addAll(subsetWords,words);
+  Collections.shuffle(subsetWords);
+  ArrayList<String> finalList=new ArrayList<String>(subsetWords.subList(0,10));
+  retVal.words=finalList;
+  retVal.wordIndex=(int)Math.floor(Math.random() * 10);
+  int count=0;
+  while (count < 20 && mTurnData.seenWords.contains(finalList.get(retVal.wordIndex))) {
+    retVal.wordIndex=(int)Math.floor(Math.random() * 10);
+    count++;
+  }
+  mTurnData.seenWords.add(finalList.get(retVal.wordIndex));
+  return retVal;
+}

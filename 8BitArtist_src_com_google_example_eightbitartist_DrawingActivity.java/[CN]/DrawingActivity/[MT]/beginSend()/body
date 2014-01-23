@@ -1,0 +1,40 @@
+{
+  String nextParticipantId=null;
+  String myParticipantId=getCurrentParticipant().getParticipantId();
+  ArrayList<String> participantIds=mMatch.getParticipantIds();
+  int desiredIndex=-1;
+  for (int i=0; i < participantIds.size(); i++) {
+    if (participantIds.get(i).equals(myParticipantId)) {
+      desiredIndex=i + 1;
+    }
+  }
+  if (desiredIndex >= participantIds.size()) {
+    if (mMatch.getAvailableAutoMatchSlots() == 0) {
+      desiredIndex=0;
+    }
+ else {
+      desiredIndex=-1;
+    }
+  }
+  if (desiredIndex == -1) {
+    if (mMatch.getAvailableAutoMatchSlots() > 0) {
+      nextParticipantId=null;
+    }
+ else {
+      Log.e(TAG,"Couldn't find next player, chaos erupts.");
+    }
+  }
+ else {
+    nextParticipantId=participantIds.get(desiredIndex);
+  }
+  mTurnData.replayTurn=mTurnData.guessingTurn;
+  mTurnData.guessingTurn=mTurnData.artistTurn;
+  mTurnData.artistTurn=createNewTurnSegment(nextParticipantId);
+  if (mTurnData.guessingTurn.strokes.size() == 0) {
+    Log.d(TAG,"Sending empty turn.");
+  }
+  showSpinner();
+  getGamesClient().takeTurn(this,mMatch.getMatchId(),mTurnData.persist(),nextParticipantId);
+  mTurnData=null;
+  mCurrentStroke=null;
+}

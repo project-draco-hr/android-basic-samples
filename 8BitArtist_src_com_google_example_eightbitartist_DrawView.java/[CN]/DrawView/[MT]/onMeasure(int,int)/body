@@ -1,0 +1,12 @@
+{
+  super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+  int parentWidth=MeasureSpec.getSize(widthMeasureSpec);
+  int parentHeight=MeasureSpec.getSize(heightMeasureSpec);
+  if (parentWidth > parentHeight) {
+    widthMeasureSpec=MeasureSpec.makeMeasureSpec(parentHeight,MeasureSpec.EXACTLY);
+  }
+ else {
+    heightMeasureSpec=MeasureSpec.makeMeasureSpec(parentWidth,MeasureSpec.EXACTLY);
+  }
+  setMeasuredDimension(widthMeasureSpec,heightMeasureSpec);
+}

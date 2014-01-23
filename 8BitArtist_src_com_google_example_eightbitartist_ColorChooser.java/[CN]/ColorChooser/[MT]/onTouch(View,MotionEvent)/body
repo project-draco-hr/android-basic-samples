@@ -1,0 +1,9 @@
+{
+  if (mListener == null) {
+    Log.d(TAG,"You appear to have not set a ColorChooser listener.");
+    return false;
+  }
+  mListener.setColor((short)Math.floor(event.getY() / ((getHeight() + 1.0) / DrawView.colorMap.length)));
+  invalidate();
+  return false;
+}

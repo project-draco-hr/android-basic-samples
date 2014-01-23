@@ -1,0 +1,15 @@
+{
+  if (isClear) {
+    dv.clear(false);
+    return true;
+  }
+  if (currentStep >= points.size()) {
+    return true;
+  }
+  dv.setMacroPixel(points.get(currentStep).x,points.get(currentStep).y,color);
+  currentStep++;
+  if (currentStep >= points.size()) {
+    return true;
+  }
+  return false;
+}

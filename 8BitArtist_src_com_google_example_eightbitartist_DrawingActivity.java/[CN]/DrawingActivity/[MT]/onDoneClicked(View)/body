@@ -1,0 +1,3 @@
+{
+  mStateManager.transitionState(StateManager.STATE_SENDING);
+}

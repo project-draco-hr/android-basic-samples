@@ -1,0 +1,12 @@
+{
+  findViewById(R.id.guesserUI).setVisibility(View.GONE);
+  findViewById(R.id.replayUI).setVisibility(View.GONE);
+  findViewById(R.id.artistUI).setVisibility(View.VISIBLE);
+  findViewById(R.id.colorChooser).setVisibility(View.VISIBLE);
+  findViewById(R.id.doneButton).setVisibility(View.VISIBLE);
+  findViewById(R.id.clearButton).setVisibility(View.VISIBLE);
+  findViewById(R.id.guessWord).setVisibility(View.VISIBLE);
+  ((TextView)findViewById(R.id.guessWord)).setText(mTurnData.artistTurn.words.get(mTurnData.artistTurn.wordIndex));
+  mDrawView.clear(false);
+  mCurrentStroke=null;
+}

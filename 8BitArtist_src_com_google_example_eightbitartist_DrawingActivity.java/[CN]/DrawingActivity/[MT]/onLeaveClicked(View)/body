@@ -1,0 +1,6 @@
+{
+  showSpinner();
+  String nextParticipantId=getNextParticipantId();
+  getGamesClient().leaveTurnBasedMatchDuringTurn(this,mMatch.getMatchId(),nextParticipantId);
+  updateViewVisibility();
+}

@@ -1,0 +1,25 @@
+{
+  TurnSegment retVal=new TurnSegment(-1,null);
+  try {
+    JSONArray strokesArray=o.getJSONArray("strokes");
+    for (int i=0; i < strokesArray.length(); i++) {
+      JSONObject strokeObj=strokesArray.getJSONObject(i);
+      retVal.strokes.add(Stroke.unpersist(strokeObj));
+    }
+    retVal.wordIndex=o.getInt("wordIndex");
+    JSONArray wordsArray=o.getJSONArray("words");
+    for (int i=0; i < wordsArray.length(); i++) {
+      retVal.words.add(wordsArray.getString(i));
+    }
+    retVal.turnNumber=o.getInt("turnNumber");
+    retVal.guessedWord=o.getInt("guessedWord");
+    if (o.has("artistParticipantId")) {
+      retVal.artistParticipantId=o.getString("artistParticipantId");
+    }
+    Log.d(TAG,"Guessed word = " + retVal.guessedWord + ", "+ o.getInt("guessedWord"));
+  }
+ catch (  JSONException e) {
+    e.printStackTrace();
+  }
+  return retVal;
+}

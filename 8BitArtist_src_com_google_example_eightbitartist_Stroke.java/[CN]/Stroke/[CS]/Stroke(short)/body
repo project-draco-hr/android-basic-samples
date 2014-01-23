@@ -1,0 +1,4 @@
+{
+  points=new ArrayList<EPoint>();
+  this.color=color;
+}

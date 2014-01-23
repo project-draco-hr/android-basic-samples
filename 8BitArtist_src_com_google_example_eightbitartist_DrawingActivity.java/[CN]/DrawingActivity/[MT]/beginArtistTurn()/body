@@ -1,0 +1,6 @@
+{
+  mDrawView.clear(false);
+  findViewById(R.id.artistUI).setVisibility(View.VISIBLE);
+  findViewById(R.id.guesserUI).setVisibility(View.GONE);
+  setArtistUI();
+}

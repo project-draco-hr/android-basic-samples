@@ -1,0 +1,36 @@
+{
+  AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
+  StringBuilder message=new StringBuilder();
+  if (mTurnData.replayTurn.guessedWord == -1) {
+    alertDialogBuilder.setTitle("Weird.");
+    message.append("There was no guess.  Weird.");
+  }
+ else   if (mTurnData.replayTurn.guessedWord == mTurnData.replayTurn.wordIndex) {
+    message.append("They guessed " + mTurnData.replayTurn.words.get(mTurnData.replayTurn.guessedWord) + ", which is correct!");
+    alertDialogBuilder.setTitle("They got it!");
+  }
+ else {
+    alertDialogBuilder.setTitle("No!");
+    message.append("They guessed " + mTurnData.replayTurn.words.get(mTurnData.replayTurn.guessedWord) + ", which is wrong.  The real answer was "+ mTurnData.replayTurn.words.get(mTurnData.replayTurn.wordIndex)+ ".");
+  }
+  if (mMatch.getStatus() == TurnBasedMatch.MATCH_STATUS_COMPLETE) {
+    quitMatch();
+    message.append("\n\nThis game is over.");
+    alertDialogBuilder.setCancelable(false).setPositiveButton("Game over.",new DialogInterface.OnClickListener(){
+      @Override public void onClick(      DialogInterface dialog,      int id){
+      }
+    }
+);
+  }
+ else {
+    alertDialogBuilder.setCancelable(false).setPositiveButton("Keep going!",new DialogInterface.OnClickListener(){
+      @Override public void onClick(      DialogInterface dialog,      int id){
+        mStateManager.transitionState(StateManager.STATE_GUESSING_METADATA);
+      }
+    }
+);
+  }
+  alertDialogBuilder.setMessage(message.toString());
+  mAlertDialog=alertDialogBuilder.create();
+  mAlertDialog.show();
+}

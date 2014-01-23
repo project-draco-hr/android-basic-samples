@@ -1,0 +1,32 @@
+{
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  findViewById(R.id.sign_out_button).setOnClickListener(new View.OnClickListener(){
+    @Override public void onClick(    View v){
+      signOut();
+      updateViewVisibility();
+    }
+  }
+);
+  findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener(){
+    @Override public void onClick(    View v){
+      beginUserInitiatedSignIn();
+      findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+    }
+  }
+);
+  ((ListView)findViewById(R.id.listView)).setOnItemClickListener(new OnItemClickListener(){
+    @Override public void onItemClick(    AdapterView<?> parent,    View view,    int position,    long id){
+      if (mMyRole == ROLE_GUESSER) {
+        makeGuess(position);
+      }
+    }
+  }
+);
+  mDrawView=((DrawView)findViewById(R.id.drawView));
+  mInstructionsView=((TextView)findViewById(R.id.instructions));
+  mDrawView.setActivity(this);
+  mStateManager=StateManager.init(this);
+  words=getResources().getString(R.string.words).split(",");
+  ((ColorChooser)findViewById(R.id.colorChooser)).setDrawView(((DrawView)findViewById(R.id.drawView)));
+}

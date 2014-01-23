@@ -1,0 +1,34 @@
+{
+  findViewById(R.id.guesserUI).setVisibility(View.VISIBLE);
+  findViewById(R.id.colorChooser).setVisibility(View.GONE);
+  findViewById(R.id.doneButton).setVisibility(View.GONE);
+  findViewById(R.id.clearButton).setVisibility(View.GONE);
+  findViewById(R.id.guessWord).setVisibility(View.GONE);
+  findViewById(R.id.replayUI).setVisibility(View.GONE);
+  String partId=mTurnData.guessingTurn.artistParticipantId;
+  Player player=null;
+  if (partId != null) {
+    player=mMatch.getParticipant(partId).getPlayer();
+  }
+  ImageManager imMan=ImageManager.create(this);
+  if (player == null) {
+    ((TextView)findViewById(R.id.person_name)).setText("Automatch player");
+    ((ImageView)findViewById(R.id.person_image)).setBackground(getResources().getDrawable(R.drawable.none));
+  }
+ else {
+    ((TextView)findViewById(R.id.person_name)).setText(player.getDisplayName());
+    ((ImageView)findViewById(R.id.person_image)).setBackground(null);
+    imMan.loadImage(new ImageManager.OnImageLoadedListener(){
+      @Override public void onImageLoaded(      Uri uri,      Drawable drawable,      boolean isRequestedDrawable){
+        if (drawable == null) {
+          ((ImageView)findViewById(R.id.person_image)).setBackground(getResources().getDrawable(R.drawable.none));
+          return;
+        }
+        ((ImageView)findViewById(R.id.person_image)).setBackground(drawable);
+      }
+    }
+,player.getIconImageUri());
+  }
+  resetWords(mTurnData.guessingTurn);
+  mDrawView.clear(false);
+}

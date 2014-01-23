@@ -1,0 +1,25 @@
+{
+  JSONObject retVal=new JSONObject();
+  try {
+    if (artistTurn != null) {
+      retVal.put("artistTurn",artistTurn.persist());
+    }
+    if (guessingTurn != null) {
+      retVal.put("guessingTurn",guessingTurn.persist());
+    }
+    if (replayTurn != null) {
+      retVal.put("replayTurn",replayTurn.persist());
+    }
+    JSONArray seenWordsObj=new JSONArray();
+    for (    String word : seenWords) {
+      seenWordsObj.put(word);
+    }
+    retVal.put("seenWords",seenWordsObj);
+  }
+ catch (  JSONException e) {
+    e.printStackTrace();
+  }
+  String st=retVal.toString();
+  Log.d(TAG,"==== PERSISTING\n" + st);
+  return st.getBytes(Charset.forName("UTF-16"));
+}

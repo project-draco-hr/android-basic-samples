@@ -1,0 +1,4 @@
+{
+  findViewById(R.id.skip_button).setVisibility(View.INVISIBLE);
+  findViewById(R.id.instructions).setVisibility(View.VISIBLE);
+}

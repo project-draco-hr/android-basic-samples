@@ -1,0 +1,7 @@
+{
+  mCurrentStroke=new Stroke((short)-1);
+  mCurrentStroke.isClear=true;
+  mTurnData.artistTurn.strokes.add(mCurrentStroke);
+  mCurrentStroke=new Stroke(mDrawView.mSelectedColor);
+  mTurnData.artistTurn.strokes.add(mCurrentStroke);
+}

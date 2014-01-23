@@ -1,0 +1,8 @@
+{
+  for (  Participant part : mMatch.getParticipants()) {
+    if (part.getPlayer() != null && part.getPlayer().getPlayerId().equals(playerId)) {
+      return part;
+    }
+  }
+  return null;
+}

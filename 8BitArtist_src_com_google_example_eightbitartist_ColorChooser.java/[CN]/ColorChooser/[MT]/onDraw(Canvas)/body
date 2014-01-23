@@ -1,0 +1,23 @@
+{
+  if (mListener == null) {
+    Log.d(TAG,"You appear to have not set a ColorChooser listener.");
+    return;
+  }
+  canvas.drawColor(0xFF000000);
+  for (int i=0; i < mListener.getColorList().length; i++) {
+    p.setColor(DrawView.colorMap[i]);
+    mRect.top=(i * getHeight()) / DrawView.colorMap.length;
+    mRect.bottom=((i + 1) * getHeight()) / DrawView.colorMap.length;
+    mRect.left=0;
+    mRect.right=getWidth();
+    canvas.drawRoundRect(mRect,5,5,p);
+    if (mListener.getColor() == i) {
+      p.setColor(0xFFFFFFFF);
+      mRect.top=(i * getHeight()) / DrawView.colorMap.length + 10;
+      mRect.bottom=((i + 1) * getHeight()) / DrawView.colorMap.length - 10;
+      mRect.left=10;
+      mRect.right=getWidth() - 10;
+      canvas.drawRoundRect(mRect,5,5,p);
+    }
+  }
+}

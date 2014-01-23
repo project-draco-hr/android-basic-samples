@@ -1,0 +1,35 @@
+{
+  super.onActivityResult(request,response,data);
+  if (request == RC_LOOK_AT_MATCHES) {
+    if (response != Activity.RESULT_OK) {
+      return;
+    }
+    TurnBasedMatch match=data.getParcelableExtra(GamesClient.EXTRA_TURN_BASED_MATCH);
+    if (match != null) {
+      updateMatch(match);
+    }
+ else {
+      refreshTurnsPending();
+    }
+    Log.d(TAG,"Match = " + match);
+  }
+  if (request == RC_SELECT_PLAYERS) {
+    if (response != Activity.RESULT_OK) {
+      refreshTurnsPending();
+      return;
+    }
+    final ArrayList<String> invitees=data.getStringArrayListExtra(GamesClient.EXTRA_PLAYERS);
+    Bundle autoMatchCriteria=null;
+    int minAutoMatchPlayers=data.getIntExtra(GamesClient.EXTRA_MIN_AUTOMATCH_PLAYERS,0);
+    int maxAutoMatchPlayers=data.getIntExtra(GamesClient.EXTRA_MAX_AUTOMATCH_PLAYERS,0);
+    if (minAutoMatchPlayers > 0) {
+      autoMatchCriteria=RoomConfig.createAutoMatchCriteria(minAutoMatchPlayers,maxAutoMatchPlayers,0);
+    }
+ else {
+      autoMatchCriteria=null;
+    }
+    TurnBasedMatchConfig tbmc=TurnBasedMatchConfig.builder().addInvitedPlayers(invitees).setAutoMatchCriteria(autoMatchCriteria).build();
+    getGamesClient().createTurnBasedMatch(this,tbmc);
+    showSpinner();
+  }
+}

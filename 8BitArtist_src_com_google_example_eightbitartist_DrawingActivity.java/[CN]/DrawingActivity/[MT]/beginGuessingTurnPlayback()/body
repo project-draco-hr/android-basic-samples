@@ -1,0 +1,5 @@
+{
+  mDrawView.clear(false);
+  mTurnData.guessingTurn.playback(this,false);
+  setGuessingUI();
+}

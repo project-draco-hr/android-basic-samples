@@ -1,0 +1,10 @@
+{
+  final View oldView=theOld;
+  oldView.animate().alpha(0f).setDuration(mShortAnimationDuration).setListener(new AnimatorListenerAdapter(){
+    @Override public void onAnimationEnd(    Animator animation){
+      oldView.setVisibility(View.GONE);
+      oldView.setAlpha(1.0f);
+    }
+  }
+);
+}
