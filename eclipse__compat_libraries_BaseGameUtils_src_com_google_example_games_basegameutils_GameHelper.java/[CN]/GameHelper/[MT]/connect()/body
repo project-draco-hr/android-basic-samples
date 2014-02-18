@@ -1,0 +1,11 @@
+{
+  if (mGoogleApiClient.isConnected()) {
+    debugLog("Already connected.");
+    return;
+  }
+  debugLog("Starting connection.");
+  mConnecting=true;
+  mInvitation=null;
+  mTurnBasedMatch=null;
+  mGoogleApiClient.connect();
+}

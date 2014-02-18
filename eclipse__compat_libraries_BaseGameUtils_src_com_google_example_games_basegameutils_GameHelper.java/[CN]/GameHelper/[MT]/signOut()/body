@@ -1,16 +1,18 @@
 {
-  if (mState == STATE_DISCONNECTED) {
-    debugLog("signOut: state was already DISCONNECTED, ignoring.");
+  if (!mGoogleApiClient.isConnected()) {
+    debugLog("signOut: was already disconnected, ignoring.");
     return;
   }
-  if (mPlusClient != null && mPlusClient.isConnected()) {
+  if (0 != (mRequestedClients & CLIENT_PLUS)) {
     debugLog("Clearing default account on PlusClient.");
-    mPlusClient.clearDefaultAccount();
+    Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
   }
-  if (mGamesClient != null && mGamesClient.isConnected()) {
+  if (0 != (mRequestedClients & CLIENT_GAMES)) {
     debugLog("Signing out from GamesClient.");
-    mGamesClient.signOut();
+    Games.signOut(mGoogleApiClient);
   }
-  debugLog("Proceeding with disconnection.");
-  killConnections();
+  debugLog("Disconnecting client.");
+  mConnectOnStart=false;
+  mConnecting=false;
+  mGoogleApiClient.disconnect();
 }

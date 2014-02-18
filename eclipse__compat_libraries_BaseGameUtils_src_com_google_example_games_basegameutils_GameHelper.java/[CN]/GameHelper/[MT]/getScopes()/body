@@ -1,9 +1,0 @@
-{
-  StringBuilder scopeStringBuilder=new StringBuilder();
-  if (null != mScopes) {
-    for (    String scope : mScopes) {
-      addToScope(scopeStringBuilder,scope);
-    }
-  }
-  return scopeStringBuilder.toString();
-}

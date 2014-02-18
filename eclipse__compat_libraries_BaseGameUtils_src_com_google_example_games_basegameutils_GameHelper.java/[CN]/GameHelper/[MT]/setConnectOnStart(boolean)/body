@@ -1,0 +1,4 @@
+{
+  debugLog("Forcing mConnectOnStart=" + connectOnStart);
+  mConnectOnStart=connectOnStart;
+}

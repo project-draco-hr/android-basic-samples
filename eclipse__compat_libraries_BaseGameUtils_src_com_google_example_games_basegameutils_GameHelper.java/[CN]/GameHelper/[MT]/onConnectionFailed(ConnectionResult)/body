@@ -2,16 +2,34 @@
   debugLog("onConnectionFailed");
   mConnectionResult=result;
   debugLog("Connection failure:");
-  debugLog("   - code: " + errorCodeToString(mConnectionResult.getErrorCode()));
+  debugLog("   - code: " + GameHelperUtils.errorCodeToString(mConnectionResult.getErrorCode()));
   debugLog("   - resolvable: " + mConnectionResult.hasResolution());
   debugLog("   - details: " + mConnectionResult.toString());
-  if (!mUserInitiatedSignIn) {
-    debugLog("onConnectionFailed: since user didn't initiate sign-in, failing now.");
+  int cancellations=getSignInCancellations();
+  boolean shouldResolve=false;
+  if (mUserInitiatedSignIn) {
+    debugLog("onConnectionFailed: WILL resolve because user initiated sign-in.");
+    shouldResolve=true;
+  }
+ else   if (mSignInCancelled) {
+    debugLog("onConnectionFailed WILL NOT resolve (user already cancelled once).");
+    shouldResolve=false;
+  }
+ else   if (cancellations < mMaxAutoSignInAttempts) {
+    debugLog("onConnectionFailed: WILL resolve because we have below the max# of " + "attempts, " + cancellations + " < "+ mMaxAutoSignInAttempts);
+    shouldResolve=true;
+  }
+ else {
+    shouldResolve=false;
+    debugLog("onConnectionFailed: Will NOT resolve; not user-initiated and max attempts " + "reached: " + cancellations + " >= "+ mMaxAutoSignInAttempts);
+  }
+  if (!shouldResolve) {
+    debugLog("onConnectionFailed: since we won't resolve, failing now.");
     mConnectionResult=result;
-    setState(STATE_DISCONNECTED);
+    mConnecting=false;
     notifyListener(false);
     return;
   }
-  debugLog("onConnectionFailed: since user initiated sign-in, resolving problem.");
+  debugLog("onConnectionFailed: resolving problem...");
   resolveConnectionResult();
 }

@@ -1,5 +1,5 @@
 {
   if (mDebugLog) {
-    Log.d(mDebugTag,"GameHelper: " + message);
+    Log.d(TAG,"GameHelper: " + message);
   }
 }

@@ -1,21 +1,15 @@
 {
-  mTurnBasedMatch=null;
-  debugLog("onConnected: connected! client=" + mClientCurrentlyConnecting);
-  mConnectedClients|=mClientCurrentlyConnecting;
-  debugLog("Connected clients updated to: " + mConnectedClients);
-  if (mClientCurrentlyConnecting == CLIENT_GAMES && connectionHint != null) {
+  debugLog("onConnected: connected!");
+  if (connectionHint != null) {
     debugLog("onConnected: connection hint provided. Checking for invite.");
-    Invitation inv=connectionHint.getParcelable(GamesClient.EXTRA_INVITATION);
+    Invitation inv=connectionHint.getParcelable(Multiplayer.EXTRA_INVITATION);
     if (inv != null && inv.getInvitationId() != null) {
       debugLog("onConnected: connection hint has a room invite!");
-      mInvitationId=inv.getInvitationId();
-      debugLog("Invitation ID: " + mInvitationId);
+      mInvitation=inv;
+      debugLog("Invitation ID: " + mInvitation.getInvitationId());
     }
     debugLog("onConnected: connection hint provided. Checking for TBMP game.");
-    TurnBasedMatch match=connectionHint.getParcelable(GamesClient.EXTRA_TURN_BASED_MATCH);
-    if (match != null) {
-      mTurnBasedMatch=match;
-    }
+    mTurnBasedMatch=connectionHint.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
   }
-  connectNextClient();
+  succeedSignIn();
 }

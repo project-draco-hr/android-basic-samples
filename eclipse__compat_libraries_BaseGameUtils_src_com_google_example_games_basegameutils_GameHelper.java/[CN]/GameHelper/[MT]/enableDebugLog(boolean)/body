@@ -1,0 +1,6 @@
+{
+  mDebugLog=enabled;
+  if (enabled) {
+    debugLog("Debug log enabled.");
+  }
+}

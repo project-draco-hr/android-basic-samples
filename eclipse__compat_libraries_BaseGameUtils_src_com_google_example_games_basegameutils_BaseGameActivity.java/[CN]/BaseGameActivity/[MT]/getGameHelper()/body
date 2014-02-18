@@ -1,0 +1,7 @@
+{
+  if (mHelper == null) {
+    mHelper=new GameHelper(this,mRequestedClients);
+    mHelper.enableDebugLog(mDebugLog);
+  }
+  return mHelper;
+}

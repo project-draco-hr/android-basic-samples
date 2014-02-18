@@ -1,6 +1,6 @@
 {
-  if (!checkState(TYPE_DEVELOPER_ERROR,"getInvitationId","Invitation ID is only available when connected " + "(after getting the onSignInSucceeded callback).",STATE_CONNECTED)) {
-    return null;
+  if (!mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"Warning: getInvitationId() should only be called when signed in, " + "that is, after getting onSignInSuceeded()");
   }
-  return mInvitationId;
+  return mInvitation == null ? null : mInvitation.getInvitationId();
 }

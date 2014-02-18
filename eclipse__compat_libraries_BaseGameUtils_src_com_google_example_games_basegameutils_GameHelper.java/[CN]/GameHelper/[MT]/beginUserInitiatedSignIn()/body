@@ -1,32 +1,27 @@
 {
-  if (mState == STATE_CONNECTED) {
+  debugLog("beginUserInitiatedSignIn: resetting attempt count.");
+  resetSignInCancellations();
+  mSignInCancelled=false;
+  mConnectOnStart=true;
+  if (mGoogleApiClient.isConnected()) {
     logWarn("beginUserInitiatedSignIn() called when already connected. " + "Calling listener directly to notify of success.");
     notifyListener(true);
     return;
   }
- else   if (mState == STATE_CONNECTING) {
+ else   if (mConnecting) {
     logWarn("beginUserInitiatedSignIn() called when already connecting. " + "Be patient! You can only call this method after you get an " + "onSignInSucceeded() or onSignInFailed() callback. Suggestion: disable "+ "the sign-in button on startup and also when it's clicked, and re-enable "+ "when you get the callback.");
     return;
   }
   debugLog("Starting USER-INITIATED sign-in flow.");
-  mAutoSignIn=true;
-  int result=GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
-  debugLog("isGooglePlayServicesAvailable returned " + result);
-  if (result != ConnectionResult.SUCCESS) {
-    debugLog("Google Play services not available. Show error dialog.");
-    mSignInFailureReason=new SignInFailureReason(result,0);
-    showFailureDialog();
-    notifyListener(false);
-    return;
-  }
   mUserInitiatedSignIn=true;
   if (mConnectionResult != null) {
     debugLog("beginUserInitiatedSignIn: continuing pending sign-in flow.");
-    setState(STATE_CONNECTING);
+    mConnecting=true;
     resolveConnectionResult();
   }
  else {
     debugLog("beginUserInitiatedSignIn: starting new sign-in flow.");
-    startConnections();
+    mConnecting=true;
+    connect();
   }
 }

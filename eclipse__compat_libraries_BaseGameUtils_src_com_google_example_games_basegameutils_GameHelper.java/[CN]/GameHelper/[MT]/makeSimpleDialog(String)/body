@@ -1,3 +1,7 @@
 {
-  return (new AlertDialog.Builder(getContext())).setMessage(text).setNeutralButton(android.R.string.ok,null).create();
+  if (mActivity == null) {
+    logError("*** makeSimpleDialog failed: no current Activity!");
+    return null;
+  }
+  return makeSimpleDialog(mActivity,text);
 }

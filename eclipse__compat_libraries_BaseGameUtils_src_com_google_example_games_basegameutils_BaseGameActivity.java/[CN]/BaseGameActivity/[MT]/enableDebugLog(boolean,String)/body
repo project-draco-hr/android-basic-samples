@@ -1,7 +1,4 @@
 {
-  mDebugLog=true;
-  mDebugTag=tag;
-  if (mHelper != null) {
-    mHelper.enableDebugLog(enabled,tag);
-  }
+  Log.w(TAG,"BaseGameActivity.enabledDebugLog(bool,String) is " + "deprecated. Use enableDebugLog(boolean)");
+  enableDebugLog(enabled);
 }

@@ -1,19 +1,14 @@
 {
-  debugLog("onStop, state = " + STATE_NAMES[mState]);
+  debugLog("onStop");
   assertConfigured("onStop");
-switch (mState) {
-case STATE_CONNECTED:
-case STATE_CONNECTING:
-    debugLog("onStop: Killing connections");
-  killConnections();
-break;
-case STATE_DISCONNECTED:
-debugLog("onStop: not connected, so no action taken.");
-break;
-default :
-String msg="onStop: BUG: unexpected state " + STATE_NAMES[mState];
-logError(msg);
-throw new IllegalStateException(msg);
-}
-mActivity=null;
+  if (mGoogleApiClient.isConnected()) {
+    debugLog("Disconnecting client due to onStop");
+    mGoogleApiClient.disconnect();
+  }
+ else {
+    debugLog("Client already disconnected when we got onStop.");
+  }
+  mConnecting=false;
+  mExpectingResolution=false;
+  mActivity=null;
 }

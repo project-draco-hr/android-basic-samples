@@ -1,6 +1,0 @@
-{
-  SaveGame localGame=new SaveGame(localData);
-  SaveGame serverGame=new SaveGame(serverData);
-  SaveGame resolvedGame=localGame.unionWith(serverGame);
-  getAppStateClient().resolveState(this,OUR_STATE_KEY,resolvedVersion,resolvedGame.toBytes());
-}

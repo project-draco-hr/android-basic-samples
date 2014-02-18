@@ -1,4 +1,4 @@
 {
   mLoadingDialog.show();
-  getAppStateClient().loadState(this,OUR_STATE_KEY);
+  AppStateManager.load(getApiClient(),OUR_STATE_KEY).setResultCallback(mResultCallback);
 }

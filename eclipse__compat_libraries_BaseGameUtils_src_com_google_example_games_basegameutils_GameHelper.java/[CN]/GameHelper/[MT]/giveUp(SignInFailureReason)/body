@@ -1,8 +1,11 @@
 {
-  checkState(TYPE_GAMEHELPER_BUG,"giveUp","giveUp should only be called when " + "connecting. Proceeding anyway.",STATE_CONNECTING);
-  mAutoSignIn=false;
-  killConnections();
+  mConnectOnStart=false;
+  disconnect();
   mSignInFailureReason=reason;
+  if (reason.mActivityResultCode == GamesActivityResultCodes.RESULT_APP_MISCONFIGURED) {
+    GameHelperUtils.printMisconfiguredDebugInfo(mAppContext);
+  }
   showFailureDialog();
+  mConnecting=false;
   notifyListener(false);
 }

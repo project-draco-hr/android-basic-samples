@@ -1,3 +1,0 @@
-int statusCode
-int stateKey
-byte[] localData

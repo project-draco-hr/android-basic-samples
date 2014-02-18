@@ -1,0 +1,8 @@
+{
+  byte[] serverData=result.getServerData();
+  byte[] localData=result.getLocalData();
+  SaveGame localGame=new SaveGame(localData);
+  SaveGame serverGame=new SaveGame(serverData);
+  SaveGame resolvedGame=localGame.unionWith(serverGame);
+  AppStateManager.resolve(getApiClient(),result.getStateKey(),result.getResolvedVersion(),resolvedGame.toBytes()).setResultCallback(mResultCallback);
+}
