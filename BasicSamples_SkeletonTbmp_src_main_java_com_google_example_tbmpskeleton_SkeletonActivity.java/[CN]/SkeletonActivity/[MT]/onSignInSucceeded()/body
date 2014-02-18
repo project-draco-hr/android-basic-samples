@@ -4,6 +4,6 @@
     return;
   }
   setViewVisibility();
-  getGamesClient().registerInvitationListener(this);
-  getGamesClient().registerMatchUpdateListener(this);
+  Games.Invitations.registerInvitationListener(getApiClient(),this);
+  Games.TurnBasedMultiplayer.registerMatchUpdateListener(getApiClient(),this);
 }

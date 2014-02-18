@@ -1,6 +1,0 @@
-{
-  if (mPlusClient == null) {
-    throw new IllegalStateException("No PlusClient. Did you request it at setup?");
-  }
-  return mPlusClient;
-}

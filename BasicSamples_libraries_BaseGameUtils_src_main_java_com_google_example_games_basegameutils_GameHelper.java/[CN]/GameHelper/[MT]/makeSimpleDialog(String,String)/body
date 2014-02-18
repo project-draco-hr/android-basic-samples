@@ -1,0 +1,7 @@
+{
+  if (mActivity == null) {
+    logError("*** makeSimpleDialog failed: no current Activity!");
+    return null;
+  }
+  return makeSimpleDialog(mActivity,title,text);
+}

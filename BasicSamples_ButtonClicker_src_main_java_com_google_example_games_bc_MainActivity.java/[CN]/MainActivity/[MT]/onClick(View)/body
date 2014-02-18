@@ -8,7 +8,7 @@ case R.id.button_single_player_2:
 break;
 case R.id.button_sign_in:
 if (!verifyPlaceholderIdsReplaced()) {
-showAlert("Error","Sample not set up correctly. Please see README.");
+showAlert("Error: sample not set up correctly. Please see README.");
 return;
 }
 beginUserInitiatedSignIn();
@@ -18,12 +18,12 @@ signOut();
 switchToScreen(R.id.screen_sign_in);
 break;
 case R.id.button_invite_players:
-intent=getGamesClient().getSelectPlayersIntent(1,3);
+intent=Games.RealTimeMultiplayer.getSelectOpponentsIntent(getApiClient(),1,3);
 switchToScreen(R.id.screen_wait);
 startActivityForResult(intent,RC_SELECT_PLAYERS);
 break;
 case R.id.button_see_invitations:
-intent=getGamesClient().getInvitationInboxIntent();
+intent=Games.Invitations.getInvitationInboxIntent(getApiClient());
 switchToScreen(R.id.screen_wait);
 startActivityForResult(intent,RC_INVITATION_INBOX);
 break;

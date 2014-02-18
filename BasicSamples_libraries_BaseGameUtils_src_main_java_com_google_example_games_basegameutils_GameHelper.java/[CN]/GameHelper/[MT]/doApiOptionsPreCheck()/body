@@ -1,0 +1,7 @@
+{
+  if (mGoogleApiClientBuilder != null) {
+    String error="GameHelper: you cannot call set*ApiOptions after the client " + "builder has been created. Call it before calling createApiClientBuilder() " + "or setup().";
+    logError(error);
+    throw new IllegalStateException(error);
+  }
+}

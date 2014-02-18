@@ -1,9 +1,8 @@
 {
-  checkState(TYPE_GAMEHELPER_BUG,"succeedSignIn","succeedSignIn should only " + "get called in the connecting or connected state. Proceeding anyway.",STATE_CONNECTING,STATE_CONNECTED);
-  debugLog("All requested clients connected. Sign-in succeeded!");
-  setState(STATE_CONNECTED);
+  debugLog("succeedSignIn");
   mSignInFailureReason=null;
-  mAutoSignIn=true;
+  mConnectOnStart=true;
   mUserInitiatedSignIn=false;
+  mConnecting=false;
   notifyListener(true);
 }

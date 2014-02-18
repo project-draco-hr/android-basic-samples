@@ -2,7 +2,7 @@
 switch (view.getId()) {
 case R.id.button_sign_in:
     if (!verifyPlaceholderIdsReplaced()) {
-      showAlert("Error","Sample not correctly set up. See README!");
+      showAlert("Error: sample not correctly set up. See README!");
       break;
     }
   beginUserInitiatedSignIn();
@@ -13,8 +13,8 @@ showSignInBar();
 break;
 case R.id.button_win:
 showAlert(getString(R.string.victory),getString(R.string.you_won));
-if (getGamesClient().isConnected()) {
-getGamesClient().unlockAchievement(getString(R.string.trivial_victory_achievement_id));
+if (getApiClient().isConnected()) {
+Games.Achievements.unlock(getApiClient(),getString(R.string.trivial_victory_achievement_id));
 }
 break;
 }

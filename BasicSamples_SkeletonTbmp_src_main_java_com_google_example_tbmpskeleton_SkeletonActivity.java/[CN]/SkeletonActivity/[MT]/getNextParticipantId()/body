@@ -1,5 +1,6 @@
 {
-  String myParticipantId=mMatch.getParticipantId(getGamesClient().getCurrentPlayerId());
+  String playerId=Games.Players.getCurrentPlayerId(getApiClient());
+  String myParticipantId=mMatch.getParticipantId(playerId);
   ArrayList<String> participantIds=mMatch.getParticipantIds();
   int desiredIndex=-1;
   for (int i=0; i < participantIds.size(); i++) {

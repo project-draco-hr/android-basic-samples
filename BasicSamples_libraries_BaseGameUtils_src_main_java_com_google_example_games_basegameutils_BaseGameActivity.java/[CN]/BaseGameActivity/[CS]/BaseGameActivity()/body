@@ -1,4 +1,3 @@
 {
   super();
-  mHelper=new GameHelper(this);
 }

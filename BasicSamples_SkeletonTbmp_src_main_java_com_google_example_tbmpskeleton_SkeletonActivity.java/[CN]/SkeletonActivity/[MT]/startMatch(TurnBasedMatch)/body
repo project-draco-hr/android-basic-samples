@@ -2,7 +2,13 @@
   mTurnData=new SkeletonTurn();
   mTurnData.data="First turn";
   mMatch=match;
-  String myParticipantId=mMatch.getParticipantId(getGamesClient().getCurrentPlayerId());
+  String playerId=Games.Players.getCurrentPlayerId(getApiClient());
+  String myParticipantId=mMatch.getParticipantId(playerId);
   showSpinner();
-  getGamesClient().takeTurn(this,match.getMatchId(),mTurnData.persist(),myParticipantId);
+  Games.TurnBasedMultiplayer.takeTurn(getApiClient(),match.getMatchId(),mTurnData.persist(),myParticipantId).setResultCallback(new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.UpdateMatchResult result){
+      processResult(result);
+    }
+  }
+);
 }

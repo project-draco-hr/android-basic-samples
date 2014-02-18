@@ -25,6 +25,6 @@
   switchToScreen(R.id.screen_wait);
   keepScreenOn();
   resetGameVars();
-  getGamesClient().createRoom(rtmConfigBuilder.build());
+  Games.RealTimeMultiplayer.create(getApiClient(),rtmConfigBuilder.build());
   Log.d(TAG,"Room created, waiting for it to be ready...");
 }

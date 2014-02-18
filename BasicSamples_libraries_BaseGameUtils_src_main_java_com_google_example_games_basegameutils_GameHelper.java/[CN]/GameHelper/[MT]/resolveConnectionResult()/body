@@ -1,5 +1,4 @@
 {
-  checkState(TYPE_GAMEHELPER_BUG,"resolveConnectionResult","resolveConnectionResult should only be called when connecting. Proceeding anyway.",STATE_CONNECTING);
   if (mExpectingResolution) {
     debugLog("We're already expecting the result of a previous resolution.");
     return;
@@ -13,7 +12,7 @@
     }
  catch (    SendIntentException e) {
       debugLog("SendIntentException, so connecting again.");
-      connectCurrentClient();
+      connect();
     }
   }
  else {

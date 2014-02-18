@@ -6,10 +6,10 @@
     if (p.getParticipantId().equals(mMyId))     continue;
     if (p.getStatus() != Participant.STATUS_JOINED)     continue;
     if (finalScore) {
-      getGamesClient().sendReliableRealTimeMessage(null,mMsgBuf,mRoomId,p.getParticipantId());
+      Games.RealTimeMultiplayer.sendReliableMessage(getApiClient(),null,mMsgBuf,mRoomId,p.getParticipantId());
     }
  else {
-      getGamesClient().sendUnreliableRealTimeMessage(mMsgBuf,mRoomId,p.getParticipantId());
+      Games.RealTimeMultiplayer.sendUnreliableMessage(getApiClient(),mMsgBuf,mRoomId,p.getParticipantId());
     }
   }
 }

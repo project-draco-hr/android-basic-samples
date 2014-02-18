@@ -1,0 +1,6 @@
+{
+  mActivity=activity;
+  mAppContext=activity.getApplicationContext();
+  mRequestedClients=clientsToUse;
+  mHandler=new Handler();
+}

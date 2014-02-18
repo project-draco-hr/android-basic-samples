@@ -1,6 +1,6 @@
 {
   Log.d(TAG,"Sign-in succeeded.");
-  getGamesClient().registerInvitationListener(this);
+  Games.Invitations.registerInvitationListener(getApiClient(),this);
   if (getInvitationId() != null) {
     acceptInviteToRoom(getInvitationId());
     return;

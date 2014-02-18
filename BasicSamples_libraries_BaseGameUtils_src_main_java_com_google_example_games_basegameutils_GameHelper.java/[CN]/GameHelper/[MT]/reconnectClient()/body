@@ -1,0 +1,10 @@
+{
+  if (!mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"reconnectClient() called when client is not connected.");
+    connect();
+  }
+ else {
+    debugLog("Reconnecting client.");
+    mGoogleApiClient.reconnect();
+  }
+}

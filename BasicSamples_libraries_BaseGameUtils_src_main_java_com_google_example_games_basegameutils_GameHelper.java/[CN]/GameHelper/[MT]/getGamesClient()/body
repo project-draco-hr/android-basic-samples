@@ -1,6 +1,0 @@
-{
-  if (mGamesClient == null) {
-    throw new IllegalStateException("No GamesClient. Did you request it at setup?");
-  }
-  return mGamesClient;
-}

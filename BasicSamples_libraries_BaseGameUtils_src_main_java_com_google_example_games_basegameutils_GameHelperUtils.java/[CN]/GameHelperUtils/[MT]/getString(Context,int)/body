@@ -1,0 +1,12 @@
+{
+  whichString=whichString >= 0 && whichString < RES_IDS.length ? whichString : 0;
+  int resId=RES_IDS[whichString];
+  try {
+    return ctx.getString(resId);
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+    Log.w(GameHelper.TAG,"*** GameHelper could not found resource id #" + resId + ". "+ "This probably happened because you included it as a stand-alone JAR. "+ "BaseGameUtils should be compiled as a LIBRARY PROJECT, so that it can access "+ "its resources. Using a fallback string.");
+    return FALLBACK_STRINGS[whichString];
+  }
+}
