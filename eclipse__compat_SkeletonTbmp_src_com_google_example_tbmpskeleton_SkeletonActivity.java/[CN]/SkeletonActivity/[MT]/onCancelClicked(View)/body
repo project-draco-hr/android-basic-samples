@@ -1,6 +1,11 @@
 {
   showSpinner();
-  getGamesClient().cancelTurnBasedMatch(this,mMatch.getMatchId());
+  Games.TurnBasedMultiplayer.cancelMatch(getApiClient(),mMatch.getMatchId()).setResultCallback(new ResultCallback<TurnBasedMultiplayer.CancelMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.CancelMatchResult result){
+      processResult(result);
+    }
+  }
+);
   isDoingTurn=false;
   setViewVisibility();
 }

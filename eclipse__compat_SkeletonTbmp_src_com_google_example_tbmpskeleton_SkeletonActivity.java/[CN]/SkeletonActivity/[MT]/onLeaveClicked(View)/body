@@ -1,6 +1,11 @@
 {
   showSpinner();
   String nextParticipantId=getNextParticipantId();
-  getGamesClient().leaveTurnBasedMatchDuringTurn(this,mMatch.getMatchId(),nextParticipantId);
+  Games.TurnBasedMultiplayer.leaveMatchDuringTurn(getApiClient(),mMatch.getMatchId(),nextParticipantId).setResultCallback(new ResultCallback<TurnBasedMultiplayer.LeaveMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.LeaveMatchResult result){
+      processResult(result);
+    }
+  }
+);
   setViewVisibility();
 }

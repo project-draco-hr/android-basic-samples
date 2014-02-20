@@ -1,6 +1,11 @@
 {
   showSpinner();
-  getGamesClient().rematchTurnBasedMatch(this,mMatch.getMatchId());
+  Games.TurnBasedMultiplayer.rematch(getApiClient(),mMatch.getMatchId()).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.InitiateMatchResult result){
+      processResult(result);
+    }
+  }
+);
   mMatch=null;
   isDoingTurn=false;
 }

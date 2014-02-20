@@ -9,7 +9,7 @@
     }
     return;
   }
-  ((TextView)findViewById(R.id.name_field)).setText(getGamesClient().getCurrentPlayer().getDisplayName());
+  ((TextView)findViewById(R.id.name_field)).setText(Games.Players.getCurrentPlayer(getApiClient()).getDisplayName());
   findViewById(R.id.login_layout).setVisibility(View.GONE);
   if (isDoingTurn) {
     findViewById(R.id.matchup_layout).setVisibility(View.GONE);

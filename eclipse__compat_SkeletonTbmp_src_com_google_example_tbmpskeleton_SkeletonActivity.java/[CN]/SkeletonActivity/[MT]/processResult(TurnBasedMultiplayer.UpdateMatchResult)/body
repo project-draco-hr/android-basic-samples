@@ -1,6 +1,7 @@
 {
+  TurnBasedMatch match=result.getMatch();
   dismissSpinner();
-  if (!checkStatusCode(match,statusCode)) {
+  if (!checkStatusCode(match,result.getStatus().getStatusCode())) {
     return;
   }
   if (match.canRematch()) {

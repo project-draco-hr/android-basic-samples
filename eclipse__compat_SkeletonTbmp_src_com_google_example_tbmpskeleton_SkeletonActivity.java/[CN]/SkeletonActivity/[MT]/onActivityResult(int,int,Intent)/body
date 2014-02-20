@@ -25,7 +25,12 @@
       autoMatchCriteria=null;
     }
     TurnBasedMatchConfig tbmc=TurnBasedMatchConfig.builder().addInvitedPlayers(invitees).setAutoMatchCriteria(autoMatchCriteria).build();
-    getGamesClient().createTurnBasedMatch(this,tbmc);
+    Games.TurnBasedMultiplayer.createMatch(getApiClient(),tbmc).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
+      @Override public void onResult(      TurnBasedMultiplayer.InitiateMatchResult result){
+        processResult(result);
+      }
+    }
+);
     showSpinner();
   }
 }

@@ -1,6 +1,6 @@
 {
   dismissSpinner();
-  if (!checkStatusCode(null,statusCode)) {
+  if (!checkStatusCode(null,result.getStatus().getStatusCode())) {
     return;
   }
   isDoingTurn=false;
