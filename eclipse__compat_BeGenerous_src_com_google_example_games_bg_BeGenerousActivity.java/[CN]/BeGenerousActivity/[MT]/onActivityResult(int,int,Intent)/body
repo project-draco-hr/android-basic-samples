@@ -1,0 +1,23 @@
+{
+switch (requestCode) {
+case SEND_REQUEST_CODE:
+    if (resultCode == GamesActivityResultCodes.RESULT_SEND_REQUEST_FAILED) {
+      Toast.makeText(this,"FAILED TO SEND REQUEST!",Toast.LENGTH_LONG).show();
+    }
+  break;
+case SEND_GIFT_CODE:
+if (resultCode == GamesActivityResultCodes.RESULT_SEND_REQUEST_FAILED) {
+  Toast.makeText(this,"FAILED TO SEND GIFT!",Toast.LENGTH_LONG).show();
+}
+break;
+case SHOW_INBOX:
+if (resultCode == Activity.RESULT_OK && data != null) {
+handleRequests(Games.Requests.getGameRequestsFromInboxResponse(data));
+}
+ else {
+Log.e(TAG,"Failed to process inbox result: resultCode = " + resultCode + ", data = "+ (data == null ? "null" : "valid"));
+}
+break;
+}
+super.onActivityResult(requestCode,resultCode,data);
+}

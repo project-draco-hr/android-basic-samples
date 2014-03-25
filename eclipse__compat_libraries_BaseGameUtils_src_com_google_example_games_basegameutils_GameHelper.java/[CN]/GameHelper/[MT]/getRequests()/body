@@ -1,0 +1,6 @@
+{
+  if (!mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"Warning: getRequests() should only be called " + "when signed in, " + "that is, after getting onSignInSuceeded()");
+  }
+  return mRequests;
+}

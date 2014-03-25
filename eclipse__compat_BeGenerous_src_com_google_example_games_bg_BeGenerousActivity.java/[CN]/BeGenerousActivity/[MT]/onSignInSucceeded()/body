@@ -1,0 +1,14 @@
+{
+  showSignOutBar();
+  Games.Requests.registerRequestListener(getApiClient(),mRequestListener);
+  ArrayList<GameRequest> requests=getGameHelper().getRequests();
+  if (requests != null) {
+    Log.d(TAG,"===========\nReqests count " + requests.size());
+  }
+ else {
+    Log.d(TAG,"===========\nReqests are null");
+  }
+  handleRequests(requests);
+  getGameHelper().clearRequests();
+  updateRequestCounts();
+}

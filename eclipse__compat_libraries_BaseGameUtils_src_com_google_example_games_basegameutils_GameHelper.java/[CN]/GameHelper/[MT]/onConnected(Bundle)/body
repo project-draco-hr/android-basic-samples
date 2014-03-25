@@ -8,6 +8,10 @@
       mInvitation=inv;
       debugLog("Invitation ID: " + mInvitation.getInvitationId());
     }
+    mRequests=Games.Requests.getGameRequestsFromBundle(connectionHint);
+    if (!mRequests.isEmpty()) {
+      debugLog("onConnected: connection hint has " + mRequests.size() + " request(s)");
+    }
     debugLog("onConnected: connection hint provided. Checking for TBMP game.");
     mTurnBasedMatch=connectionHint.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
   }

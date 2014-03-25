@@ -1,0 +1,18 @@
+{
+  if (requests == null) {
+    return;
+  }
+  final ArrayList<GameRequest> theRequests=requests;
+  AlertDialog.Builder builder=new AlertDialog.Builder(this);
+  builder.setMessage(getRequestsString(requests)).setPositiveButton("Absolutely!",new DialogInterface.OnClickListener(){
+    @Override public void onClick(    DialogInterface dialog,    int id){
+      acceptRequests(theRequests);
+    }
+  }
+).setNegativeButton("No thanks",new DialogInterface.OnClickListener(){
+    @Override public void onClick(    DialogInterface dialog,    int id){
+    }
+  }
+);
+  builder.create().show();
+}

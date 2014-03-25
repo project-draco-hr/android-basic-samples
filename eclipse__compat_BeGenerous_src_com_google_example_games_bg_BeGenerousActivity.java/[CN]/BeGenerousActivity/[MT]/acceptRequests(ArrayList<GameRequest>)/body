@@ -1,0 +1,37 @@
+{
+  ArrayList<String> requestIds=new ArrayList<String>();
+  GoogleApiClient client=getApiClient();
+  final HashMap<String,GameRequest> gameRequestMap=new HashMap<String,GameRequest>();
+  for (  GameRequest request : requests) {
+    String requestId=request.getRequestId();
+    requestIds.add(requestId);
+    gameRequestMap.put(requestId,request);
+    Log.d(TAG,"Processing request " + requestId);
+  }
+  Games.Requests.acceptRequests(client,requestIds).setResultCallback(new ResultCallback<UpdateRequestsResult>(){
+    @Override public void onResult(    UpdateRequestsResult result){
+      int numGifts=0;
+      int numRequests=0;
+      for (      String requestId : result.getRequestIds()) {
+        if (!gameRequestMap.containsKey(requestId) || result.getRequestOutcome(requestId) != Requests.REQUEST_UPDATE_OUTCOME_SUCCESS) {
+          continue;
+        }
+switch (gameRequestMap.get(requestId).getType()) {
+case GameRequest.TYPE_GIFT:
+          ++numGifts;
+        break;
+case GameRequest.TYPE_WISH:
+      ++numRequests;
+    break;
+}
+}
+if (numGifts != 0) {
+Toast.makeText(BeGenerousActivity.this,String.format(getString(R.string.gift_toast),numGifts),Toast.LENGTH_LONG).show();
+}
+if (numGifts != 0 || numRequests != 0) {
+updateRequestCounts();
+}
+}
+}
+);
+}
