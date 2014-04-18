@@ -1,0 +1,11 @@
+{
+  enableDebugLog(DEBUG_ENABLED);
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  findViewById(R.id.button_open_inbox).setOnClickListener(this);
+  findViewById(R.id.button_send_gift).setOnClickListener(this);
+  findViewById(R.id.button_send_request).setOnClickListener(this);
+  findViewById(R.id.button_sign_in).setOnClickListener(this);
+  findViewById(R.id.button_sign_out).setOnClickListener(this);
+  mGiftIcon=BitmapFactory.decodeResource(getResources(),R.drawable.ic_send_gift);
+}
