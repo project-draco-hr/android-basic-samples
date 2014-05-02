@@ -1,0 +1,8 @@
+{
+  final boolean CHECK_PKGNAME=true;
+  if (CHECK_PKGNAME && getPackageName().startsWith("com.google.example.")) {
+    Log.e(TAG,"*** Sample setup problem: " + "package name cannot be com.google.example.*. Use your own " + "package name.");
+    return false;
+  }
+  return true;
+}
