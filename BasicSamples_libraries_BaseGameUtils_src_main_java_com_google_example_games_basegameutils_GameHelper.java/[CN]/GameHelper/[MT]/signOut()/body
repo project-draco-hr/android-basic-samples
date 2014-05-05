@@ -8,7 +8,7 @@
     Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
   }
   if (0 != (mRequestedClients & CLIENT_GAMES)) {
-    debugLog("Signing out from GamesClient.");
+    debugLog("Signing out from the Google API Client.");
     Games.signOut(mGoogleApiClient);
   }
   debugLog("Disconnecting client.");
