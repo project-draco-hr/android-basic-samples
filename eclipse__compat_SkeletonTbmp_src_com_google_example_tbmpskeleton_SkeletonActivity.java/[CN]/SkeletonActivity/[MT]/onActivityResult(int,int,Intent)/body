@@ -4,7 +4,7 @@
     if (response != Activity.RESULT_OK) {
       return;
     }
-    TurnBasedMatch match=data.getParcelableExtra(GamesClient.EXTRA_TURN_BASED_MATCH);
+    TurnBasedMatch match=data.getParcelableExtra(Multiplayer.EXTRA_TURN_BASED_MATCH);
     if (match != null) {
       updateMatch(match);
     }
@@ -14,10 +14,10 @@
     if (response != Activity.RESULT_OK) {
       return;
     }
-    final ArrayList<String> invitees=data.getStringArrayListExtra(GamesClient.EXTRA_PLAYERS);
+    final ArrayList<String> invitees=data.getStringArrayListExtra(Games.EXTRA_PLAYER_IDS);
     Bundle autoMatchCriteria=null;
-    int minAutoMatchPlayers=data.getIntExtra(GamesClient.EXTRA_MIN_AUTOMATCH_PLAYERS,0);
-    int maxAutoMatchPlayers=data.getIntExtra(GamesClient.EXTRA_MAX_AUTOMATCH_PLAYERS,0);
+    int minAutoMatchPlayers=data.getIntExtra(Multiplayer.EXTRA_MIN_AUTOMATCH_PLAYERS,0);
+    int maxAutoMatchPlayers=data.getIntExtra(Multiplayer.EXTRA_MAX_AUTOMATCH_PLAYERS,0);
     if (minAutoMatchPlayers > 0) {
       autoMatchCriteria=RoomConfig.createAutoMatchCriteria(minAutoMatchPlayers,maxAutoMatchPlayers,0);
     }
