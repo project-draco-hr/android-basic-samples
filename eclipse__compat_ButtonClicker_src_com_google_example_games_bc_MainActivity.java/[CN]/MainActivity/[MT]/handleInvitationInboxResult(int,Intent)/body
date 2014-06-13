@@ -5,6 +5,6 @@
     return;
   }
   Log.d(TAG,"Invitation inbox UI succeeded.");
-  Invitation inv=data.getExtras().getParcelable(GamesClient.EXTRA_INVITATION);
+  Invitation inv=data.getExtras().getParcelable(Multiplayer.EXTRA_INVITATION);
   acceptInviteToRoom(inv.getInvitationId());
 }
