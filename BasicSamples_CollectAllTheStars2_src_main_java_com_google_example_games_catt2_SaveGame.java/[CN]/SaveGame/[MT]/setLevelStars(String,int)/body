@@ -1,0 +1,12 @@
+{
+  if (stars < MIN_STARS)   stars=MIN_STARS;
+  if (stars > MAX_STARS)   stars=MAX_STARS;
+  if (stars == 0) {
+    if (mLevelStars.containsKey(levelName)) {
+      mLevelStars.remove(levelName);
+    }
+  }
+ else {
+    mLevelStars.put(levelName,stars);
+  }
+}

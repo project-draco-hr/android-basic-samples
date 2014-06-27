@@ -1,0 +1,40 @@
+{
+  if (mLoadingDialog != null) {
+    mLoadingDialog.show();
+  }
+  AsyncTask<Void,Void,Integer> task=new AsyncTask<Void,Void,Integer>(){
+    @Override protected Integer doInBackground(    Void... params){
+      Log.i(TAG,"Opening snapshot " + currentSaveName);
+      Snapshots.OpenSnapshotResult result=Games.Snapshots.open(getApiClient(),currentSaveName,true).await();
+      int status=result.getStatus().getStatusCode();
+      if (status == GamesStatusCodes.STATUS_OK) {
+        Snapshot snapshot=result.getSnapshot();
+        mSaveGame=new SaveGame(snapshot.readFully());
+      }
+ else {
+        Log.e(TAG,"Error while loading: " + status);
+      }
+      return status;
+    }
+    @Override protected void onPostExecute(    Integer status){
+      Log.i(TAG,"Snapshot loaded: " + status);
+      if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
+        Log.i(TAG,"Error: Snapshot not found");
+        Toast.makeText(getBaseContext(),"Error: Snapshot not found",Toast.LENGTH_SHORT);
+      }
+ else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
+        Log.i(TAG,"Error: Snapshot contents unavailable");
+        Toast.makeText(getBaseContext(),"Error: Snapshot contents unavailable",Toast.LENGTH_SHORT);
+      }
+ else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) {
+        Log.i(TAG,"Error: Snapshot folder unavailable");
+        Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT);
+      }
+      updateUi();
+      mLoadingDialog.dismiss();
+      hideAlertBar();
+    }
+  }
+;
+  task.execute();
+}

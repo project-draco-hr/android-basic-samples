@@ -1,0 +1,9 @@
+{
+  log("Sign-in successful! Loading game state from cloud.");
+  showSignOutBar();
+  showAccessToken();
+  if (!mAlreadyLoadedState) {
+    loadFromSnapshot();
+  }
+  listSnapshots();
+}

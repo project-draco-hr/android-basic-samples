@@ -1,0 +1,15 @@
+{
+  final boolean CHECK_PKGNAME=false;
+  if (CHECK_PKGNAME && getPackageName().startsWith("com.google.example.")) {
+    Log.e(TAG,"*** Sample setup problem: " + "package name cannot be com.google.example.*. Use your own " + "package name.");
+    return false;
+  }
+  int res_ids[]=new int[]{R.string.app_id};
+  for (  int i : res_ids) {
+    if (getString(i).equalsIgnoreCase("ReplaceMe")) {
+      Log.e(TAG,"*** Sample setup problem: You must replace all " + "placeholder IDs in the ids.xml file by your project's IDs.");
+      return false;
+    }
+  }
+  return true;
+}
