@@ -1,7 +1,0 @@
-{
-  mDebugLog=true;
-  mDebugTag=tag;
-  if (mHelper != null) {
-    mHelper.enableDebugLog(enabled,tag);
-  }
-}

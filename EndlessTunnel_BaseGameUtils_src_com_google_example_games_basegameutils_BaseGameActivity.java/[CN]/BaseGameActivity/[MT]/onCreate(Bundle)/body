@@ -1,8 +1,0 @@
-{
-  super.onCreate(b);
-  mHelper=new GameHelper(this);
-  if (mDebugLog) {
-    mHelper.enableDebugLog(mDebugLog,mDebugTag);
-  }
-  mHelper.setup(this,mRequestedClients,mAdditionalScopes);
-}

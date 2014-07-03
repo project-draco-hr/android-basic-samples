@@ -1,7 +1,0 @@
-{
-  if (data[0] != 0x01) {
-    Log.e(TAG,"Wrong data format byte on cloud-save data, " + (int)data[0]);
-    return -1;
-  }
-  return (int)data[1];
-}

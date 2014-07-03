@@ -1,9 +1,0 @@
-{
-  if (scopeStringBuilder.length() == 0) {
-    scopeStringBuilder.append("oauth2:");
-  }
- else {
-    scopeStringBuilder.append(" ");
-  }
-  scopeStringBuilder.append(scope);
-}

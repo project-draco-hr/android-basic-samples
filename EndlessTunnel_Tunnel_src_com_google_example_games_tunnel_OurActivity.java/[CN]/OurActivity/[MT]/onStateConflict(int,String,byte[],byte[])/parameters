@@ -1,4 +1,0 @@
-int stateKey
-String resolvedVersion
-byte[] localData
-byte[] serverData

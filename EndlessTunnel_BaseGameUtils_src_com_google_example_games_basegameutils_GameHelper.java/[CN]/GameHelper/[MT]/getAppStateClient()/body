@@ -1,6 +1,0 @@
-{
-  if (mAppStateClient == null) {
-    throw new IllegalStateException("No AppStateClient. Did you request it at setup?");
-  }
-  return mAppStateClient;
-}

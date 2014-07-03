@@ -1,8 +1,0 @@
-{
-  checkState(TYPE_GAMEHELPER_BUG,"giveUp","giveUp should only be called when " + "connecting. Proceeding anyway.",STATE_CONNECTING);
-  mAutoSignIn=false;
-  killConnections();
-  mSignInFailureReason=reason;
-  showFailureDialog();
-  notifyListener(false);
-}

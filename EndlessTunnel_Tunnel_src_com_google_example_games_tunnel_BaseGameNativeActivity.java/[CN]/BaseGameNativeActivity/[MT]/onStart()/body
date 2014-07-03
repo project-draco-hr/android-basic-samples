@@ -1,5 +1,0 @@
-{
-  super.onStart();
-  native_ReportSignInState(false,true);
-  mHelper.onStart(this);
-}

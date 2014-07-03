@@ -1,9 +1,0 @@
-{
-  int msg=isNetwork ? R.string.cloud_load_error_network : R.string.cloud_load_error_other;
-  new AlertDialog.Builder(this).setMessage(getResources().getString(msg)).setCancelable(false).setNeutralButton(android.R.string.ok,new DialogInterface.OnClickListener(){
-    @Override public void onClick(    DialogInterface dialog,    int which){
-      native_ReportCloudLoadResult(false,0);
-    }
-  }
-).create().show();
-}

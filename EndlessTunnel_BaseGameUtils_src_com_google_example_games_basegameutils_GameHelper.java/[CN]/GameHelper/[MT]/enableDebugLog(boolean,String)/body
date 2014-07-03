@@ -1,7 +1,0 @@
-{
-  mDebugLog=enabled;
-  mDebugTag=tag;
-  if (enabled) {
-    debugLog("Debug log enabled, tag: " + tag);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return "SignInFailureReason(serviceErrorCode:" + errorCodeToString(mServiceErrorCode) + ((mActivityResultCode == NO_ACTIVITY_RESULT_CODE) ? ")" : (",activityResultCode:" + activityResponseCodeToString(mActivityResultCode) + ")"));
-}
