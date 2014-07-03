@@ -1,0 +1,5 @@
+{
+  int[] selection={Quests.SELECT_OPEN,Quests.SELECT_COMPLETED_UNCLAIMED,Quests.SELECT_ACCEPTED};
+  com.google.android.gms.common.api.PendingResult<Quests.LoadQuestsResult> pr=Games.Quests.load(getApiClient(),selection,Quests.SORT_ORDER_ENDING_SOON_FIRST,true);
+  pr.setResultCallback(qc);
+}

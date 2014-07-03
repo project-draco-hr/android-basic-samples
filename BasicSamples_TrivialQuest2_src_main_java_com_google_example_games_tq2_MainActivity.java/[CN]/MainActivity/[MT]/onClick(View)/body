@@ -1,0 +1,44 @@
+{
+switch (view.getId()) {
+case R.id.button_sign_in:
+    if (!verifyPlaceholderIdsReplaced()) {
+      showAlert("Error: sample not correctly set up. See README!");
+      break;
+    }
+  beginUserInitiatedSignIn();
+break;
+case R.id.button_sign_out:
+signOut();
+showSignInBar();
+break;
+case R.id.button_quests:
+showQuests();
+break;
+case R.id.button_red:
+if (getApiClient().isConnected()) {
+Games.Events.increment(getApiClient(),getString(R.string.red_event_id),1);
+}
+showAlert(getString(R.string.victory),getString(R.string.defeat_red_monster));
+break;
+case R.id.button_blue:
+if (getApiClient().isConnected()) {
+Games.Events.increment(getApiClient(),getString(R.string.blue_event_id),1);
+}
+showAlert(getString(R.string.victory),getString(R.string.defeat_blue_monster));
+break;
+case R.id.button_green:
+if (getApiClient().isConnected()) {
+Games.Events.increment(getApiClient(),getString(R.string.green_event_id),1);
+}
+showAlert(getString(R.string.victory),getString(R.string.defeat_green_monster));
+break;
+case R.id.button_yellow:
+if (getApiClient().isConnected()) {
+Games.Events.increment(getApiClient(),getString(R.string.yellow_event_id),1);
+}
+showAlert(getString(R.string.victory),getString(R.string.defeat_yellow_monster));
+break;
+default :
+break;
+}
+}

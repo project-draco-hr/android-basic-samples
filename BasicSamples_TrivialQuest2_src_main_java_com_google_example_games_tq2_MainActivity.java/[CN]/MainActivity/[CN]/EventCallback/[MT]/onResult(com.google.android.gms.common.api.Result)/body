@@ -1,0 +1,12 @@
+{
+  Events.LoadEventsResult r=(Events.LoadEventsResult)result;
+  com.google.android.gms.games.event.EventBuffer eb=r.getEvents();
+  String message="Current stats: \n";
+  Log.i(TAG,"number of events: " + eb.getCount());
+  String currentEvent="";
+  for (int i=0; i < eb.getCount(); i++) {
+    message+="event: " + eb.get(i).getName() + " "+ eb.get(i).getEventId()+ " "+ eb.get(i).getValue()+ "\n";
+  }
+  eb.close();
+  Toast.makeText(m_parent,message,Toast.LENGTH_LONG).show();
+}

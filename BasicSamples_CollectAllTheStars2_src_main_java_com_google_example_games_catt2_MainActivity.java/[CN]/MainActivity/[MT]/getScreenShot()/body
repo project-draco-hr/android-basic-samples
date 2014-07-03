@@ -1,0 +1,17 @@
+{
+  View root=findViewById(R.id.screen_main);
+  Bitmap coverImage;
+  try {
+    root.setDrawingCacheEnabled(true);
+    Bitmap base=root.getDrawingCache();
+    coverImage=base.copy(base.getConfig(),false);
+  }
+ catch (  Exception ex) {
+    Log.i(TAG,"Failed to create screenshot",ex);
+    coverImage=null;
+  }
+ finally {
+    root.setDrawingCacheEnabled(false);
+  }
+  return coverImage;
+}
