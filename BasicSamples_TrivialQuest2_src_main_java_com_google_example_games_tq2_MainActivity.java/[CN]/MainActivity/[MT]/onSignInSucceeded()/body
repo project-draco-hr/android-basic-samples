@@ -1,0 +1,4 @@
+{
+  showSignOutBar();
+  Games.Quests.registerQuestUpdateListener(this.getApiClient(),this);
+}

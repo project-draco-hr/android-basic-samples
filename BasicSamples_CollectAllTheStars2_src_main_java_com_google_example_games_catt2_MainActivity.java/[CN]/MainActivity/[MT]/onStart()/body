@@ -1,0 +1,6 @@
+{
+  mLoadingDialog=new ProgressDialog(this);
+  mLoadingDialog.setMessage(getString(R.string.loading_from_cloud));
+  updateUi();
+  super.onStart();
+}

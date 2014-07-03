@@ -1,0 +1,16 @@
+{
+  try {
+    JSONObject levels=new JSONObject();
+    for (    String levelName : mLevelStars.keySet()) {
+      levels.put(levelName,mLevelStars.get(levelName));
+    }
+    JSONObject obj=new JSONObject();
+    obj.put("version",SERIAL_VERSION);
+    obj.put("levels",levels);
+    return obj.toString();
+  }
+ catch (  JSONException ex) {
+    ex.printStackTrace();
+    throw new RuntimeException("Error converting save data to JSON.",ex);
+  }
+}

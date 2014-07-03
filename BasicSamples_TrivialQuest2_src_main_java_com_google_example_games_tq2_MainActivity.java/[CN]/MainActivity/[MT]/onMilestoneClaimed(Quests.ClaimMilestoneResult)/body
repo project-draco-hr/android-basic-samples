@@ -1,0 +1,15 @@
+{
+  try {
+    if (result.getStatus().isSuccess()) {
+      String reward=new String(result.getQuest().getCurrentMilestone().getCompletionRewardData(),"UTF-8");
+      Toast.makeText(this,"Congratulations, you got a " + reward,Toast.LENGTH_LONG).show();
+    }
+ else {
+      Log.e(TAG,"Reward was not claimed due to error.");
+      Toast.makeText(this,"Reward was not claimed due to error.",Toast.LENGTH_LONG).show();
+    }
+  }
+ catch (  UnsupportedEncodingException uee) {
+    uee.printStackTrace();
+  }
+}

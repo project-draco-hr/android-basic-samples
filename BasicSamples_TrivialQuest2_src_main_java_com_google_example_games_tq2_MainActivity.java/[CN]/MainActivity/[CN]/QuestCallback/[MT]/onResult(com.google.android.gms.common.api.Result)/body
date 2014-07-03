@@ -1,0 +1,12 @@
+{
+  Quests.LoadQuestsResult r=(Quests.LoadQuestsResult)result;
+  QuestBuffer qb=r.getQuests();
+  String message="Current quest details: \n";
+  Log.i(TAG,"Number of quests: " + qb.getCount());
+  String currentEvent="";
+  for (int i=0; i < qb.getCount(); i++) {
+    message+="Quest: " + qb.get(i).getName() + " id: "+ qb.get(i).getQuestId();
+  }
+  qb.close();
+  Toast.makeText(m_parent,message,Toast.LENGTH_LONG).show();
+}

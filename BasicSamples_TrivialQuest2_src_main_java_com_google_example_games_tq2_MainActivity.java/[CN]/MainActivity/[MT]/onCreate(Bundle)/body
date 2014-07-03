@@ -1,0 +1,21 @@
+{
+  enableDebugLog(DEBUG_ENABLED,TAG);
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  findViewById(R.id.button_sign_in).setOnClickListener(this);
+  findViewById(R.id.button_sign_out).setOnClickListener(this);
+  findViewById(R.id.button_red).setOnClickListener(this);
+  findViewById(R.id.button_green).setOnClickListener(this);
+  findViewById(R.id.button_blue).setOnClickListener(this);
+  findViewById(R.id.button_yellow).setOnClickListener(this);
+  findViewById(R.id.button_quests).setOnClickListener(this);
+  ec=new EventCallback(this);
+  qc=new QuestCallback(this);
+  mClaimMilestoneResultCallback=new ResultCallback<Quests.ClaimMilestoneResult>(){
+    @Override public void onResult(    Quests.ClaimMilestoneResult result){
+      onMilestoneClaimed(result);
+    }
+  }
+;
+  loadAndPrintEvents();
+}
