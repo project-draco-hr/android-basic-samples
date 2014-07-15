@@ -1,5 +1,0 @@
-{
-  StateManager stateManager=new StateManager();
-  stateManager.mActivity=activity;
-  return stateManager;
-}

@@ -1,8 +1,0 @@
-{
-  enableDebugLog(ENABLE_DEBUG,TAG);
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  for (  int id : CLICKABLES) {
-    findViewById(id).setOnClickListener(this);
-  }
-}

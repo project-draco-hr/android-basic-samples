@@ -1,3 +1,0 @@
-{
-  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,newFrag).commit();
-}

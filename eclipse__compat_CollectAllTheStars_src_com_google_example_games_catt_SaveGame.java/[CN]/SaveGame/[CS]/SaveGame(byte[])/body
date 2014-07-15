@@ -1,4 +1,0 @@
-{
-  if (data == null)   return;
-  loadFromJson(new String(data));
-}

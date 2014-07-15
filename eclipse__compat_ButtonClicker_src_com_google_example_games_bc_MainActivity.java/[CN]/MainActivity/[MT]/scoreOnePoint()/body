@@ -1,7 +1,0 @@
-{
-  if (mSecondsLeft <= 0)   return;
-  ++mScore;
-  updateScoreDisplay();
-  updatePeerScoresDisplay();
-  broadcastScore(false);
-}

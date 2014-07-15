@@ -1,6 +1,0 @@
-{
-  keepAnimating=val;
-  if (val) {
-    invalidate();
-  }
-}

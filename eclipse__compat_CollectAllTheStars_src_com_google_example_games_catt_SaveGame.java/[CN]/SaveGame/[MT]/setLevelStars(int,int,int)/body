@@ -1,3 +1,0 @@
-{
-  setLevelStars(String.valueOf(world) + "-" + String.valueOf(level),stars);
-}

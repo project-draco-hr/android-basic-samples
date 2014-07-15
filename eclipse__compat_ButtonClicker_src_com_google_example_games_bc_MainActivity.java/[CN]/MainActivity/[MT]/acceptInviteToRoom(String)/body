@@ -1,9 +1,0 @@
-{
-  Log.d(TAG,"Accepting invitation: " + invId);
-  RoomConfig.Builder roomConfigBuilder=RoomConfig.builder(this);
-  roomConfigBuilder.setInvitationIdToAccept(invId).setMessageReceivedListener(this).setRoomStatusUpdateListener(this);
-  switchToScreen(R.id.screen_wait);
-  keepScreenOn();
-  resetGameVars();
-  Games.RealTimeMultiplayer.join(getApiClient(),roomConfigBuilder.build());
-}

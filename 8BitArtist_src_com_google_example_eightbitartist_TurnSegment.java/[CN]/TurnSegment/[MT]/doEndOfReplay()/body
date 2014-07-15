@@ -1,6 +1,0 @@
-{
-  activity.onPlaybackEnded();
-  if (showGuessResult) {
-    activity.createOpponentGuessDialog();
-  }
-}

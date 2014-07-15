@@ -1,7 +1,0 @@
-{
-  super.onCreate(b);
-  if (mHelper == null) {
-    getGameHelper();
-  }
-  mHelper.setup(this);
-}

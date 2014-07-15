@@ -1,6 +1,0 @@
-{
-  if (mIncomingInvitationId.equals(invitationId)) {
-    mIncomingInvitationId=null;
-    switchToScreen(mCurScreen);
-  }
-}

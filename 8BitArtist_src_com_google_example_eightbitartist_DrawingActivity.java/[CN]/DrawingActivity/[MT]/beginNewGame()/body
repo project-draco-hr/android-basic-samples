@@ -1,5 +1,0 @@
-{
-  mTurnData.artistTurn=createNewTurnSegment(getCurrentParticipant().getParticipantId());
-  mStateManager.transitionState(StateManager.STATE_NEW_TURN_METADATA);
-  mDrawView.clear(false);
-}

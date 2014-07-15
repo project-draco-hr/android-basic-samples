@@ -1,7 +1,0 @@
-{
-  AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
-  alertDialogBuilder.setTitle(title).setMessage(message);
-  alertDialogBuilder.setCancelable(false).setPositiveButton("OK",null);
-  mAlertDialog=alertDialogBuilder.create();
-  mAlertDialog.show();
-}

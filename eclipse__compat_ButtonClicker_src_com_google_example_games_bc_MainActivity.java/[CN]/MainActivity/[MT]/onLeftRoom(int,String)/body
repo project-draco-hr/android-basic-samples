@@ -1,4 +1,0 @@
-{
-  Log.d(TAG,"onLeftRoom, code " + statusCode);
-  switchToMainScreen();
-}

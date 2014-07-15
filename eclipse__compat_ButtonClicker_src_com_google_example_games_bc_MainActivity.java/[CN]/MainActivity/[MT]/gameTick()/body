@@ -1,8 +1,0 @@
-{
-  if (mSecondsLeft > 0)   --mSecondsLeft;
-  ((TextView)findViewById(R.id.countdown)).setText("0:" + (mSecondsLeft < 10 ? "0" : "") + String.valueOf(mSecondsLeft));
-  if (mSecondsLeft <= 0) {
-    findViewById(R.id.button_click_me).setVisibility(View.GONE);
-    broadcastScore(true);
-  }
-}

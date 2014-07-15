@@ -1,4 +1,0 @@
-{
-  showAlert(getString(R.string.game_problem));
-  switchToMainScreen();
-}

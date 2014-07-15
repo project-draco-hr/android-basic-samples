@@ -1,6 +1,0 @@
-{
-  if (mGoogleApiClient == null) {
-    throw new IllegalStateException("No GoogleApiClient. Did you call setup()?");
-  }
-  return mGoogleApiClient;
-}

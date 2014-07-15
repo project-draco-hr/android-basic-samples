@@ -1,3 +1,0 @@
-{
-  showWarning("Warning",getResources().getString(stringId));
-}

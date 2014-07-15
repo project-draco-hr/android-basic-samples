@@ -1,3 +1,0 @@
-{
-  findViewById(R.id.progressLayout).setVisibility(View.GONE);
-}

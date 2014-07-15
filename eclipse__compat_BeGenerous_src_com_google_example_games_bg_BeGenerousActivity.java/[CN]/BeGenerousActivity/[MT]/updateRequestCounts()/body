@@ -1,4 +1,0 @@
-{
-  PendingResult<Requests.LoadRequestsResult> result=Games.Requests.loadRequests(getApiClient(),Requests.REQUEST_DIRECTION_INBOUND,GameRequest.TYPE_ALL,Requests.SORT_ORDER_EXPIRING_SOON_FIRST);
-  result.setResultCallback(mLoadRequestsCallback);
-}

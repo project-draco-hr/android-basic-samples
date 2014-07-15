@@ -1,3 +1,0 @@
-{
-  AppStateManager.update(getApiClient(),OUR_STATE_KEY,mSaveGame.toBytes());
-}

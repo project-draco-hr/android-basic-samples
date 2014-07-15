@@ -1,8 +1,0 @@
-{
-  if (item.getItemId() == R.id.menu_sync) {
-    saveToCloud();
-    loadFromCloud();
-    return true;
-  }
-  return false;
-}

@@ -1,4 +1,0 @@
-{
-  mHardMode=hardMode;
-  switchToFragment(mGameplayFragment);
-}

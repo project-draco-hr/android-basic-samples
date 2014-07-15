@@ -1,8 +1,0 @@
-{
-  enableDebugLog(DEBUG_ENABLED,TAG);
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  findViewById(R.id.button_sign_in).setOnClickListener(this);
-  findViewById(R.id.button_sign_out).setOnClickListener(this);
-  findViewById(R.id.button_win).setOnClickListener(this);
-}

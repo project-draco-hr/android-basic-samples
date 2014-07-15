@@ -1,6 +1,0 @@
-{
-  View v=inflater.inflate(R.layout.fragment_win,container,false);
-  v.findViewById(R.id.win_ok_button).setOnClickListener(this);
-  v.findViewById(R.id.win_screen_sign_in_button).setOnClickListener(this);
-  return v;
-}

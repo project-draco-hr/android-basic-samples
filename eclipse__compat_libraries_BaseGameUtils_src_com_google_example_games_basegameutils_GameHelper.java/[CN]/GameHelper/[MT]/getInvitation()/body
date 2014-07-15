@@ -1,6 +1,0 @@
-{
-  if (!mGoogleApiClient.isConnected()) {
-    Log.w(TAG,"Warning: getInvitation() should only be called when signed in, " + "that is, after getting onSignInSuceeded()");
-  }
-  return mInvitation;
-}

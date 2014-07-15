@@ -1,4 +1,0 @@
-{
-  if (json == null)   return;
-  loadFromJson(json);
-}

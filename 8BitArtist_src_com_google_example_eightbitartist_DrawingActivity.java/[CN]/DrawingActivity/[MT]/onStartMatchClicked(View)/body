@@ -1,4 +1,0 @@
-{
-  Intent intent=getGamesClient().getSelectPlayersIntent(1,1,true);
-  startActivityForResult(intent,RC_SELECT_PLAYERS);
-}

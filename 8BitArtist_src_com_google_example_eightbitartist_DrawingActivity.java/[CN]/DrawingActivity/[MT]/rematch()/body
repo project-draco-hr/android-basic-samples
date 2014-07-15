@@ -1,6 +1,0 @@
-{
-  showSpinner();
-  getGamesClient().rematchTurnBasedMatch(this,mMatch.getMatchId());
-  mMatch=null;
-  isDoingTurn=false;
-}

@@ -1,6 +1,0 @@
-{
-  if (view.getId() == R.id.win_screen_sign_in_button) {
-    mListener.onWinScreenSignInClicked();
-  }
-  mListener.onWinScreenDismissed();
-}

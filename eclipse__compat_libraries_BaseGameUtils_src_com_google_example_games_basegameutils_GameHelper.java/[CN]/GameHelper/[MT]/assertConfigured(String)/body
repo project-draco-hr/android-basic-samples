@@ -1,7 +1,0 @@
-{
-  if (!mSetupDone) {
-    String error="GameHelper error: Operation attempted without setup: " + operation + ". The setup() method must be called before attempting any other operation.";
-    logError(error);
-    throw new IllegalStateException(error);
-  }
-}

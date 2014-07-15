@@ -1,6 +1,0 @@
-{
-  EPoint retVal=new EPoint();
-  retVal.x=x - '0';
-  retVal.y=y - '0';
-  return retVal;
-}

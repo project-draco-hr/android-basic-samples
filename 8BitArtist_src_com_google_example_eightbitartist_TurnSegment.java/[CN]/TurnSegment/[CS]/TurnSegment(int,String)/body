@@ -1,8 +1,0 @@
-{
-  strokes=new ArrayList<Stroke>();
-  words=new ArrayList<String>();
-  wordIndex=-1;
-  guessedWord=-1;
-  this.turnNumber=turnNumber;
-  this.artistParticipantId=artistParticipantId;
-}

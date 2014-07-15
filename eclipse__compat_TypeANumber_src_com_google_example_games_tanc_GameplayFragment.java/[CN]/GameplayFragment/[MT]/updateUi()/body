@@ -1,5 +1,0 @@
-{
-  if (getActivity() == null)   return;
-  TextView scoreInput=((TextView)getActivity().findViewById(R.id.score_input));
-  if (scoreInput != null)   scoreInput.setText(String.format("%04d",mRequestedScore));
-}

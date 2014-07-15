@@ -1,4 +1,0 @@
-{
-  SharedPreferences sp=mAppContext.getSharedPreferences(GAMEHELPER_SHARED_PREFS,Context.MODE_PRIVATE);
-  return sp.getInt(KEY_SIGN_IN_CANCELLATIONS,0);
-}

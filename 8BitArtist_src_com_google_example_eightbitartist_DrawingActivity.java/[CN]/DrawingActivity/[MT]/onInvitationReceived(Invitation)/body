@@ -1,4 +1,0 @@
-{
-  Toast.makeText(this,"An invitation has arrived from " + invitation.getInviter().getDisplayName(),TOAST_DELAY).show();
-  refreshTurnsPending();
-}

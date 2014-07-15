@@ -1,9 +1,0 @@
-{
-  if (mGoogleApiClient.isConnected()) {
-    debugLog("Disconnecting client.");
-    mGoogleApiClient.disconnect();
-  }
- else {
-    Log.w(TAG,"disconnect() called when client was already disconnected.");
-  }
-}

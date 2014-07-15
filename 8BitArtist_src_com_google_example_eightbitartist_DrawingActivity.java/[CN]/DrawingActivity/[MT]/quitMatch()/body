@@ -1,4 +1,0 @@
-{
-  showSpinner();
-  getGamesClient().finishTurnBasedMatch(this,mMatch.getMatchId());
-}

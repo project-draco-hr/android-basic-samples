@@ -1,3 +1,0 @@
-{
-  ((TextView)findViewById(R.id.my_score)).setText(formatScore(mScore));
-}

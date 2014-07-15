@@ -1,7 +1,0 @@
-{
-  mTurnData.guessingTurn.skip();
-  mTurnData.guessingTurn.guessedWord=position;
-  createGuessDialog();
-  skipTakeTurnUpdate=true;
-  getGamesClient().takeTurn(this,mMatch.getMatchId(),mTurnData.persist(),getCurrentParticipant().getParticipantId());
-}

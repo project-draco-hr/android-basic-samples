@@ -1,3 +1,0 @@
-{
-  switchToScreen(isSignedIn() ? R.id.screen_main : R.id.screen_sign_in);
-}

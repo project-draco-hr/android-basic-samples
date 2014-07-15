@@ -1,6 +1,0 @@
-{
-  showSpinner();
-  getGamesClient().cancelTurnBasedMatch(this,mMatch.getMatchId());
-  isDoingTurn=false;
-  updateViewVisibility();
-}

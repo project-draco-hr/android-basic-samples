@@ -1,3 +1,0 @@
-{
-  return (new AlertDialog.Builder(activity)).setMessage(text).setTitle(title).setNeutralButton(android.R.string.ok,null).create();
-}

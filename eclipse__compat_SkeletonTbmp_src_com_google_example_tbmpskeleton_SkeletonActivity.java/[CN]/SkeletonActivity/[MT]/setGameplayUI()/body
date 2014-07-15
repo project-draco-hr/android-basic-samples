@@ -1,6 +1,0 @@
-{
-  isDoingTurn=true;
-  setViewVisibility();
-  mDataView.setText(mTurnData.data);
-  mTurnTextView.setText("Turn " + mTurnData.turnCounter);
-}

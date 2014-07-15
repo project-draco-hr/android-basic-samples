@@ -1,3 +1,0 @@
-{
-  return "SignInFailureReason(serviceErrorCode:" + GameHelperUtils.errorCodeToString(mServiceErrorCode) + ((mActivityResultCode == NO_ACTIVITY_RESULT_CODE) ? ")" : (",activityResultCode:" + GameHelperUtils.activityResponseCodeToString(mActivityResultCode) + ")"));
-}

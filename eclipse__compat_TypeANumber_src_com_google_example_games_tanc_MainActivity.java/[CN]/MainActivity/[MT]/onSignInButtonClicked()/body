@@ -1,7 +1,0 @@
-{
-  if (!verifyPlaceholderIdsReplaced()) {
-    showAlert("Sample not set up correctly. See README.");
-    return;
-  }
-  beginUserInitiatedSignIn();
-}

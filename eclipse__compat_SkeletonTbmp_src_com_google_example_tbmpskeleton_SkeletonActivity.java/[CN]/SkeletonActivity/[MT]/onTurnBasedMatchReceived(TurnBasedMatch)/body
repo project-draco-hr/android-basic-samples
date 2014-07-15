@@ -1,3 +1,0 @@
-{
-  Toast.makeText(this,"A match was updated.",TOAST_DELAY).show();
-}

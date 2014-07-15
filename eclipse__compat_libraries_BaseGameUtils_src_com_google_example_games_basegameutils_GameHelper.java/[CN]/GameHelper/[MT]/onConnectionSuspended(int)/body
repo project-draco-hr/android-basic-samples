@@ -1,8 +1,0 @@
-{
-  debugLog("onConnectionSuspended, cause=" + cause);
-  disconnect();
-  mSignInFailureReason=null;
-  debugLog("Making extraordinary call to onSignInFailed callback");
-  mConnecting=false;
-  notifyListener(false);
-}

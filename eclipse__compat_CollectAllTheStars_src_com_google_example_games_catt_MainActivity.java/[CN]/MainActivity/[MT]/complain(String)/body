@@ -1,4 +1,0 @@
-{
-  showAlert("Error: " + error);
-  Log.e(TAG,"*** Error: " + error);
-}

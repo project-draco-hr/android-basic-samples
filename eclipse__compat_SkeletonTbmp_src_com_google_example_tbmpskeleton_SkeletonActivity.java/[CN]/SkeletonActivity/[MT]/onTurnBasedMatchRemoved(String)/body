@@ -1,3 +1,0 @@
-{
-  Toast.makeText(this,"A match was removed.",TOAST_DELAY).show();
-}

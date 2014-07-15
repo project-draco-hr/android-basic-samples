@@ -1,5 +1,0 @@
-{
-  if (i < 0)   i=0;
-  String s=String.valueOf(i);
-  return s.length() == 1 ? "00" + s : s.length() == 2 ? "0" + s : s;
-}

@@ -1,8 +1,0 @@
-{
-  if (mStateManager.state == StateManager.STATE_GUESSING) {
-    mTurnData.guessingTurn.skip();
-  }
-  if (mStateManager.state == StateManager.STATE_REPLAY) {
-    mTurnData.replayTurn.skip();
-  }
-}

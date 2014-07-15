@@ -1,4 +1,0 @@
-{
-  ((TextView)findViewById(R.id.alert_bar)).setText(getString(resId));
-  ((TextView)findViewById(R.id.alert_bar)).setVisibility(View.VISIBLE);
-}

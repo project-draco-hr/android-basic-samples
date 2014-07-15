@@ -1,7 +1,0 @@
-{
-  SaveGame result=new SaveGame();
-  for (  String levelName : mLevelStars.keySet()) {
-    result.setLevelStars(levelName,getLevelStars(levelName));
-  }
-  return result;
-}

@@ -1,4 +1,0 @@
-{
-  mLoadingDialog.show();
-  AppStateManager.load(getApiClient(),OUR_STATE_KEY).setResultCallback(mResultCallback);
-}

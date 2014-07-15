@@ -1,4 +1,0 @@
-{
-  Intent intent=getGamesClient().getMatchInboxIntent();
-  startActivityForResult(intent,RC_LOOK_AT_MATCHES);
-}

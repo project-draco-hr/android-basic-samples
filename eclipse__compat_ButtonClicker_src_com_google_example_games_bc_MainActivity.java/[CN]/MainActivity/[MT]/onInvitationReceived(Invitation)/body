@@ -1,5 +1,0 @@
-{
-  mIncomingInvitationId=invitation.getInvitationId();
-  ((TextView)findViewById(R.id.incoming_invitation_text)).setText(invitation.getInviter().getDisplayName() + " " + getString(R.string.is_inviting_you));
-  switchToScreen(mCurScreen);
-}

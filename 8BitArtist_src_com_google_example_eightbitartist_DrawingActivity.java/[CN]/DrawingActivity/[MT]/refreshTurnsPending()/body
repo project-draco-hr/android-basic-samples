@@ -1,5 +1,0 @@
-{
-  getGamesClient().loadTurnBasedMatches(this,TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN);
-  TextView textView=(TextView)findViewById(R.id.turns_to_go);
-  textView.setText("...");
-}

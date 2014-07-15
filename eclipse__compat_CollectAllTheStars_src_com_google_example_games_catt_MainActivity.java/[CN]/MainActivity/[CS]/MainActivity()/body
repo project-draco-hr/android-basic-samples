@@ -1,3 +1,0 @@
-{
-  super(BaseGameActivity.CLIENT_APPSTATE);
-}

@@ -1,4 +1,0 @@
-{
-  doApiOptionsPreCheck();
-  mGamesApiOptions=options;
-}
