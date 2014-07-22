@@ -1,0 +1,9 @@
+{
+  if (mHelper.getTurnBasedMatch() != null) {
+    updateMatch(mHelper.getTurnBasedMatch());
+    return;
+  }
+  setViewVisibility();
+  Games.Invitations.registerInvitationListener(getApiClient(),this);
+  Games.TurnBasedMultiplayer.registerMatchUpdateListener(getApiClient(),this);
+}

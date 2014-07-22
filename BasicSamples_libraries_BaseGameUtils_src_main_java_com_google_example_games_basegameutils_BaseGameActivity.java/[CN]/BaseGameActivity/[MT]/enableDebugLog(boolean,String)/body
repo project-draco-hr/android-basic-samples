@@ -1,0 +1,4 @@
+{
+  Log.w(TAG,"BaseGameActivity.enabledDebugLog(bool,String) is " + "deprecated. Use enableDebugLog(boolean)");
+  enableDebugLog(enabled);
+}

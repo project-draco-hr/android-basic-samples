@@ -1,0 +1,6 @@
+{
+  mDebugLog=true;
+  if (mHelper != null) {
+    mHelper.enableDebugLog(enabled);
+  }
+}

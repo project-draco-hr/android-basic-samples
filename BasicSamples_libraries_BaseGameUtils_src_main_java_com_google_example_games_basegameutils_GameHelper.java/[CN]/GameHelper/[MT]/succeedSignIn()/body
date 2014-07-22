@@ -1,0 +1,8 @@
+{
+  debugLog("succeedSignIn");
+  mSignInFailureReason=null;
+  mConnectOnStart=true;
+  mUserInitiatedSignIn=false;
+  mConnecting=false;
+  notifyListener(true);
+}

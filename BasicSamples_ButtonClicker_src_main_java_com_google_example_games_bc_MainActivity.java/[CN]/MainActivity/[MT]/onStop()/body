@@ -1,0 +1,7 @@
+{
+  Log.d(TAG,"**** got onStop");
+  leaveRoom();
+  stopKeepingScreenOn();
+  switchToScreen(R.id.screen_wait);
+  super.onStop();
+}

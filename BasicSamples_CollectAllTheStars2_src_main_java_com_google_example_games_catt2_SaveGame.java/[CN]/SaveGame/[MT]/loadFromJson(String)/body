@@ -1,0 +1,26 @@
+{
+  zero();
+  if (json == null || json.trim().equals(""))   return;
+  try {
+    JSONObject obj=new JSONObject(json);
+    String format=obj.getString("version");
+    if (!format.equals(SERIAL_VERSION)) {
+      throw new RuntimeException("Unexpected loot format " + format);
+    }
+    JSONObject levels=obj.getJSONObject("levels");
+    Iterator<?> iter=levels.keys();
+    while (iter.hasNext()) {
+      String levelName=(String)iter.next();
+      mLevelStars.put(levelName,levels.getInt(levelName));
+    }
+  }
+ catch (  JSONException ex) {
+    ex.printStackTrace();
+    Log.e(TAG,"Save data has a syntax error: " + json,ex);
+    mLevelStars.clear();
+  }
+catch (  NumberFormatException ex) {
+    ex.printStackTrace();
+    throw new RuntimeException("Save data has an invalid number in it: " + json,ex);
+  }
+}

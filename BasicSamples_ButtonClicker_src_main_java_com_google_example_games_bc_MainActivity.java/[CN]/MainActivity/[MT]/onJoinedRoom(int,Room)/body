@@ -1,0 +1,9 @@
+{
+  Log.d(TAG,"onJoinedRoom(" + statusCode + ", "+ room+ ")");
+  if (statusCode != GamesStatusCodes.STATUS_OK) {
+    Log.e(TAG,"*** Error: onRoomConnected, status " + statusCode);
+    showGameError();
+    return;
+  }
+  showWaitingRoom(room);
+}

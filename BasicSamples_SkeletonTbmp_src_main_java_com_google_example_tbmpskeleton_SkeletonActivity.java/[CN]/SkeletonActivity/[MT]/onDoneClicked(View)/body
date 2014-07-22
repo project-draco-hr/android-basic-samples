@@ -1,0 +1,14 @@
+{
+  showSpinner();
+  String nextParticipantId=getNextParticipantId();
+  mTurnData.turnCounter+=1;
+  mTurnData.data=mDataView.getText().toString();
+  showSpinner();
+  Games.TurnBasedMultiplayer.takeTurn(getApiClient(),mMatch.getMatchId(),mTurnData.persist(),nextParticipantId).setResultCallback(new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.UpdateMatchResult result){
+      processResult(result);
+    }
+  }
+);
+  mTurnData=null;
+}

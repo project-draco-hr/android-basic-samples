@@ -1,0 +1,12 @@
+{
+  if (mSignInFailureReason != null) {
+    int errorCode=mSignInFailureReason.getServiceErrorCode();
+    int actResp=mSignInFailureReason.getActivityResultCode();
+    if (mShowErrorDialogs) {
+      showFailureDialog(mActivity,actResp,errorCode);
+    }
+ else {
+      debugLog("Not showing error dialog because mShowErrorDialogs==false. " + "" + "Error was: "+ mSignInFailureReason);
+    }
+  }
+}

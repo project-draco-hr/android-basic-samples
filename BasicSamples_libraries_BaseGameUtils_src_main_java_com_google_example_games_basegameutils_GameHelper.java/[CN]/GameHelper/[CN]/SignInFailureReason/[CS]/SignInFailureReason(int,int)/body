@@ -1,0 +1,4 @@
+{
+  mServiceErrorCode=serviceErrorCode;
+  mActivityResultCode=activityResultCode;
+}

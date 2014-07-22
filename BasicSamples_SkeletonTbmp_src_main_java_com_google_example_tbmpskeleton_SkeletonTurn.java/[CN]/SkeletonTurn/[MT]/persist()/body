@@ -1,0 +1,13 @@
+{
+  JSONObject retVal=new JSONObject();
+  try {
+    retVal.put("data",data);
+    retVal.put("turnCounter",turnCounter);
+  }
+ catch (  JSONException e) {
+    e.printStackTrace();
+  }
+  String st=retVal.toString();
+  Log.d(TAG,"==== PERSISTING\n" + st);
+  return st.getBytes(Charset.forName("UTF-16"));
+}

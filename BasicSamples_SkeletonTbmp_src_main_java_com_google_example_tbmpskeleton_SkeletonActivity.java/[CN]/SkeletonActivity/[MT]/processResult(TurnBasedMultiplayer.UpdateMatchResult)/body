@@ -1,0 +1,16 @@
+{
+  TurnBasedMatch match=result.getMatch();
+  dismissSpinner();
+  if (!checkStatusCode(match,result.getStatus().getStatusCode())) {
+    return;
+  }
+  if (match.canRematch()) {
+    askForRematch();
+  }
+  isDoingTurn=(match.getTurnStatus() == TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN);
+  if (isDoingTurn) {
+    updateMatch(match);
+    return;
+  }
+  setViewVisibility();
+}

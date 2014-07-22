@@ -1,0 +1,5 @@
+{
+  if (!isSignedIn()) {
+    Toast.makeText(this,getString(R.string.achievement) + ": " + achievement,Toast.LENGTH_LONG).show();
+  }
+}

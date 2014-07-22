@@ -1,0 +1,7 @@
+{
+  if (mLoadingDialog != null) {
+    mLoadingDialog.dismiss();
+    mLoadingDialog=null;
+  }
+  super.onStop();
+}

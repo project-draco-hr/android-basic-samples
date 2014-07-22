@@ -1,0 +1,26 @@
+{
+  mActivity=act;
+  mAppContext=act.getApplicationContext();
+  debugLog("onStart");
+  assertConfigured("onStart");
+  if (mConnectOnStart) {
+    if (mGoogleApiClient.isConnected()) {
+      Log.w(TAG,"GameHelper: client was already connected on onStart()");
+    }
+ else {
+      debugLog("Connecting client.");
+      mConnecting=true;
+      mGoogleApiClient.connect();
+    }
+  }
+ else {
+    debugLog("Not attempting to connect becase mConnectOnStart=false");
+    debugLog("Instead, reporting a sign-in failure.");
+    mHandler.postDelayed(new Runnable(){
+      @Override public void run(){
+        notifyListener(false);
+      }
+    }
+,1000);
+  }
+}

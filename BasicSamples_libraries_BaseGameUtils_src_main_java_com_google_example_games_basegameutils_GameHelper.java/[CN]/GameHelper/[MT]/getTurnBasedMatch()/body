@@ -1,0 +1,6 @@
+{
+  if (!mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"Warning: getTurnBasedMatch() should only be called when signed in, " + "that is, after getting onSignInSuceeded()");
+  }
+  return mTurnBasedMatch;
+}

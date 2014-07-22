@@ -1,0 +1,11 @@
+{
+  showSpinner();
+  Games.TurnBasedMultiplayer.finishMatch(getApiClient(),mMatch.getMatchId()).setResultCallback(new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>(){
+    @Override public void onResult(    TurnBasedMultiplayer.UpdateMatchResult result){
+      processResult(result);
+    }
+  }
+);
+  isDoingTurn=false;
+  setViewVisibility();
+}

@@ -1,0 +1,15 @@
+{
+  if (!mMultiplayer)   return;
+  mMsgBuf[0]=(byte)(finalScore ? 'F' : 'U');
+  mMsgBuf[1]=(byte)mScore;
+  for (  Participant p : mParticipants) {
+    if (p.getParticipantId().equals(mMyId))     continue;
+    if (p.getStatus() != Participant.STATUS_JOINED)     continue;
+    if (finalScore) {
+      Games.RealTimeMultiplayer.sendReliableMessage(getApiClient(),null,mMsgBuf,mRoomId,p.getParticipantId());
+    }
+ else {
+      Games.RealTimeMultiplayer.sendUnreliableMessage(getApiClient(),mMsgBuf,mRoomId,p.getParticipantId());
+    }
+  }
+}

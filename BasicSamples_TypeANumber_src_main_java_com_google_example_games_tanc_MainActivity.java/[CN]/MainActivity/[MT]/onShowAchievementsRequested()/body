@@ -1,0 +1,8 @@
+{
+  if (isSignedIn()) {
+    startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
+  }
+ else {
+    showAlert(getString(R.string.achievements_not_available));
+  }
+}

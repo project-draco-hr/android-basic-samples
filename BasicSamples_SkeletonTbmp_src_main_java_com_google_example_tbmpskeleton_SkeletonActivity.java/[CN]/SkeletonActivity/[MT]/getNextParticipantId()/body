@@ -1,0 +1,20 @@
+{
+  String playerId=Games.Players.getCurrentPlayerId(getApiClient());
+  String myParticipantId=mMatch.getParticipantId(playerId);
+  ArrayList<String> participantIds=mMatch.getParticipantIds();
+  int desiredIndex=-1;
+  for (int i=0; i < participantIds.size(); i++) {
+    if (participantIds.get(i).equals(myParticipantId)) {
+      desiredIndex=i + 1;
+    }
+  }
+  if (desiredIndex < participantIds.size()) {
+    return participantIds.get(desiredIndex);
+  }
+  if (mMatch.getAvailableAutoMatchSlots() <= 0) {
+    return participantIds.get(0);
+  }
+ else {
+    return null;
+  }
+}

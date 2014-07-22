@@ -1,0 +1,8 @@
+{
+  dismissSpinner();
+  if (!checkStatusCode(null,result.getStatus().getStatusCode())) {
+    return;
+  }
+  isDoingTurn=false;
+  showWarning("Match","This match is canceled.  All other players will have their game ended.");
+}

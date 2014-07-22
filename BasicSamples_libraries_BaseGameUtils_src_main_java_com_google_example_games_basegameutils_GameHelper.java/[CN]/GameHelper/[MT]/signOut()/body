@@ -1,0 +1,18 @@
+{
+  if (!mGoogleApiClient.isConnected()) {
+    debugLog("signOut: was already disconnected, ignoring.");
+    return;
+  }
+  if (0 != (mRequestedClients & CLIENT_PLUS)) {
+    debugLog("Clearing default account on PlusClient.");
+    Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+  }
+  if (0 != (mRequestedClients & CLIENT_GAMES)) {
+    debugLog("Signing out from the Google API Client.");
+    Games.signOut(mGoogleApiClient);
+  }
+  debugLog("Disconnecting client.");
+  mConnectOnStart=false;
+  mConnecting=false;
+  mGoogleApiClient.disconnect();
+}

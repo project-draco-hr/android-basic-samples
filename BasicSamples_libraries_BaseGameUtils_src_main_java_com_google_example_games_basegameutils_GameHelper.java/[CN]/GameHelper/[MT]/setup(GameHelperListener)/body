@@ -1,0 +1,15 @@
+{
+  if (mSetupDone) {
+    String error="GameHelper: you cannot call GameHelper.setup() more than once!";
+    logError(error);
+    throw new IllegalStateException(error);
+  }
+  mListener=listener;
+  debugLog("Setup: requested clients: " + mRequestedClients);
+  if (mGoogleApiClientBuilder == null) {
+    createApiClientBuilder();
+  }
+  mGoogleApiClient=mGoogleApiClientBuilder.build();
+  mGoogleApiClientBuilder=null;
+  mSetupDone=true;
+}

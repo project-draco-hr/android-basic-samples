@@ -1,0 +1,6 @@
+{
+  if (!mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"Warning: getInvitationId() should only be called when signed in, " + "that is, after getting onSignInSuceeded()");
+  }
+  return mInvitation == null ? null : mInvitation.getInvitationId();
+}

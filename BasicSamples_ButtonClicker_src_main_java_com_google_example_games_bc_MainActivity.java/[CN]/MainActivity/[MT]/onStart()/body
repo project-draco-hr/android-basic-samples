@@ -1,0 +1,4 @@
+{
+  switchToScreen(R.id.screen_wait);
+  super.onStart();
+}

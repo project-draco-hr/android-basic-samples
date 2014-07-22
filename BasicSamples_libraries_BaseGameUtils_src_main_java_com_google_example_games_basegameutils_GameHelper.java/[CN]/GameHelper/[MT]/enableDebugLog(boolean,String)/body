@@ -1,0 +1,4 @@
+{
+  Log.w(TAG,"GameHelper.enableDebugLog(boolean,String) is deprecated. " + "Use GameHelper.enableDebugLog(boolean)");
+  enableDebugLog(enabled);
+}

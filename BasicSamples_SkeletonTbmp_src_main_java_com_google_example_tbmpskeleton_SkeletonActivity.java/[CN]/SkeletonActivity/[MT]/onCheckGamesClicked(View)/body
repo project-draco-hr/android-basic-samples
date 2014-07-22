@@ -1,0 +1,4 @@
+{
+  Intent intent=Games.TurnBasedMultiplayer.getInboxIntent(getApiClient());
+  startActivityForResult(intent,RC_LOOK_AT_MATCHES);
+}

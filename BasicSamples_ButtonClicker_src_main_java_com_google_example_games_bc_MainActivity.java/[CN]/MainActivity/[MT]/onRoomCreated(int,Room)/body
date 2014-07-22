@@ -1,0 +1,9 @@
+{
+  Log.d(TAG,"onRoomCreated(" + statusCode + ", "+ room+ ")");
+  if (statusCode != GamesStatusCodes.STATUS_OK) {
+    Log.e(TAG,"*** Error: onRoomCreated, status " + statusCode);
+    showGameError();
+    return;
+  }
+  showWaitingRoom(room);
+}
