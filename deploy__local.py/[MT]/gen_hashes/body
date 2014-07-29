@@ -1,0 +1,3 @@
+def gen_hashes(path):
+    subprocess.call([os.environ['SHELL'], '-lc', 'md5sum {p} > {p}.md5'.format(p=path)])
+    subprocess.call([os.environ['SHELL'], '-lc', 'sha1sum {p} > {p}.sha1'.format(p=path)])

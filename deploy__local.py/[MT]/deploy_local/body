@@ -1,0 +1,32 @@
+def deploy_local(repo_path, archive_src_path, package_name, package_version):
+    package_path = package_name.replace('.', os.path.sep)
+    metadata_path = os.path.join(repo_path, package_path, 'maven-metadata.xml')
+    (group, artifact) = package_name.rsplit('.', 1)
+    archive_extension = os.path.splitext(archive_src_path)[1].strip('.')
+    archive_dest_base_filename = '{}-{}'.format(artifact, package_version)
+    archive_dest_filename = '{}.{}'.format(archive_dest_base_filename, archive_extension)
+    archive_dest_dir = os.path.join(package_path, package_version)
+    archive_dest_path = os.path.join(archive_dest_dir, archive_dest_filename)
+    pomfile_path = os.path.join(archive_dest_dir, (archive_dest_base_filename + '.pom'))
+    print 'Copying {} => {}'.format(archive_src_path, archive_dest_path)
+    if (not os.path.exists(archive_dest_dir)):
+        os.makedirs(archive_dest_dir)
+    shutil.copyfile(archive_src_path, archive_dest_path)
+    gen_hashes(archive_dest_path)
+    print 'Generating {}'.format(pomfile_path)
+    pom_text = default_pom_template.format(groupId=group, artifactId=artifact, version=package_version, packaging=archive_extension)
+    with open(pomfile_path, 'w') as pomfile:
+        pomfile.write(unicode(pom_text))
+    gen_hashes(pomfile_path)
+    print 'Modifying metadata file at {}'.format(metadata_path)
+    metadata_xml = ElementTree.parse(metadata_path)
+    versions_element = metadata_xml.find('./*/versions')
+    existing_version_element = None
+    for el in versions_element.findall('version'):
+        if (el.text == package_version):
+            existing_version_element = el
+            break
+    if (existing_version_element is None):
+        new_version_element = ElementTree.SubElement(versions_element, 'version')
+        new_version_element.text = package_version
+        metadata_xml.write(metadata_path)
