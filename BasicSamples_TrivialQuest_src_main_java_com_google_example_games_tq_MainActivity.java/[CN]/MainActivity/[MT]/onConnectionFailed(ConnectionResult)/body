@@ -1,0 +1,16 @@
+{
+  Log.d(TAG,"onConnectionFailed() called, result: " + connectionResult);
+  if (mResolvingConnectionFailure) {
+    Log.d(TAG,"onConnectionFailed() ignoring connection failure; already resolving.");
+    return;
+  }
+  if (mSignInClicked || mAutoStartSignInFlow) {
+    mAutoStartSignInFlow=false;
+    mSignInClicked=false;
+    mResolvingConnectionFailure=true;
+    if (!BaseGameUtils.resolveConnectionFailure(this,mGoogleApiClient,connectionResult,RC_SIGN_IN,"Error signing in. Try again later.")) {
+      mResolvingConnectionFailure=false;
+    }
+  }
+  showSignInBar();
+}

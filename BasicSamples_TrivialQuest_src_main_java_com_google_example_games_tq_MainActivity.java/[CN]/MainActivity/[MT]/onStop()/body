@@ -1,0 +1,7 @@
+{
+  Log.d(TAG,"onStop()");
+  super.onStop();
+  if (mGoogleApiClient.isConnected()) {
+    mGoogleApiClient.disconnect();
+  }
+}

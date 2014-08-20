@@ -1,0 +1,4 @@
+{
+  Log.d(TAG,"onConnected() called. Sign in successful!");
+  showSignOutBar();
+}
