@@ -1,0 +1,4 @@
+Activity activity
+int resultCode
+int signInFailureMessageResId
+int fallbackErrorMessageResId

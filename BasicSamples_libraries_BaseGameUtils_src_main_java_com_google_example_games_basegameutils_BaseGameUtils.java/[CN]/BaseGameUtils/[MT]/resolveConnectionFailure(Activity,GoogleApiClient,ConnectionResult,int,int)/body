@@ -16,7 +16,7 @@
       dialog.show();
     }
  else {
-      showAlert(activity,fallbackErrorMessage);
+      showAlert(activity,activity.getString(fallbackErrorMessageResId));
     }
     return false;
   }

@@ -1,0 +1,28 @@
+{
+  try {
+    Signature[] sigs=ctx.getPackageManager().getPackageInfo(ctx.getPackageName(),PackageManager.GET_SIGNATURES).signatures;
+    if (sigs.length == 0) {
+      return "ERROR: NO SIGNATURE.";
+    }
+ else     if (sigs.length > 1) {
+      return "ERROR: MULTIPLE SIGNATURES";
+    }
+    byte[] digest=MessageDigest.getInstance("SHA1").digest(sigs[0].toByteArray());
+    StringBuilder hexString=new StringBuilder();
+    for (int i=0; i < digest.length; ++i) {
+      if (i > 0) {
+        hexString.append(":");
+      }
+      byteToString(hexString,digest[i]);
+    }
+    return hexString.toString();
+  }
+ catch (  PackageManager.NameNotFoundException ex) {
+    ex.printStackTrace();
+    return "(ERROR: package not found)";
+  }
+catch (  NoSuchAlgorithmException ex) {
+    ex.printStackTrace();
+    return "(ERROR: SHA1 algorithm not found)";
+  }
+}

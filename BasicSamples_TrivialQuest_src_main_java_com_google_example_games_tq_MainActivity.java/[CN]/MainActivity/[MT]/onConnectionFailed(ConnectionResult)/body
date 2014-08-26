@@ -8,7 +8,7 @@
     mAutoStartSignInFlow=false;
     mSignInClicked=false;
     mResolvingConnectionFailure=true;
-    if (!BaseGameUtils.resolveConnectionFailure(this,mGoogleApiClient,connectionResult,RC_SIGN_IN,"Error signing in. Try again later.")) {
+    if (!BaseGameUtils.resolveConnectionFailure(this,mGoogleApiClient,connectionResult,RC_SIGN_IN,R.string.signin_other_error)) {
       mResolvingConnectionFailure=false;
     }
   }

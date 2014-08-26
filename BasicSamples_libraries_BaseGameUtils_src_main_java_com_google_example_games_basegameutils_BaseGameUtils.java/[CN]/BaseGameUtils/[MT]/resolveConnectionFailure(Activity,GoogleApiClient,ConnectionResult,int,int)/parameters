@@ -2,4 +2,4 @@ Activity activity
 GoogleApiClient client
 ConnectionResult result
 int requestCode
-String fallbackErrorMessage
+int fallbackErrorMessageResId
