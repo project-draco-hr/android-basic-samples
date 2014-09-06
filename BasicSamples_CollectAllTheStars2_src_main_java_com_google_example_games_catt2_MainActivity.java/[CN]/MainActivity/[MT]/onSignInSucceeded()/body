@@ -1,5 +1,4 @@
 {
-  mLoadingDialog.dismiss();
   log("Sign-in successful! Loading game state from cloud.");
   showSignOutBar();
   if (!mAlreadyLoadedState) {

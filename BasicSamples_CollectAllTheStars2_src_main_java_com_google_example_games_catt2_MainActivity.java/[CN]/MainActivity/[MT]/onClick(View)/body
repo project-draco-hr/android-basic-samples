@@ -5,10 +5,7 @@ case R.id.button_sign_in:
       complain("Sample not correctly set up. See README!");
       break;
     }
-  mLoadingDialog=new ProgressDialog(this);
-mLoadingDialog.setMessage(getString(R.string.signing_in));
-mLoadingDialog.show();
-beginUserInitiatedSignIn();
+  beginUserInitiatedSignIn();
 break;
 case R.id.button_sign_out:
 signOut();

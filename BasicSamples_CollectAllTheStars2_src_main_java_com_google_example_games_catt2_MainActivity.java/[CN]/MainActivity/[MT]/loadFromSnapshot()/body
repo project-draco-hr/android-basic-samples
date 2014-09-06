@@ -19,6 +19,7 @@
     protected void onProgressUpdate(    Integer... progress){
       mLoadingDialog.dismiss();
       hideAlertBar();
+      updateUi();
     }
     @Override protected void onPostExecute(    Integer status){
       Log.i(TAG,"Snapshot loaded: " + status);
