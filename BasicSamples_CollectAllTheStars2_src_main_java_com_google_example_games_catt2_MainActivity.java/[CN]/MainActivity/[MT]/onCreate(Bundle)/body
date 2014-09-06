@@ -1,5 +1,5 @@
 {
-  enableDebugLog(ENABLE_DEBUG,TAG);
+  enableDebugLog(ENABLE_DEBUG);
   log("onCreate.");
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);
