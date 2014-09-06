@@ -17,7 +17,9 @@
       return status;
     }
     protected void onProgressUpdate(    Integer... progress){
-      mLoadingDialog.dismiss();
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+      }
       hideAlertBar();
       updateUi();
     }

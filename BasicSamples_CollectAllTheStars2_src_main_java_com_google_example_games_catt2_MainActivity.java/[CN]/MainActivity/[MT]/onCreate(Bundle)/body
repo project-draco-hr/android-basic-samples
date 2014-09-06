@@ -12,4 +12,6 @@
   findViewById(R.id.button_sign_in).setOnClickListener(this);
   findViewById(R.id.button_sign_out).setOnClickListener(this);
   ((RatingBar)findViewById(R.id.gameplay_rating)).setOnRatingBarChangeListener(this);
+  mSaveGame=new SaveGame();
+  updateUi();
 }

@@ -24,14 +24,18 @@
       return resultMessage;
     }
     protected void onProgressUpdate(    Integer... progress){
-      mLoadingDialog.dismiss();
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+      }
       hideAlertBar();
       updateUi();
     }
     @Override protected void onPostExecute(    String message){
       Log.i(TAG,"Snapshots loaded.");
       Log.i(TAG,"Details: " + message);
-      mLoadingDialog.dismiss();
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+      }
       hideAlertBar();
       updateUi();
     }
