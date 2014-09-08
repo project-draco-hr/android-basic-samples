@@ -16,6 +16,13 @@
       }
       return status;
     }
+    protected void onProgressUpdate(    Integer... progress){
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+      }
+      hideAlertBar();
+      updateUi();
+    }
     @Override protected void onPostExecute(    Integer status){
       Log.i(TAG,"Snapshot loaded: " + status);
       if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
@@ -30,9 +37,7 @@
         Log.i(TAG,"Error: Snapshot folder unavailable");
         Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT);
       }
-      updateUi();
-      mLoadingDialog.dismiss();
-      hideAlertBar();
+      publishProgress();
     }
   }
 ;

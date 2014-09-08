@@ -1,5 +1,5 @@
 {
-  enableDebugLog(ENABLE_DEBUG,TAG);
+  enableDebugLog(ENABLE_DEBUG);
   log("onCreate.");
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);
@@ -12,4 +12,6 @@
   findViewById(R.id.button_sign_in).setOnClickListener(this);
   findViewById(R.id.button_sign_out).setOnClickListener(this);
   ((RatingBar)findViewById(R.id.gameplay_rating)).setOnRatingBarChangeListener(this);
+  mSaveGame=new SaveGame();
+  updateUi();
 }
