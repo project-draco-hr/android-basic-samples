@@ -2,6 +2,11 @@
   Log.d(TAG,"**** got onStop");
   leaveRoom();
   stopKeepingScreenOn();
-  switchToScreen(R.id.screen_wait);
+  if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+    switchToScreen(R.id.screen_sign_in);
+  }
+ else {
+    switchToScreen(R.id.screen_wait);
+  }
   super.onStop();
 }

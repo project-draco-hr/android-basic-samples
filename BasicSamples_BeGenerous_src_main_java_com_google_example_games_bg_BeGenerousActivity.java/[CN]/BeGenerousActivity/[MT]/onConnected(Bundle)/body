@@ -1,0 +1,15 @@
+{
+  Log.d(TAG,"onConnected() called. Sign in successful!");
+  showSignOutBar();
+  Games.Requests.registerRequestListener(mGoogleApiClient,mRequestListener);
+  if (connectionHint != null) {
+    ArrayList<GameRequest> requests;
+    requests=Games.Requests.getGameRequestsFromBundle(connectionHint);
+    if (!requests.isEmpty()) {
+      Log.d(TAG,"onConnected: connection hint has " + requests.size() + " request(s)");
+    }
+    Log.d(TAG,"===========\nRequests count " + requests.size());
+    handleRequests(requests);
+  }
+  updateRequestCounts();
+}

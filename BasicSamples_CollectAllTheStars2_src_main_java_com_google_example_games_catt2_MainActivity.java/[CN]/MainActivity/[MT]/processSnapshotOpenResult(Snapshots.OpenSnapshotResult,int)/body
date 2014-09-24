@@ -16,14 +16,14 @@
     if (snapshot.getMetadata().getLastModifiedTimestamp() < conflictSnapshot.getMetadata().getLastModifiedTimestamp()) {
       mResolvedSnapshot=conflictSnapshot;
     }
-    Snapshots.OpenSnapshotResult resolveResult=Games.Snapshots.resolveConflict(getApiClient(),result.getConflictId(),mResolvedSnapshot).await();
+    Snapshots.OpenSnapshotResult resolveResult=Games.Snapshots.resolveConflict(mGoogleApiClient,result.getConflictId(),mResolvedSnapshot).await();
     if (retryCount < MAX_SNAPSHOT_RESOLVE_RETRIES) {
       return processSnapshotOpenResult(resolveResult,retryCount);
     }
  else {
       String message="Could not resolve snapshot conflicts";
       Log.e(TAG,message);
-      Toast.makeText(getBaseContext(),message,Toast.LENGTH_LONG);
+      Toast.makeText(getBaseContext(),message,Toast.LENGTH_LONG).show();
     }
   }
   return null;

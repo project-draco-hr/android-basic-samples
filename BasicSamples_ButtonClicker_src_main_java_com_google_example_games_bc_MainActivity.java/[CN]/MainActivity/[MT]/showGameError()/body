@@ -1,4 +1,4 @@
 {
-  showAlert(getString(R.string.game_problem));
+  BaseGameUtils.makeSimpleDialog(this,getString(R.string.game_problem));
   switchToMainScreen();
 }

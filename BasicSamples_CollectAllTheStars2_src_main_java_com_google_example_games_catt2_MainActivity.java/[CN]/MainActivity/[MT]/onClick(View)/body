@@ -1,14 +1,17 @@
 {
 switch (view.getId()) {
 case R.id.button_sign_in:
-    if (!verifyPlaceholderIdsReplaced()) {
-      complain("Sample not correctly set up. See README!");
-      break;
+    if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id)) {
+      Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
     }
-  beginUserInitiatedSignIn();
+  Log.d(TAG,"Sign-in button clicked");
+mSignInClicked=true;
+mGoogleApiClient.connect();
 break;
 case R.id.button_sign_out:
-signOut();
+mSignInClicked=false;
+Games.signOut(mGoogleApiClient);
+mGoogleApiClient.disconnect();
 showSignInBar();
 mSaveGame=new SaveGame();
 updateUi();
