@@ -1,0 +1,12 @@
+{
+  if (requestCode == RC_SIGN_IN) {
+    mSignInClicked=false;
+    mResolvingConnectionFailure=false;
+    if (resultCode == RESULT_OK) {
+      mGoogleApiClient.connect();
+    }
+ else {
+      BaseGameUtils.showActivityResultError(this,requestCode,resultCode,R.string.signin_failure,R.string.signin_other_error);
+    }
+  }
+}
