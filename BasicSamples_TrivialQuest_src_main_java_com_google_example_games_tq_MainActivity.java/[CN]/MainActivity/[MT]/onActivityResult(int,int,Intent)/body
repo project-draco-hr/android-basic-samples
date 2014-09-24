@@ -7,30 +7,7 @@
       mGoogleApiClient.connect();
     }
  else {
-      Dialog errorDialog;
-      int stringId=0;
-switch (responseCode) {
-case GamesActivityResultCodes.RESULT_APP_MISCONFIGURED:
-        stringId=R.string.result_app_misconfigured;
-      break;
-case GamesActivityResultCodes.RESULT_SIGN_IN_FAILED:
-    stringId=R.string.result_sign_in_failed;
-  break;
-case GamesActivityResultCodes.RESULT_LICENSE_FAILED:
-stringId=R.string.result_license_failed;
-break;
-}
-if (stringId != 0) {
-errorDialog=BaseGameUtils.makeSimpleDialog(this,getString(stringId));
-}
- else {
-errorDialog=GooglePlayServicesUtil.getErrorDialog(responseCode,this,requestCode,null);
-if (errorDialog == null) {
-Log.e(TAG,"No standard error dialog available. Making fallback dialog.");
-errorDialog=BaseGameUtils.makeSimpleDialog(this,getString(R.string.signin_failure) + " " + getString(R.string.signin_other_error));
-}
-}
-errorDialog.show();
-}
-}
+      BaseGameUtils.showActivityResultError(this,requestCode,responseCode,R.string.signin_failure,R.string.signin_other_error);
+    }
+  }
 }
