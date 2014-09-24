@@ -1,6 +1,7 @@
 {
-  enableDebugLog(DEBUG_ENABLED,TAG);
+  Log.d(TAG,"onCreate()");
   super.onCreate(savedInstanceState);
+  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).build();
   setContentView(R.layout.activity_main);
   findViewById(R.id.button_sign_in).setOnClickListener(this);
   findViewById(R.id.button_sign_out).setOnClickListener(this);

@@ -1,0 +1,13 @@
+{
+  if (requestCode == RC_SIGN_IN) {
+    Log.d(TAG,"onActivityResult with requestCode == RC_SIGN_IN, responseCode=" + responseCode + ", intent="+ intent);
+    mSignInClicked=false;
+    mResolvingConnectionFailure=false;
+    if (responseCode == RESULT_OK) {
+      mGoogleApiClient.connect();
+    }
+ else {
+      BaseGameUtils.showActivityResultError(this,requestCode,responseCode,R.string.signin_failure,R.string.signin_other_error);
+    }
+  }
+}

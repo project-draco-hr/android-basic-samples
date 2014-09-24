@@ -1,20 +1,25 @@
 {
 switch (view.getId()) {
 case R.id.button_sign_in:
-    if (!verifyPlaceholderIdsReplaced()) {
-      showAlert("Error: sample not correctly set up. See README!");
-      break;
+    if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id,R.string.trivial_victory_achievement_id)) {
+      Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
     }
-  beginUserInitiatedSignIn();
+  Log.d(TAG,"Sign-in button clicked");
+mSignInClicked=true;
+mGoogleApiClient.connect();
 break;
 case R.id.button_sign_out:
-signOut();
+Log.d(TAG,"Sign-out button clicked");
+mSignInClicked=false;
+Games.signOut(mGoogleApiClient);
+mGoogleApiClient.disconnect();
 showSignInBar();
 break;
 case R.id.button_win:
-showAlert(getString(R.string.victory),getString(R.string.you_won));
-if (getApiClient().isConnected()) {
-Games.Achievements.unlock(getApiClient(),getString(R.string.trivial_victory_achievement_id));
+Log.d(TAG,"Win button clicked");
+BaseGameUtils.showAlert(this,getString(R.string.you_won));
+if (mGoogleApiClient.isConnected()) {
+Games.Achievements.unlock(mGoogleApiClient,getString(R.string.trivial_victory_achievement_id));
 }
 break;
 }

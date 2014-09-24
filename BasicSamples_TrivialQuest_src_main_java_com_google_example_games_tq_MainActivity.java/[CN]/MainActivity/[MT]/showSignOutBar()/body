@@ -1,4 +1,5 @@
 {
+  Log.d(TAG,"Showing sign out bar");
   findViewById(R.id.sign_in_bar).setVisibility(View.GONE);
   findViewById(R.id.sign_out_bar).setVisibility(View.VISIBLE);
 }
