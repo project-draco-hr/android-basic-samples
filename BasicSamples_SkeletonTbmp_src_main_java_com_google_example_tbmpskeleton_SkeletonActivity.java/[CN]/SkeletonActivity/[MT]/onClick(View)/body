@@ -1,0 +1,19 @@
+{
+switch (v.getId()) {
+case R.id.sign_in_button:
+    if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id)) {
+      Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
+    }
+  mSignInClicked=true;
+mTurnBasedMatch=null;
+findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+mGoogleApiClient.connect();
+break;
+case R.id.sign_out_button:
+mSignInClicked=false;
+Games.signOut(mGoogleApiClient);
+mGoogleApiClient.disconnect();
+setViewVisibility();
+break;
+}
+}

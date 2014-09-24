@@ -1,0 +1,16 @@
+{
+  Log.d(TAG,"onConnected(): Connection successful");
+  setViewVisibility();
+  if (connectionHint != null) {
+    mTurnBasedMatch=connectionHint.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
+  }
+  if (mTurnBasedMatch != null) {
+    if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+      Log.d(TAG,"Warning: accessing TurnBasedMatch when not connected");
+    }
+    updateMatch(mTurnBasedMatch);
+    return;
+  }
+  Games.Invitations.registerInvitationListener(mGoogleApiClient,this);
+  Games.TurnBasedMultiplayer.registerMatchUpdateListener(mGoogleApiClient,this);
+}
