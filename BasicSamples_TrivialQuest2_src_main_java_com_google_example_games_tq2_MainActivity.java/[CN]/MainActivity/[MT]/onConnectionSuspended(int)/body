@@ -1,0 +1,4 @@
+{
+  Log.d(TAG,"onConnectionSuspended(): attempting to reconnect");
+  mGoogleApiClient.connect();
+}

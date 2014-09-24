@@ -1,42 +1,44 @@
 {
 switch (view.getId()) {
 case R.id.button_sign_in:
-    if (!verifyPlaceholderIdsReplaced()) {
-      showAlert("Error: sample not correctly set up. See README!");
-      break;
+    if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id,R.string.red_event_id)) {
+      Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
     }
-  beginUserInitiatedSignIn();
+  mSignInClicked=true;
+mGoogleApiClient.connect();
 break;
 case R.id.button_sign_out:
-signOut();
+mSignInClicked=false;
+Games.signOut(mGoogleApiClient);
+mGoogleApiClient.disconnect();
 showSignInBar();
 break;
 case R.id.button_quests:
 showQuests();
 break;
 case R.id.button_red:
-if (getApiClient().isConnected()) {
-Games.Events.increment(getApiClient(),getString(R.string.red_event_id),1);
+if (mGoogleApiClient.isConnected()) {
+Games.Events.increment(mGoogleApiClient,getString(R.string.red_event_id),1);
 }
-showAlert(getString(R.string.victory),getString(R.string.defeat_red_monster));
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.victory),getString(R.string.defeat_red_monster)).show();
 break;
 case R.id.button_blue:
-if (getApiClient().isConnected()) {
-Games.Events.increment(getApiClient(),getString(R.string.blue_event_id),1);
+if (mGoogleApiClient.isConnected()) {
+Games.Events.increment(mGoogleApiClient,getString(R.string.blue_event_id),1);
 }
-showAlert(getString(R.string.victory),getString(R.string.defeat_blue_monster));
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.victory),getString(R.string.defeat_blue_monster)).show();
 break;
 case R.id.button_green:
-if (getApiClient().isConnected()) {
-Games.Events.increment(getApiClient(),getString(R.string.green_event_id),1);
+if (mGoogleApiClient.isConnected()) {
+Games.Events.increment(mGoogleApiClient,getString(R.string.green_event_id),1);
 }
-showAlert(getString(R.string.victory),getString(R.string.defeat_green_monster));
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.victory),getString(R.string.defeat_green_monster)).show();
 break;
 case R.id.button_yellow:
-if (getApiClient().isConnected()) {
-Games.Events.increment(getApiClient(),getString(R.string.yellow_event_id),1);
+if (mGoogleApiClient.isConnected()) {
+Games.Events.increment(mGoogleApiClient,getString(R.string.yellow_event_id),1);
 }
-showAlert(getString(R.string.victory),getString(R.string.defeat_yellow_monster));
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.victory),getString(R.string.defeat_yellow_monster)).show();
 break;
 default :
 break;
