@@ -1,4 +1,5 @@
 {
+  super.onActivityResult(request,response,data);
   if (request == RC_SIGN_IN) {
     mSignInClicked=false;
     mResolvingConnectionFailure=false;

@@ -10,7 +10,9 @@ break;
 case R.id.button_sign_out:
 mSignInClicked=false;
 Games.signOut(mGoogleApiClient);
+if (mGoogleApiClient.isConnected()) {
 mGoogleApiClient.disconnect();
+}
 showSignInBar();
 break;
 case R.id.button_quests:
