@@ -1,8 +1,8 @@
 {
   if (isSignedIn()) {
-    startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
+    startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(mGoogleApiClient),RC_UNUSED);
   }
  else {
-    showAlert(getString(R.string.leaderboards_not_available));
+    BaseGameUtils.makeSimpleDialog(this,getString(R.string.leaderboards_not_available)).show();
   }
 }

@@ -2,5 +2,5 @@
   String message="You successfully completed quest " + quest.getName();
   Log.i(TAG,message);
   Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-  Games.Quests.claim(this.getApiClient(),quest.getQuestId(),quest.getCurrentMilestone().getMilestoneId()).setResultCallback(mClaimMilestoneResultCallback);
+  Games.Quests.claim(mGoogleApiClient,quest.getQuestId(),quest.getCurrentMilestone().getMilestoneId()).setResultCallback(mClaimMilestoneResultCallback);
 }

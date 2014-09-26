@@ -1,7 +1,7 @@
 {
-  if (!verifyPlaceholderIdsReplaced()) {
-    showAlert("Sample not set up correctly. See README.");
-    return;
+  if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id,R.string.achievement_prime,R.string.leaderboard_easy)) {
+    Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
   }
-  beginUserInitiatedSignIn();
+  mSignInClicked=true;
+  mGoogleApiClient.connect();
 }

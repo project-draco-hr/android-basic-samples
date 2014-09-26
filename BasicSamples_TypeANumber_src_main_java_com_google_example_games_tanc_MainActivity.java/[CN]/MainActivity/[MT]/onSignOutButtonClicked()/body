@@ -1,5 +1,9 @@
 {
-  signOut();
+  mSignInClicked=false;
+  Games.signOut(mGoogleApiClient);
+  if (mGoogleApiClient.isConnected()) {
+    mGoogleApiClient.disconnect();
+  }
   mMainMenuFragment.setGreeting(getString(R.string.signed_out_greeting));
   mMainMenuFragment.setShowSignInButton(true);
   mWinFragment.setShowSignInButton(true);
