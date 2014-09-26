@@ -18,6 +18,17 @@ handleRequests(Games.Requests.getGameRequestsFromInboxResponse(data));
 Log.e(TAG,"Failed to process inbox result: resultCode = " + resultCode + ", data = "+ (data == null ? "null" : "valid"));
 }
 break;
+case RC_SIGN_IN:
+Log.d(TAG,"onActivityResult with requestCode == RC_SIGN_IN, responseCode=" + resultCode + ", intent="+ data);
+mSignInClicked=false;
+mResolvingConnectionFailure=false;
+if (resultCode == RESULT_OK) {
+mGoogleApiClient.connect();
+}
+ else {
+BaseGameUtils.showActivityResultError(this,requestCode,resultCode,R.string.signin_failure,R.string.signin_other_error);
+}
+break;
 }
 super.onActivityResult(requestCode,resultCode,data);
 }

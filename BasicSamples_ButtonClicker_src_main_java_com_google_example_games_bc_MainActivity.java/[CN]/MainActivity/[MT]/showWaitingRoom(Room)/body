@@ -1,5 +1,5 @@
 {
   final int MIN_PLAYERS=Integer.MAX_VALUE;
-  Intent i=Games.RealTimeMultiplayer.getWaitingRoomIntent(getApiClient(),room,MIN_PLAYERS);
+  Intent i=Games.RealTimeMultiplayer.getWaitingRoomIntent(mGoogleApiClient,room,MIN_PLAYERS);
   startActivityForResult(i,RC_WAITING_ROOM);
 }

@@ -3,7 +3,7 @@
   mSecondsLeft=0;
   stopKeepingScreenOn();
   if (mRoomId != null) {
-    Games.RealTimeMultiplayer.leave(getApiClient(),this,mRoomId);
+    Games.RealTimeMultiplayer.leave(mGoogleApiClient,this,mRoomId);
     mRoomId=null;
     switchToScreen(R.id.screen_wait);
   }

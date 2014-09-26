@@ -5,7 +5,7 @@
   AsyncTask<Void,Void,Integer> task=new AsyncTask<Void,Void,Integer>(){
     @Override protected Integer doInBackground(    Void... params){
       Log.i(TAG,"Opening snapshot " + currentSaveName);
-      Snapshots.OpenSnapshotResult result=Games.Snapshots.open(getApiClient(),currentSaveName,true).await();
+      Snapshots.OpenSnapshotResult result=Games.Snapshots.open(mGoogleApiClient,currentSaveName,true).await();
       int status=result.getStatus().getStatusCode();
       if (status == GamesStatusCodes.STATUS_OK) {
         Snapshot snapshot=result.getSnapshot();
@@ -27,15 +27,15 @@
       Log.i(TAG,"Snapshot loaded: " + status);
       if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
         Log.i(TAG,"Error: Snapshot not found");
-        Toast.makeText(getBaseContext(),"Error: Snapshot not found",Toast.LENGTH_SHORT);
+        Toast.makeText(getBaseContext(),"Error: Snapshot not found",Toast.LENGTH_SHORT).show();
       }
  else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
         Log.i(TAG,"Error: Snapshot contents unavailable");
-        Toast.makeText(getBaseContext(),"Error: Snapshot contents unavailable",Toast.LENGTH_SHORT);
+        Toast.makeText(getBaseContext(),"Error: Snapshot contents unavailable",Toast.LENGTH_SHORT).show();
       }
  else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) {
         Log.i(TAG,"Error: Snapshot folder unavailable");
-        Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT);
+        Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT).show();
       }
       publishProgress();
     }

@@ -1,6 +1,5 @@
 {
   ArrayList<String> requestIds=new ArrayList<String>();
-  GoogleApiClient client=getApiClient();
   final HashMap<String,GameRequest> gameRequestMap=new HashMap<String,GameRequest>();
   for (  GameRequest request : requests) {
     String requestId=request.getRequestId();
@@ -8,7 +7,7 @@
     gameRequestMap.put(requestId,request);
     Log.d(TAG,"Processing request " + requestId);
   }
-  Games.Requests.acceptRequests(client,requestIds).setResultCallback(new ResultCallback<UpdateRequestsResult>(){
+  Games.Requests.acceptRequests(mGoogleApiClient,requestIds).setResultCallback(new ResultCallback<UpdateRequestsResult>(){
     @Override public void onResult(    UpdateRequestsResult result){
       int numGifts=0;
       int numRequests=0;

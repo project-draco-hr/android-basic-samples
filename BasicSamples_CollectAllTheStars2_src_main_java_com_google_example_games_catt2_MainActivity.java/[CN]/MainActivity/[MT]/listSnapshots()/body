@@ -5,14 +5,12 @@
   AsyncTask<Void,Void,String> task=new AsyncTask<Void,Void,String>(){
     @Override protected String doInBackground(    Void... params){
       Log.i(TAG,"Opening snapshot " + currentSaveName);
-      Snapshots.LoadSnapshotsResult lresult=Games.Snapshots.load(getApiClient(),true).await();
+      Snapshots.LoadSnapshotsResult lresult=Games.Snapshots.load(mGoogleApiClient,true).await();
       String resultMessage="";
       int status=lresult.getStatus().getStatusCode();
       if (status == GamesStatusCodes.STATUS_OK) {
         SnapshotMetadataBuffer smdb=lresult.getSnapshots();
-        Iterator<SnapshotMetadata> snapsIt=smdb.iterator();
-        while (snapsIt.hasNext()) {
-          SnapshotMetadata thisSnap=snapsIt.next();
+        for (        SnapshotMetadata thisSnap : smdb) {
           resultMessage+=thisSnap.getDescription();
         }
         smdb.close();

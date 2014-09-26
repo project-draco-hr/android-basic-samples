@@ -1,3 +1,8 @@
 {
-  switchToScreen(isSignedIn() ? R.id.screen_main : R.id.screen_sign_in);
+  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+    switchToScreen(R.id.screen_main);
+  }
+ else {
+    switchToScreen(R.id.screen_sign_in);
+  }
 }

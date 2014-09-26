@@ -1,4 +1,4 @@
 {
-  android.content.Intent snapshotIntent=Games.Snapshots.getSelectSnapshotIntent(getApiClient(),"Select a snap",true,true,5);
+  android.content.Intent snapshotIntent=Games.Snapshots.getSelectSnapshotIntent(mGoogleApiClient,"Select a snap",true,true,5);
   startActivityForResult(snapshotIntent,0);
 }
