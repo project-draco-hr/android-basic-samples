@@ -8,7 +8,7 @@
     return true;
   }
   if (item.getItemId() == R.id.menu_select) {
-    showSnapshots();
+    showSnapshots(getString(R.string.title_saved_games),true,true);
   }
   return false;
 }

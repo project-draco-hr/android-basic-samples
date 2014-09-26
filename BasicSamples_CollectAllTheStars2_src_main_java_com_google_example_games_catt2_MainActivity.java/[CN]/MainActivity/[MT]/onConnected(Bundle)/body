@@ -2,7 +2,6 @@
   log("Sign-in successful! Loading game state from cloud.");
   showSignOutBar();
   if (!mAlreadyLoadedState) {
-    loadFromSnapshot();
+    showSnapshots(getString(R.string.title_load_game),false,false);
   }
-  listSnapshots();
 }

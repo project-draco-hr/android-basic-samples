@@ -1,8 +1,8 @@
 {
   mSaveGame.setLevelStars(mWorld,mLevel,(int)rating);
   updateUi();
-  saveLocal();
   findViewById(R.id.screen_gameplay).setVisibility(View.GONE);
   findViewById(R.id.screen_main).setVisibility(View.VISIBLE);
+  mInLevel=false;
   saveSnapshot();
 }

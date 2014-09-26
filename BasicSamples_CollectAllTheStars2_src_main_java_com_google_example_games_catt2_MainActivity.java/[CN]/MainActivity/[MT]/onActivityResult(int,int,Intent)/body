@@ -10,16 +10,18 @@
       BaseGameUtils.showActivityResultError(this,requestCode,resultCode,R.string.signin_failure,R.string.signin_other_error);
     }
   }
-  if (intent != null) {
-    if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_METADATA)) {
-      SnapshotMetadata snapshotMetadata=(SnapshotMetadata)intent.getParcelableExtra(Snapshots.EXTRA_SNAPSHOT_METADATA);
-      currentSaveName=snapshotMetadata.getUniqueName();
-      loadFromSnapshot();
-    }
- else     if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_NEW)) {
-      String unique=new BigInteger(281,new Random()).toString(13);
-      currentSaveName="snapshotTemp-" + unique;
-      saveSnapshot();
+ else   if (requestCode == RC_LIST_SAVED_GAMES) {
+    if (intent != null) {
+      if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_METADATA)) {
+        SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(Snapshots.EXTRA_SNAPSHOT_METADATA);
+        currentSaveName=snapshotMetadata.getUniqueName();
+        loadFromSnapshot();
+      }
+ else       if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_NEW)) {
+        String unique=new BigInteger(281,new Random()).toString(13);
+        currentSaveName="snapshotTemp-" + unique;
+        saveSnapshot();
+      }
     }
   }
   super.onActivityResult(requestCode,resultCode,intent);

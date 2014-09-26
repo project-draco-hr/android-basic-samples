@@ -1,7 +1,9 @@
 {
-  if (mLoadingDialog != null) {
-    mLoadingDialog.show();
+  if (mLoadingDialog == null) {
+    mLoadingDialog=new ProgressDialog(this);
+    mLoadingDialog.setMessage(getString(R.string.loading_from_cloud));
   }
+  mLoadingDialog.show();
   AsyncTask<Void,Void,Integer> task=new AsyncTask<Void,Void,Integer>(){
     @Override protected Integer doInBackground(    Void... params){
       Log.i(TAG,"Opening snapshot " + currentSaveName);
@@ -10,18 +12,12 @@
       if (status == GamesStatusCodes.STATUS_OK) {
         Snapshot snapshot=result.getSnapshot();
         mSaveGame=new SaveGame(snapshot.readFully());
+        mAlreadyLoadedState=true;
       }
  else {
         Log.e(TAG,"Error while loading: " + status);
       }
       return status;
-    }
-    protected void onProgressUpdate(    Integer... progress){
-      if (mLoadingDialog != null) {
-        mLoadingDialog.dismiss();
-      }
-      hideAlertBar();
-      updateUi();
     }
     @Override protected void onPostExecute(    Integer status){
       Log.i(TAG,"Snapshot loaded: " + status);
@@ -37,7 +33,12 @@
         Log.i(TAG,"Error: Snapshot folder unavailable");
         Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT).show();
       }
-      publishProgress();
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+        mLoadingDialog=null;
+      }
+      hideAlertBar();
+      updateUi();
     }
   }
 ;

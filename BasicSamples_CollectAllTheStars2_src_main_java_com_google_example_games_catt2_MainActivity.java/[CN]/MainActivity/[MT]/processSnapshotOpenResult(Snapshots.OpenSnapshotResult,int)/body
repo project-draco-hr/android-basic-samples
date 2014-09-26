@@ -1,5 +1,5 @@
 {
-  Snapshot mResolvedSnapshot=null;
+  Snapshot mResolvedSnapshot;
   retryCount++;
   int status=result.getStatus().getStatusCode();
   Log.i(TAG,"Save Result status: " + status);

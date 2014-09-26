@@ -7,4 +7,9 @@
     b.setTextColor(getResources().getColor(stars > 0 ? R.color.ClearedLevelColor : R.color.UnclearedLevelColor));
     b.setText(String.valueOf(mWorld) + "-" + String.valueOf(levelNo)+ "\n"+ STAR_STRINGS[stars]);
   }
+  Button button;
+  button=(Button)findViewById(R.id.button_next_world);
+  button.setEnabled(mWorld < WORLD_MAX);
+  button=(Button)findViewById(R.id.button_prev_world);
+  button.setEnabled(mWorld > WORLD_MIN);
 }
