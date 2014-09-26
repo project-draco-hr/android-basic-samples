@@ -9,13 +9,22 @@
       Log.i(TAG,"Opening snapshot " + currentSaveName);
       Snapshots.OpenSnapshotResult result=Games.Snapshots.open(mGoogleApiClient,currentSaveName,true).await();
       int status=result.getStatus().getStatusCode();
+      Snapshot snapshot=null;
       if (status == GamesStatusCodes.STATUS_OK) {
-        Snapshot snapshot=result.getSnapshot();
-        mSaveGame=new SaveGame(snapshot.readFully());
-        mAlreadyLoadedState=true;
+        snapshot=result.getSnapshot();
+      }
+ else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
+        snapshot=processSnapshotOpenResult(result,3);
+        if (snapshot != null) {
+          status=GamesStatusCodes.STATUS_OK;
+        }
       }
  else {
         Log.e(TAG,"Error while loading: " + status);
+      }
+      if (snapshot != null) {
+        mSaveGame=new SaveGame(snapshot.readFully());
+        mAlreadyLoadedState=true;
       }
       return status;
     }
