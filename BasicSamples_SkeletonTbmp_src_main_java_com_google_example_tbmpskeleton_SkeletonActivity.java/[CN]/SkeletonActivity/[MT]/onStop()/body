@@ -1,0 +1,7 @@
+{
+  super.onStop();
+  Log.d(TAG,"onStop(): Disconnecting from Google APIs");
+  if (mGoogleApiClient.isConnected()) {
+    mGoogleApiClient.disconnect();
+  }
+}

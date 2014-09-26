@@ -1,6 +1,16 @@
 {
   super.onActivityResult(request,response,data);
-  if (request == RC_LOOK_AT_MATCHES) {
+  if (request == RC_SIGN_IN) {
+    mSignInClicked=false;
+    mResolvingConnectionFailure=false;
+    if (response == Activity.RESULT_OK) {
+      mGoogleApiClient.connect();
+    }
+ else {
+      BaseGameUtils.showActivityResultError(this,request,response,R.string.signin_failure,R.string.signin_other_error);
+    }
+  }
+ else   if (request == RC_LOOK_AT_MATCHES) {
     if (response != Activity.RESULT_OK) {
       return;
     }
@@ -25,7 +35,7 @@
       autoMatchCriteria=null;
     }
     TurnBasedMatchConfig tbmc=TurnBasedMatchConfig.builder().addInvitedPlayers(invitees).setAutoMatchCriteria(autoMatchCriteria).build();
-    Games.TurnBasedMultiplayer.createMatch(getApiClient(),tbmc).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
+    Games.TurnBasedMultiplayer.createMatch(mGoogleApiClient,tbmc).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
       @Override public void onResult(      TurnBasedMultiplayer.InitiateMatchResult result){
         processResult(result);
       }

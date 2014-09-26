@@ -1,0 +1,19 @@
+{
+  Log.d(TAG,"onConnected(): connected to Google APIs");
+  mMainMenuFragment.setShowSignInButton(false);
+  mWinFragment.setShowSignInButton(false);
+  Player p=Games.Players.getCurrentPlayer(mGoogleApiClient);
+  String displayName;
+  if (p == null) {
+    Log.w(TAG,"mGamesClient.getCurrentPlayer() is NULL!");
+    displayName="???";
+  }
+ else {
+    displayName=p.getDisplayName();
+  }
+  mMainMenuFragment.setGreeting("Hello, " + displayName);
+  if (!mOutbox.isEmpty()) {
+    pushAccomplishments();
+    Toast.makeText(this,getString(R.string.your_progress_will_be_uploaded),Toast.LENGTH_LONG).show();
+  }
+}

@@ -1,0 +1,5 @@
+{
+  Log.d(TAG,"onConnectionSuspended():  Trying to reconnect.");
+  mGoogleApiClient.connect();
+  setViewVisibility();
+}

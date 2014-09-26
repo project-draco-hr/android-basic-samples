@@ -1,5 +1,5 @@
 {
   int[] selection={Quests.SELECT_OPEN,Quests.SELECT_COMPLETED_UNCLAIMED,Quests.SELECT_ACCEPTED};
-  android.content.Intent questsIntent=Games.Quests.getQuestsIntent(this.getApiClient(),selection);
+  android.content.Intent questsIntent=Games.Quests.getQuestsIntent(mGoogleApiClient,selection);
   startActivityForResult(questsIntent,0);
 }

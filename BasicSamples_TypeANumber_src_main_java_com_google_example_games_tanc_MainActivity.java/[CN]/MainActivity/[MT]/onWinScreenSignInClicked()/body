@@ -1,3 +1,4 @@
 {
-  beginUserInitiatedSignIn();
+  mSignInClicked=true;
+  mGoogleApiClient.connect();
 }

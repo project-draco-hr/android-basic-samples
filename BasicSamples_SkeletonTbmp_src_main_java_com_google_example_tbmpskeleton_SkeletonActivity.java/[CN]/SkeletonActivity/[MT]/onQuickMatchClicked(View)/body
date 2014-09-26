@@ -8,5 +8,5 @@
     }
   }
 ;
-  Games.TurnBasedMultiplayer.createMatch(getApiClient(),tbmc).setResultCallback(cb);
+  Games.TurnBasedMultiplayer.createMatch(mGoogleApiClient,tbmc).setResultCallback(cb);
 }

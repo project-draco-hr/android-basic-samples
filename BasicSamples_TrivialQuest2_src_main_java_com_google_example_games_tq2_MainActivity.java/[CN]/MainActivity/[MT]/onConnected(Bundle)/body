@@ -1,0 +1,5 @@
+{
+  Log.d(TAG,"onConnected(): connected to Google APIs");
+  showSignOutBar();
+  Games.Quests.registerQuestUpdateListener(mGoogleApiClient,this);
+}
