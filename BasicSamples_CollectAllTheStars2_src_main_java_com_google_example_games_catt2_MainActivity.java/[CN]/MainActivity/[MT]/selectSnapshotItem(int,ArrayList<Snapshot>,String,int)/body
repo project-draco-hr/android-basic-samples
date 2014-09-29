@@ -1,0 +1,11 @@
+{
+  ArrayList<Snapshot> snapshotList=new ArrayList<Snapshot>(items.size());
+  for (  Snapshot m : items) {
+    snapshotList.add(m.freeze());
+  }
+  Intent intent=new Intent(this,SelectSnapshotActivity.class);
+  intent.putParcelableArrayListExtra(SelectSnapshotActivity.SNAPSHOT_LIST,snapshotList);
+  intent.putExtra(SelectSnapshotActivity.CONFLICT_ID,conflictId);
+  intent.putExtra(SelectSnapshotActivity.RETRY_COUNT,retryCount);
+  startActivityForResult(intent,requestCode);
+}

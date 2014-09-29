@@ -24,5 +24,49 @@
       }
     }
   }
+ else   if (requestCode == RC_SELECT_SNAPSHOT) {
+    Log.d(TAG,"Selected a snapshot!");
+    if (resultCode == RESULT_OK) {
+      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT_METADATA)) {
+        SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT_METADATA);
+        currentSaveName=snapshotMetadata.getUniqueName();
+        Log.d(TAG,"ok - loading " + currentSaveName);
+        loadFromSnapshot();
+      }
+ else {
+        Log.w(TAG,"Expected snapshot metadata but found none.");
+      }
+    }
+  }
+ else   if (requestCode == RC_LOAD_SNAPSHOT) {
+    if (resultCode == RESULT_OK) {
+      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT)) {
+        String conflictId=intent.getStringExtra(SelectSnapshotActivity.CONFLICT_ID);
+        int retryCount=intent.getIntExtra(SelectSnapshotActivity.RETRY_COUNT,MAX_SNAPSHOT_RESOLVE_RETRIES);
+        Snapshot snapshot=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT);
+        if (conflictId == null) {
+          readSavedGame(snapshot);
+        }
+ else {
+          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshot);
+        }
+      }
+    }
+  }
+ else   if (requestCode == RC_SAVE_SNAPSHOT) {
+    if (resultCode == RESULT_OK) {
+      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT)) {
+        String conflictId=intent.getStringExtra(SelectSnapshotActivity.CONFLICT_ID);
+        int retryCount=intent.getIntExtra(SelectSnapshotActivity.RETRY_COUNT,MAX_SNAPSHOT_RESOLVE_RETRIES);
+        Snapshot snapshot=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT);
+        if (conflictId == null) {
+          writeSnapshot(snapshot);
+        }
+ else {
+          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshot);
+        }
+      }
+    }
+  }
   super.onActivityResult(requestCode,resultCode,intent);
 }

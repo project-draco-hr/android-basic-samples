@@ -1,0 +1,39 @@
+{
+  if (mLoadingDialog == null) {
+    mLoadingDialog=new ProgressDialog(this);
+    mLoadingDialog.setMessage(getString(R.string.loading_from_cloud));
+  }
+  mLoadingDialog.show();
+  AsyncTask<Void,Void,Snapshots.LoadSnapshotsResult> task=new AsyncTask<Void,Void,Snapshots.LoadSnapshotsResult>(){
+    @Override protected Snapshots.LoadSnapshotsResult doInBackground(    Void... params){
+      Log.i(TAG,"Listing snapshots");
+      return Games.Snapshots.load(mGoogleApiClient,false).await();
+    }
+    @Override protected void onPostExecute(    Snapshots.LoadSnapshotsResult snapshotResults){
+      if (mLoadingDialog != null) {
+        mLoadingDialog.dismiss();
+        mLoadingDialog=null;
+      }
+      int status=snapshotResults.getStatus().getStatusCode();
+      if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
+        Log.i(TAG,"Error: Snapshot not found");
+        Toast.makeText(getBaseContext(),"Error: Snapshot not found",Toast.LENGTH_SHORT).show();
+      }
+ else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
+        Log.i(TAG,"Error: Snapshot contents unavailable");
+        Toast.makeText(getBaseContext(),"Error: Snapshot contents unavailable",Toast.LENGTH_SHORT).show();
+      }
+ else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) {
+        Log.i(TAG,"Error: Snapshot folder unavailable");
+        Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT).show();
+      }
+      ArrayList<SnapshotMetadata> items=new ArrayList<SnapshotMetadata>();
+      for (      SnapshotMetadata m : snapshotResults.getSnapshots()) {
+        items.add(m);
+      }
+      selectSnapshotItem(RC_SELECT_SNAPSHOT,items);
+    }
+  }
+;
+  task.execute();
+}

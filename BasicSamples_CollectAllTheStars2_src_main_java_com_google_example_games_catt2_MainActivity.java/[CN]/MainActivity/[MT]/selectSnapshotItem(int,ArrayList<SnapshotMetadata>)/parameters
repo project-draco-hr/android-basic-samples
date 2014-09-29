@@ -1,0 +1,2 @@
+int requestCode
+ArrayList<SnapshotMetadata> items

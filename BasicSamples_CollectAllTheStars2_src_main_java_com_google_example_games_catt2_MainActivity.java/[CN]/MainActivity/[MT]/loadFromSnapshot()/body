@@ -14,7 +14,7 @@
         snapshot=result.getSnapshot();
       }
  else       if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
-        snapshot=processSnapshotOpenResult(result,3);
+        snapshot=processSnapshotOpenResult(RC_LOAD_SNAPSHOT,result,MAX_SNAPSHOT_RESOLVE_RETRIES);
         if (snapshot != null) {
           status=GamesStatusCodes.STATUS_OK;
         }
@@ -23,8 +23,7 @@
         Log.e(TAG,"Error while loading: " + status);
       }
       if (snapshot != null) {
-        mSaveGame=new SaveGame(snapshot.readFully());
-        mAlreadyLoadedState=true;
+        readSavedGame(snapshot);
       }
       return status;
     }

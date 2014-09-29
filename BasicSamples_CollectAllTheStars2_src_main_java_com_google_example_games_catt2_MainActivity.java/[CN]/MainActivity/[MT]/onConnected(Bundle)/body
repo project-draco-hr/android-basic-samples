@@ -4,4 +4,7 @@
   if (!mAlreadyLoadedState) {
     showSnapshots(getString(R.string.title_load_game),false,false);
   }
+ else {
+    updateUi();
+  }
 }

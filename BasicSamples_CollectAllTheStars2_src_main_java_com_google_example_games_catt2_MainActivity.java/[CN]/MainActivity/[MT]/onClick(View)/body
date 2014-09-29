@@ -14,6 +14,7 @@ Games.signOut(mGoogleApiClient);
 mGoogleApiClient.disconnect();
 showSignInBar();
 mSaveGame=new SaveGame();
+mAlreadyLoadedState=false;
 updateUi();
 break;
 case R.id.button_next_world:
