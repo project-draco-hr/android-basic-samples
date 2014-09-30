@@ -15,12 +15,12 @@
       if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_METADATA)) {
         SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(Snapshots.EXTRA_SNAPSHOT_METADATA);
         currentSaveName=snapshotMetadata.getUniqueName();
-        loadFromSnapshot();
+        loadFromSnapshot(snapshotMetadata);
       }
  else       if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_NEW)) {
         String unique=new BigInteger(281,new Random()).toString(13);
         currentSaveName="snapshotTemp-" + unique;
-        saveSnapshot();
+        saveSnapshot(null);
       }
     }
   }
@@ -31,7 +31,7 @@
         SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT_METADATA);
         currentSaveName=snapshotMetadata.getUniqueName();
         Log.d(TAG,"ok - loading " + currentSaveName);
-        loadFromSnapshot();
+        loadFromSnapshot(snapshotMetadata);
       }
  else {
         Log.w(TAG,"Expected snapshot metadata but found none.");
@@ -39,31 +39,34 @@
     }
   }
  else   if (requestCode == RC_LOAD_SNAPSHOT) {
+    Log.d(TAG,"Loading a snapshot resultCode = " + resultCode);
     if (resultCode == RESULT_OK) {
-      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT)) {
+      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT_METADATA)) {
         String conflictId=intent.getStringExtra(SelectSnapshotActivity.CONFLICT_ID);
         int retryCount=intent.getIntExtra(SelectSnapshotActivity.RETRY_COUNT,MAX_SNAPSHOT_RESOLVE_RETRIES);
-        Snapshot snapshot=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT);
+        SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT_METADATA);
         if (conflictId == null) {
-          readSavedGame(snapshot);
+          loadFromSnapshot(snapshotMetadata);
         }
  else {
-          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshot);
+          Log.d(TAG,"resolving " + snapshotMetadata);
+          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshotMetadata);
         }
       }
     }
   }
  else   if (requestCode == RC_SAVE_SNAPSHOT) {
     if (resultCode == RESULT_OK) {
-      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT)) {
+      if (intent != null && intent.hasExtra(SelectSnapshotActivity.SNAPSHOT_METADATA)) {
         String conflictId=intent.getStringExtra(SelectSnapshotActivity.CONFLICT_ID);
         int retryCount=intent.getIntExtra(SelectSnapshotActivity.RETRY_COUNT,MAX_SNAPSHOT_RESOLVE_RETRIES);
-        Snapshot snapshot=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT);
+        SnapshotMetadata snapshotMetadata=intent.getParcelableExtra(SelectSnapshotActivity.SNAPSHOT_METADATA);
         if (conflictId == null) {
-          writeSnapshot(snapshot);
+          saveSnapshot(snapshotMetadata);
         }
  else {
-          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshot);
+          Log.d(TAG,"resolving " + snapshotMetadata);
+          resolveSnapshotConflict(requestCode,conflictId,retryCount,snapshotMetadata);
         }
       }
     }

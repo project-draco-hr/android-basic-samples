@@ -1,10 +1,10 @@
 {
   if (item.getItemId() == R.id.menu_sync) {
-    loadFromSnapshot();
+    loadFromSnapshot(null);
     return true;
   }
   if (item.getItemId() == R.id.menu_save) {
-    saveSnapshot();
+    saveSnapshot(null);
     return true;
   }
   if (item.getItemId() == R.id.menu_select) {

@@ -4,5 +4,5 @@
   findViewById(R.id.screen_gameplay).setVisibility(View.GONE);
   findViewById(R.id.screen_main).setVisibility(View.VISIBLE);
   mInLevel=false;
-  saveSnapshot();
+  saveSnapshot(null);
 }

@@ -18,6 +18,9 @@
         if (snapshot != null) {
           status=GamesStatusCodes.STATUS_OK;
         }
+ else {
+          Log.w(TAG,"Conflict was not resolved automatically");
+        }
       }
  else {
         Log.e(TAG,"Error while loading: " + status);

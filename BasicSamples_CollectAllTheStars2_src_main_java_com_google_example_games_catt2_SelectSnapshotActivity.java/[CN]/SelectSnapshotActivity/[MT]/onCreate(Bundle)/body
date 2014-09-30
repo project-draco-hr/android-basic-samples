@@ -5,14 +5,8 @@
   if (intent != null) {
     ArrayList<SnapshotMetadata> snapshotMetadataList;
     ListView vw=(ListView)findViewById(R.id.snapshot_list);
-    if (intent.hasExtra(SNAPSHOT_LIST)) {
-      ArrayList<Snapshot> snapshotList=intent.getParcelableArrayListExtra(SNAPSHOT_LIST);
-      vw.setAdapter(new SnapshotListAdapter<Snapshot>(this,snapshotList));
-    }
- else     if (intent.hasExtra(SNAPSHOT_METADATA_LIST)) {
-      snapshotMetadataList=intent.getParcelableArrayListExtra(SNAPSHOT_METADATA_LIST);
-      vw.setAdapter(new SnapshotListAdapter<SnapshotMetadata>(this,snapshotMetadataList));
-    }
+    snapshotMetadataList=intent.getParcelableArrayListExtra(SNAPSHOT_METADATA_LIST);
+    vw.setAdapter(new SnapshotListAdapter<SnapshotMetadata>(this,snapshotMetadataList));
     mConflictId=intent.getStringExtra(CONFLICT_ID);
     mRetryCount=intent.getIntExtra(RETRY_COUNT,0);
     vw.setOnItemClickListener(this);

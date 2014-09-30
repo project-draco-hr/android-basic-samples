@@ -1,12 +1,7 @@
 {
-  Object selected=adapterView.getItemAtPosition(position);
+  SnapshotMetadata selected=(SnapshotMetadata)adapterView.getItemAtPosition(position);
   Intent intent=new Intent(Intent.ACTION_DEFAULT);
-  if (selected instanceof Snapshot) {
-    intent.putExtra(SNAPSHOT,((Snapshot)selected).freeze());
-  }
- else {
-    intent.putExtra(SNAPSHOT_METADATA,((SnapshotMetadata)selected).freeze());
-  }
+  intent.putExtra(SNAPSHOT_METADATA,(selected).freeze());
   if (mConflictId != null) {
     intent.putExtra(CONFLICT_ID,mConflictId);
     intent.putExtra(RETRY_COUNT,mRetryCount);
