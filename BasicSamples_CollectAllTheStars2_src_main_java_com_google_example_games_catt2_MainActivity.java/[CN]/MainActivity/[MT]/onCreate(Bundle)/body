@@ -2,7 +2,7 @@
   log("onCreate.");
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);
-  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).addApi(AppStateManager.API).addScope(AppStateManager.SCOPE_APP_STATE).addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER).build();
+  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER).build();
   for (  int id : LEVEL_BUTTON_IDS) {
     findViewById(id).setOnClickListener(this);
   }
