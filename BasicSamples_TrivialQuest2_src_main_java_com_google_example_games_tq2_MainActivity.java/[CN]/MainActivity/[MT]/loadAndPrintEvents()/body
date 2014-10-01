@@ -1,4 +1,4 @@
 {
-  com.google.android.gms.common.api.PendingResult<Events.LoadEventsResult> pr=Games.Events.load(this.getApiClient(),true);
+  com.google.android.gms.common.api.PendingResult<Events.LoadEventsResult> pr=Games.Events.load(mGoogleApiClient,true);
   pr.setResultCallback(ec);
 }

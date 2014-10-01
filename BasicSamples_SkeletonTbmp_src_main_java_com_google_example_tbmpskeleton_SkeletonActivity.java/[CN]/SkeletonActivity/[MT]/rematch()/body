@@ -1,6 +1,6 @@
 {
   showSpinner();
-  Games.TurnBasedMultiplayer.rematch(getApiClient(),mMatch.getMatchId()).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
+  Games.TurnBasedMultiplayer.rematch(mGoogleApiClient,mMatch.getMatchId()).setResultCallback(new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>(){
     @Override public void onResult(    TurnBasedMultiplayer.InitiateMatchResult result){
       processResult(result);
     }

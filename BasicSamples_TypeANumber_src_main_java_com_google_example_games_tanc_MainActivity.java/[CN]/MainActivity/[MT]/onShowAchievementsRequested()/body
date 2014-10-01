@@ -1,8 +1,8 @@
 {
   if (isSignedIn()) {
-    startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
+    startActivityForResult(Games.Achievements.getAchievementsIntent(mGoogleApiClient),RC_UNUSED);
   }
  else {
-    showAlert(getString(R.string.achievements_not_available));
+    BaseGameUtils.makeSimpleDialog(this,getString(R.string.achievements_not_available)).show();
   }
 }

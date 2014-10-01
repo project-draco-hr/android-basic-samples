@@ -1,0 +1,5 @@
+{
+  super.onStart();
+  Log.d(TAG,"onStart(): Connecting to Google APIs");
+  mGoogleApiClient.connect();
+}

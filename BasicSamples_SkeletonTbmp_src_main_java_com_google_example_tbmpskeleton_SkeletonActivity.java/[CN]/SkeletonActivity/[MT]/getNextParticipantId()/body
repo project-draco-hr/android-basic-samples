@@ -1,5 +1,5 @@
 {
-  String playerId=Games.Players.getCurrentPlayerId(getApiClient());
+  String playerId=Games.Players.getCurrentPlayerId(mGoogleApiClient);
   String myParticipantId=mMatch.getParticipantId(playerId);
   ArrayList<String> participantIds=mMatch.getParticipantIds();
   int desiredIndex=-1;
