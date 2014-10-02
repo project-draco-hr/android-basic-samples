@@ -1,4 +1,0 @@
-{
-  SharedPreferences sp=getSharedPreferences("gamestate",Context.MODE_PRIVATE);
-  mSaveGame=new SaveGame(sp,"gamestate");
-}

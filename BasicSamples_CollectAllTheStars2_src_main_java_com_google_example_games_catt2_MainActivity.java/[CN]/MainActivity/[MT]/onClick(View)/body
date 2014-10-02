@@ -14,21 +14,34 @@ Games.signOut(mGoogleApiClient);
 mGoogleApiClient.disconnect();
 showSignInBar();
 mSaveGame=new SaveGame();
+mAlreadyLoadedState=false;
 updateUi();
 break;
 case R.id.button_next_world:
+if (isConnected()) {
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
+return;
+}
 if (mWorld < WORLD_MAX) {
 mWorld++;
 updateUi();
 }
 break;
 case R.id.button_prev_world:
+if (isConnected()) {
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
+return;
+}
 if (mWorld > WORLD_MIN) {
 mWorld--;
 updateUi();
 }
 break;
 default :
+if (isConnected()) {
+BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
+return;
+}
 for (int i=0; i < LEVEL_BUTTON_IDS.length; ++i) {
 if (view.getId() == LEVEL_BUTTON_IDS[i]) {
 launchLevel(i + 1);

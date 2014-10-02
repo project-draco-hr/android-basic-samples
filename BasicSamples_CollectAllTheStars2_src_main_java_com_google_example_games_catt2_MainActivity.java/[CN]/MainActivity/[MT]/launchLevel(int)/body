@@ -4,4 +4,5 @@
   ((RatingBar)findViewById(R.id.gameplay_rating)).setRating(mSaveGame.getLevelStars(mWorld,mLevel));
   findViewById(R.id.screen_gameplay).setVisibility(View.VISIBLE);
   findViewById(R.id.screen_main).setVisibility(View.GONE);
+  mInLevel=true;
 }

@@ -1,0 +1,27 @@
+{
+  Log.i(TAG,"Resolving conflict retry count = " + retryCount);
+  AsyncTask<Void,Void,Snapshots.OpenSnapshotResult> task=new AsyncTask<Void,Void,Snapshots.OpenSnapshotResult>(){
+    @Override protected Snapshots.OpenSnapshotResult doInBackground(    Void... voids){
+      Snapshots.OpenSnapshotResult result;
+      if (snapshotMetadata.getUniqueName() != null) {
+        result=Games.Snapshots.open(mGoogleApiClient,snapshotMetadata).await();
+      }
+ else {
+        result=Games.Snapshots.open(mGoogleApiClient,currentSaveName,true).await();
+      }
+      Log.d(TAG,"opening from metadata - tesult is " + result.getStatus());
+      return Games.Snapshots.resolveConflict(mGoogleApiClient,conflictId,result.getSnapshot()).await();
+    }
+    @Override protected void onPostExecute(    Snapshots.OpenSnapshotResult openSnapshotResult){
+      Snapshot snapshot=processSnapshotOpenResult(requestCode,openSnapshotResult,retryCount);
+      Log.d(TAG,"resolved snapshot conflict - snapshot is " + snapshot);
+      if (snapshot != null) {
+        Intent intent=new Intent("");
+        intent.putExtra(SelectSnapshotActivity.SNAPSHOT_METADATA,snapshot.getMetadata().freeze());
+        onActivityResult(requestCode,RESULT_OK,intent);
+      }
+    }
+  }
+;
+  task.execute();
+}

@@ -1,0 +1,20 @@
+{
+  retryCount++;
+  int status=result.getStatus().getStatusCode();
+  Log.i(TAG,"Save Result status: " + status);
+  if (status == GamesStatusCodes.STATUS_OK) {
+    return result.getSnapshot();
+  }
+ else   if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
+    return result.getSnapshot();
+  }
+ else   if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
+    final Snapshot snapshot=result.getSnapshot();
+    final Snapshot conflictSnapshot=result.getConflictingSnapshot();
+    ArrayList<Snapshot> snapshotList=new ArrayList<Snapshot>(2);
+    snapshotList.add(snapshot);
+    snapshotList.add(conflictSnapshot);
+    selectSnapshotItem(requestCode,snapshotList,result.getConflictId(),retryCount);
+  }
+  return null;
+}

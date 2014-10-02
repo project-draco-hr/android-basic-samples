@@ -1,0 +1,5 @@
+{
+  int maxNumberOfSavedGamesToShow=5;
+  Intent snapshotIntent=Games.Snapshots.getSelectSnapshotIntent(mGoogleApiClient,title,allowAdd,allowDelete,maxNumberOfSavedGamesToShow);
+  startActivityForResult(snapshotIntent,RC_LIST_SAVED_GAMES);
+}
