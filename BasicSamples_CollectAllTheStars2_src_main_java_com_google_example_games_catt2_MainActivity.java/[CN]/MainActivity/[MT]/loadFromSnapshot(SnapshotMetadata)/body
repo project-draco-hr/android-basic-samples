@@ -51,7 +51,7 @@
         Log.i(TAG,"Error: Snapshot folder unavailable");
         Toast.makeText(getBaseContext(),"Error: Snapshot folder unavailable.",Toast.LENGTH_SHORT).show();
       }
-      if (mLoadingDialog != null) {
+      if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
         mLoadingDialog.dismiss();
         mLoadingDialog=null;
       }
