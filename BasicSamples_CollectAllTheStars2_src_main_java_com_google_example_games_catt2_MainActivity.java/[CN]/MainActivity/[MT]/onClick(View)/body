@@ -18,7 +18,7 @@ mAlreadyLoadedState=false;
 updateUi();
 break;
 case R.id.button_next_world:
-if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+if (isConnected()) {
 BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
 return;
 }
@@ -28,7 +28,7 @@ updateUi();
 }
 break;
 case R.id.button_prev_world:
-if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+if (isConnected()) {
 BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
 return;
 }
@@ -38,7 +38,7 @@ updateUi();
 }
 break;
 default :
-if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+if (isConnected()) {
 BaseGameUtils.makeSimpleDialog(this,getString(R.string.please_sign_in)).show();
 return;
 }

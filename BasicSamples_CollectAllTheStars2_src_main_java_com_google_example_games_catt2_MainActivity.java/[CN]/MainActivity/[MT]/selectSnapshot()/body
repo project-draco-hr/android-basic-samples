@@ -10,7 +10,7 @@
       return Games.Snapshots.load(mGoogleApiClient,false).await();
     }
     @Override protected void onPostExecute(    Snapshots.LoadSnapshotsResult snapshotResults){
-      if (mLoadingDialog != null) {
+      if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
         mLoadingDialog.dismiss();
         mLoadingDialog=null;
       }
