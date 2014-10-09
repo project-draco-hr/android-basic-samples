@@ -1,0 +1,9 @@
+{
+  ArrayList<SnapshotMetadata> metadataArrayList=new ArrayList<SnapshotMetadata>(items.size());
+  for (  SnapshotMetadata m : items) {
+    metadataArrayList.add(m.freeze());
+  }
+  Intent intent=new Intent(this,SelectSnapshotActivity.class);
+  intent.putParcelableArrayListExtra(SelectSnapshotActivity.SNAPSHOT_METADATA_LIST,metadataArrayList);
+  startActivityForResult(intent,requestCode);
+}

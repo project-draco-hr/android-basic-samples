@@ -1,0 +1,19 @@
+{
+  LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  View rowView=inflater.inflate(R.layout.snapshotlayout,parent,false);
+  TextView textView=(TextView)rowView.findViewById(R.id.label);
+  TextView ageView=(TextView)rowView.findViewById(R.id.age);
+  ImageView imageView=(ImageView)rowView.findViewById(R.id.icon);
+  SnapshotMetadata snapshotMetadata;
+  T item=getItem(position);
+  if (item instanceof Snapshot) {
+    snapshotMetadata=((Snapshot)item).getMetadata();
+  }
+ else {
+    snapshotMetadata=(SnapshotMetadata)item;
+  }
+  textView.setText(snapshotMetadata.getDescription());
+  ageView.setText(getAge(snapshotMetadata.getLastModifiedTimestamp()));
+  ImageManager.create(getContext()).loadImage(imageView,snapshotMetadata.getCoverImageUri());
+  return rowView;
+}

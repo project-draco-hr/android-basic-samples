@@ -1,0 +1,11 @@
+{
+  if (mInLevel) {
+    updateUi();
+    findViewById(R.id.screen_gameplay).setVisibility(View.GONE);
+    findViewById(R.id.screen_main).setVisibility(View.VISIBLE);
+    mInLevel=false;
+  }
+ else {
+    super.onBackPressed();
+  }
+}

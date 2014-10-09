@@ -1,0 +1,23 @@
+{
+  long delta=System.currentTimeMillis() - timestamp;
+  int days=(int)(delta / MILLIS_PER_DAY);
+  delta=delta % MILLIS_PER_DAY;
+  int hours=(int)(delta / MILLIS_PER_HOUR);
+  delta=delta % MILLIS_PER_HOUR;
+  int minutes=(int)(delta / MILLIS_PER_MINUTE);
+  delta=(int)(delta % MILLIS_PER_MINUTE);
+  int seconds=(int)delta / 1000;
+  if (days > 0) {
+    return getContext().getString(R.string.format_days_ago,days);
+  }
+  if (hours > 0) {
+    return getContext().getString(R.string.format_hours_ago,hours);
+  }
+  if (minutes > 0) {
+    return getContext().getString(R.string.format_minutes_ago,minutes);
+  }
+  if (seconds > 0) {
+    return getContext().getString(R.string.format_seconds_ago,seconds);
+  }
+  return getContext().getString(R.string.moments_ago);
+}

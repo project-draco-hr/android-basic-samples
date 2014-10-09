@@ -1,0 +1,14 @@
+{
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_select_snapshot);
+  Intent intent=getIntent();
+  if (intent != null) {
+    ArrayList<SnapshotMetadata> snapshotMetadataList;
+    ListView vw=(ListView)findViewById(R.id.snapshot_list);
+    snapshotMetadataList=intent.getParcelableArrayListExtra(SNAPSHOT_METADATA_LIST);
+    vw.setAdapter(new SnapshotListAdapter<SnapshotMetadata>(this,snapshotMetadataList));
+    mConflictId=intent.getStringExtra(CONFLICT_ID);
+    mRetryCount=intent.getIntExtra(RETRY_COUNT,0);
+    vw.setOnItemClickListener(this);
+  }
+}
