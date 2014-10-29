@@ -1,0 +1,19 @@
+{
+  byte[] data=getData().getBytes();
+  PendingResult<StateResult> pendingResult=AppStateManager.updateImmediate(mGoogleApiClient,APP_STATE_KEY,data);
+  showProgressDialog("Updating Cloud Save");
+  ResultCallback<StateResult> callback=new ResultCallback<StateResult>(){
+    @Override public void onResult(    StateResult stateResult){
+      if (stateResult.getStatus().isSuccess()) {
+        displayMessage("Saved to Cloud Save",false);
+      }
+ else {
+        displayMessage("Failed to save to Cloud Save",true);
+      }
+      dismissProgressDialog();
+      clearDataUI();
+    }
+  }
+;
+  pendingResult.setResultCallback(callback);
+}

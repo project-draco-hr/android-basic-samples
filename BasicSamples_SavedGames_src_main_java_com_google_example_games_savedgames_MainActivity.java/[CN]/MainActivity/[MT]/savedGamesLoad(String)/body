@@ -1,0 +1,21 @@
+{
+  PendingResult<Snapshots.OpenSnapshotResult> pendingResult=Games.Snapshots.open(mGoogleApiClient,snapshotName,false);
+  showProgressDialog("Loading Saved Game");
+  ResultCallback<OpenSnapshotResult> callback=new ResultCallback<OpenSnapshotResult>(){
+    @Override public void onResult(    OpenSnapshotResult openSnapshotResult){
+      if (openSnapshotResult.getStatus().isSuccess()) {
+        displayMessage("Loaded from Saved Games",false);
+        byte[] data=openSnapshotResult.getSnapshot().readFully();
+        setData(new String(data));
+        displaySnapshotMetadata(openSnapshotResult.getSnapshot().getMetadata());
+      }
+ else {
+        displayMessage("Failed to load from Saved Games",true);
+        clearDataUI();
+      }
+      dismissProgressDialog();
+    }
+  }
+;
+  pendingResult.setResultCallback(callback);
+}

@@ -1,0 +1,25 @@
+{
+switch (v.getId()) {
+case R.id.button_sign_in:
+    beginUserInitiatedSignIn();
+  break;
+case R.id.button_cloud_save_load:
+cloudSaveLoad();
+break;
+case R.id.button_cloud_save_update:
+cloudSaveUpdate();
+break;
+case R.id.button_cloud_save_migrate:
+cloudSaveMigrate();
+break;
+case R.id.button_saved_games_load:
+savedGamesLoad();
+break;
+case R.id.button_saved_games_update:
+savedGamesUpdate();
+break;
+case R.id.button_saved_games_select:
+savedGamesSelect();
+break;
+}
+}

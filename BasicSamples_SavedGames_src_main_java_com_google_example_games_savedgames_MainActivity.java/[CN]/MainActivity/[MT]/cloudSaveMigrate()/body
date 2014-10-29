@@ -1,0 +1,41 @@
+{
+  final boolean createIfMissing=true;
+  final String snapshotName=makeSnapshotName(APP_STATE_KEY);
+  final String description="Saved game #" + APP_STATE_KEY;
+  final long playedTimeMillis=60 * 60 * 1000;
+  final byte[] data=getData().getBytes();
+  final Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher);
+  AsyncTask<Void,Void,Boolean> migrateTask=new AsyncTask<Void,Void,Boolean>(){
+    @Override protected void onPreExecute(){
+      showProgressDialog("Migrating");
+    }
+    @Override protected Boolean doInBackground(    Void... params){
+      OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
+      if (!open.getStatus().isSuccess()) {
+        Log.w(TAG,"Could not open Snapshot for migration.");
+        return false;
+      }
+      Snapshot snapshot=open.getSnapshot();
+      snapshot.writeBytes(data);
+      SnapshotMetadataChange metadataChange=new SnapshotMetadataChange.Builder().fromMetadata(snapshot.getMetadata()).setCoverImage(bitmap).setDescription(description).setPlayedTimeMillis(playedTimeMillis).build();
+      CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange).await();
+      if (!commit.getStatus().isSuccess()) {
+        Log.w(TAG,"Failed to commit Snapshot.");
+        return false;
+      }
+      return true;
+    }
+    @Override protected void onPostExecute(    Boolean result){
+      if (result) {
+        displayMessage("Migrated to Saved Games.",false);
+      }
+ else {
+        displayMessage("Failed to migrate to Saved Games.",true);
+      }
+      dismissProgressDialog();
+      clearDataUI();
+    }
+  }
+;
+  migrateTask.execute();
+}

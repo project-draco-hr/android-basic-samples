@@ -1,0 +1,4 @@
+{
+  final String snapshotName=makeSnapshotName(APP_STATE_KEY);
+  savedGamesLoad(snapshotName);
+}
