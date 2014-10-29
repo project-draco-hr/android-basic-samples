@@ -4,13 +4,13 @@
   ResultCallback<StateResult> callback=new ResultCallback<StateResult>(){
     @Override public void onResult(    StateResult stateResult){
       if (stateResult.getStatus().isSuccess()) {
-        displayMessage("Loaded from Cloud Save",false);
+        displayMessage(getString(R.string.cloud_save_load_success),false);
         byte[] data=stateResult.getLoadedResult().getLocalData();
         setData(new String(data));
         displayAppStateMetadata(stateResult.getLoadedResult().getStateKey());
       }
  else {
-        displayMessage("Failed to load from Cloud Save",true);
+        displayMessage(getString(R.string.cloud_save_load_failure),true);
         clearDataUI();
       }
       dismissProgressDialog();

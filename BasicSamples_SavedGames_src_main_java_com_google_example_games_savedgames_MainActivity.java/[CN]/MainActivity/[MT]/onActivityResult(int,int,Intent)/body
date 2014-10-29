@@ -21,7 +21,7 @@
         Bundle bundle=data.getExtras();
         SnapshotMetadata selected=Games.Snapshots.getSnapshotFromBundle(bundle);
         if (selected == null) {
-          displayMessage("Failed to select Saved Game data.",true);
+          displayMessage(getString(R.string.saved_games_select_failure),true);
           setData(null);
           displaySnapshotMetadata(null);
         }
@@ -32,7 +32,7 @@
       }
     }
  else {
-      displayMessage("No Saved Game selected.",true);
+      displayMessage(getString(R.string.saved_games_select_cancel),true);
       setData(null);
       displaySnapshotMetadata(null);
     }

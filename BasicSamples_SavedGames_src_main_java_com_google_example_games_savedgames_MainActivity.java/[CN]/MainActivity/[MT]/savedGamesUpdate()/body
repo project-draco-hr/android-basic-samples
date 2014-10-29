@@ -23,10 +23,10 @@
     }
     @Override protected void onPostExecute(    Boolean result){
       if (result) {
-        displayMessage("Saved to Saved Games",false);
+        displayMessage(getString(R.string.saved_games_update_success),false);
       }
  else {
-        displayMessage("Failed to save to Saved Games",true);
+        displayMessage(getString(R.string.saved_games_update_failure),true);
       }
       dismissProgressDialog();
       clearDataUI();

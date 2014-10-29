@@ -3,13 +3,18 @@
   final String snapshotName=makeSnapshotName(APP_STATE_KEY);
   final String description="Saved game #" + APP_STATE_KEY;
   final long playedTimeMillis=60 * 60 * 1000;
-  final byte[] data=getData().getBytes();
   final Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher);
   AsyncTask<Void,Void,Boolean> migrateTask=new AsyncTask<Void,Void,Boolean>(){
     @Override protected void onPreExecute(){
       showProgressDialog("Migrating");
     }
     @Override protected Boolean doInBackground(    Void... params){
+      StateResult load=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY).await();
+      if (!load.getStatus().isSuccess()) {
+        Log.w(TAG,"Could not load App State for migration.");
+        return false;
+      }
+      byte[] data=load.getLoadedResult().getLocalData();
       OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
       if (!open.getStatus().isSuccess()) {
         Log.w(TAG,"Could not open Snapshot for migration.");
@@ -27,10 +32,10 @@
     }
     @Override protected void onPostExecute(    Boolean result){
       if (result) {
-        displayMessage("Migrated to Saved Games.",false);
+        displayMessage(getString(R.string.cloud_save_migrate_success),false);
       }
  else {
-        displayMessage("Failed to migrate to Saved Games.",true);
+        displayMessage(getString(R.string.cloud_save_migrate_failure),true);
       }
       dismissProgressDialog();
       clearDataUI();

@@ -5,10 +5,10 @@
   ResultCallback<StateResult> callback=new ResultCallback<StateResult>(){
     @Override public void onResult(    StateResult stateResult){
       if (stateResult.getStatus().isSuccess()) {
-        displayMessage("Saved to Cloud Save",false);
+        displayMessage(getString(R.string.cloud_save_update_success),false);
       }
  else {
-        displayMessage("Failed to save to Cloud Save",true);
+        displayMessage(getString(R.string.cloud_save_update_failure),true);
       }
       dismissProgressDialog();
       clearDataUI();
