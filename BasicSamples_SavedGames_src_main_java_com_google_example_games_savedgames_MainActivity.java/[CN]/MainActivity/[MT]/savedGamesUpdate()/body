@@ -7,14 +7,14 @@
       showProgressDialog("Updating Saved Game");
     }
     @Override protected Boolean doInBackground(    Void... params){
-      OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
+      Snapshots.OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
       if (!open.getStatus().isSuccess()) {
         Log.w(TAG,"Could not open Snapshot for update.");
         return false;
       }
       Snapshot snapshot=open.getSnapshot();
       snapshot.writeBytes(data);
-      CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,SnapshotMetadataChange.EMPTY_CHANGE).await();
+      Snapshots.CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,SnapshotMetadataChange.EMPTY_CHANGE).await();
       if (!commit.getStatus().isSuccess()) {
         Log.w(TAG,"Failed to commit Snapshot.");
         return false;

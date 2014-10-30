@@ -1,9 +1,9 @@
 {
   byte[] data=getData().getBytes();
-  PendingResult<StateResult> pendingResult=AppStateManager.updateImmediate(mGoogleApiClient,APP_STATE_KEY,data);
+  PendingResult<AppStateManager.StateResult> pendingResult=AppStateManager.updateImmediate(mGoogleApiClient,APP_STATE_KEY,data);
   showProgressDialog("Updating Cloud Save");
-  ResultCallback<StateResult> callback=new ResultCallback<StateResult>(){
-    @Override public void onResult(    StateResult stateResult){
+  ResultCallback<AppStateManager.StateResult> callback=new ResultCallback<AppStateManager.StateResult>(){
+    @Override public void onResult(    AppStateManager.StateResult stateResult){
       if (stateResult.getStatus().isSuccess()) {
         displayMessage(getString(R.string.cloud_save_update_success),false);
       }

@@ -1,8 +1,8 @@
 {
-  PendingResult<StateResult> pendingResult=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY);
+  PendingResult<AppStateManager.StateResult> pendingResult=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY);
   showProgressDialog("Loading Cloud Save");
-  ResultCallback<StateResult> callback=new ResultCallback<StateResult>(){
-    @Override public void onResult(    StateResult stateResult){
+  ResultCallback<AppStateManager.StateResult> callback=new ResultCallback<AppStateManager.StateResult>(){
+    @Override public void onResult(    AppStateManager.StateResult stateResult){
       if (stateResult.getStatus().isSuccess()) {
         displayMessage(getString(R.string.cloud_save_load_success),false);
         byte[] data=stateResult.getLoadedResult().getLocalData();

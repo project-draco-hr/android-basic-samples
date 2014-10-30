@@ -13,7 +13,7 @@ case R.id.button_cloud_save_migrate:
 cloudSaveMigrate();
 break;
 case R.id.button_saved_games_load:
-savedGamesLoad();
+savedGamesLoad(makeSnapshotName(APP_STATE_KEY));
 break;
 case R.id.button_saved_games_update:
 savedGamesUpdate();

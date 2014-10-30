@@ -9,13 +9,13 @@
       showProgressDialog("Migrating");
     }
     @Override protected Boolean doInBackground(    Void... params){
-      StateResult load=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY).await();
+      AppStateManager.StateResult load=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY).await();
       if (!load.getStatus().isSuccess()) {
         Log.w(TAG,"Could not load App State for migration.");
         return false;
       }
       byte[] data=load.getLoadedResult().getLocalData();
-      OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
+      Snapshots.OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
       if (!open.getStatus().isSuccess()) {
         Log.w(TAG,"Could not open Snapshot for migration.");
         return false;
@@ -23,7 +23,7 @@
       Snapshot snapshot=open.getSnapshot();
       snapshot.writeBytes(data);
       SnapshotMetadataChange metadataChange=new SnapshotMetadataChange.Builder().fromMetadata(snapshot.getMetadata()).setCoverImage(bitmap).setDescription(description).setPlayedTimeMillis(playedTimeMillis).build();
-      CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange).await();
+      Snapshots.CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange).await();
       if (!commit.getStatus().isSuccess()) {
         Log.w(TAG,"Failed to commit Snapshot.");
         return false;

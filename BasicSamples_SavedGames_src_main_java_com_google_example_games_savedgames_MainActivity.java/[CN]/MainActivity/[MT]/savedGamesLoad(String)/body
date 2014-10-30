@@ -1,8 +1,8 @@
 {
   PendingResult<Snapshots.OpenSnapshotResult> pendingResult=Games.Snapshots.open(mGoogleApiClient,snapshotName,false);
   showProgressDialog("Loading Saved Game");
-  ResultCallback<OpenSnapshotResult> callback=new ResultCallback<OpenSnapshotResult>(){
-    @Override public void onResult(    OpenSnapshotResult openSnapshotResult){
+  ResultCallback<Snapshots.OpenSnapshotResult> callback=new ResultCallback<Snapshots.OpenSnapshotResult>(){
+    @Override public void onResult(    Snapshots.OpenSnapshotResult openSnapshotResult){
       if (openSnapshotResult.getStatus().isSuccess()) {
         displayMessage(getString(R.string.saved_games_load_success),false);
         byte[] data=openSnapshotResult.getSnapshot().readFully();
