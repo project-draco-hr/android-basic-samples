@@ -1,0 +1,3 @@
+{
+  return "Snapshot-" + String.valueOf(appStateKey);
+}
