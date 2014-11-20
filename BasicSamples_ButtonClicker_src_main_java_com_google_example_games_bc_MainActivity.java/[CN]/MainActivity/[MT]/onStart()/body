@@ -1,4 +1,11 @@
 {
   switchToScreen(R.id.screen_wait);
+  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+    Log.w(TAG,"GameHelper: client was already connected on onStart()");
+  }
+ else {
+    Log.d(TAG,"Connecting client.");
+    mGoogleApiClient.connect();
+  }
   super.onStart();
 }

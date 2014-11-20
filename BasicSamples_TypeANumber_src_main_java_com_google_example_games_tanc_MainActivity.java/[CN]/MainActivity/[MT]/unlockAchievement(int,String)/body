@@ -1,6 +1,6 @@
 {
   if (isSignedIn()) {
-    Games.Achievements.unlock(getApiClient(),getString(achievementId));
+    Games.Achievements.unlock(mGoogleApiClient,getString(achievementId));
   }
  else {
     Toast.makeText(this,getString(R.string.achievement) + ": " + fallbackString,Toast.LENGTH_LONG).show();

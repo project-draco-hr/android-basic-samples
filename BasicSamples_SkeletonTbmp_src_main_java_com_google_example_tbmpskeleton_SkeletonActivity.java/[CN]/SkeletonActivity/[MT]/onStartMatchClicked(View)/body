@@ -1,4 +1,4 @@
 {
-  Intent intent=Games.TurnBasedMultiplayer.getSelectOpponentsIntent(getApiClient(),1,7,true);
+  Intent intent=Games.TurnBasedMultiplayer.getSelectOpponentsIntent(mGoogleApiClient,1,7,true);
   startActivityForResult(intent,RC_SELECT_PLAYERS);
 }

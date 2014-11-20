@@ -1,6 +1,6 @@
 {
   snapshot.writeBytes(mSaveGame.toBytes());
   SnapshotMetadataChange metadataChange=new SnapshotMetadataChange.Builder().setCoverImage(getScreenShot()).setDescription("Modified data at: " + Calendar.getInstance().getTime()).build();
-  Games.Snapshots.commitAndClose(getApiClient(),snapshot,metadataChange);
+  Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange);
   return snapshot.toString();
 }

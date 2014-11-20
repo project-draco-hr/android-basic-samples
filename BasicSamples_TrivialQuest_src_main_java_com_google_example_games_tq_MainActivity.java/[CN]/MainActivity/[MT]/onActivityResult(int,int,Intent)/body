@@ -7,7 +7,7 @@
       mGoogleApiClient.connect();
     }
  else {
-      BaseGameUtils.showActivityResultError(this,responseCode,R.string.signin_failure,R.string.signin_other_error);
+      BaseGameUtils.showActivityResultError(this,requestCode,responseCode,R.string.signin_failure,R.string.signin_other_error);
     }
   }
 }

@@ -1,11 +1,6 @@
 {
-  if (getGameHelper().isSignedIn()) {
-    GoogleApiClient client=getApiClient();
-    if (!client.isConnected()) {
-      Log.i(TAG,"Failed to show send intent, Google API client isn't connected!");
-      return;
-    }
-    String description="";
+  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+    String description;
     int intentCode;
     Bitmap icon;
 switch (type) {
@@ -22,7 +17,7 @@ break;
 default :
 return;
 }
-Intent intent=Games.Requests.getSendIntent(client,type,"".getBytes(),DEFAULT_LIFETIME,icon,description);
+Intent intent=Games.Requests.getSendIntent(mGoogleApiClient,type,"".getBytes(),DEFAULT_LIFETIME,icon,description);
 startActivityForResult(intent,intentCode);
 }
 }

@@ -1,0 +1,12 @@
+{
+  if (isSignedIn()) {
+    findViewById(R.id.layout_signed_in).setVisibility(View.VISIBLE);
+    findViewById(R.id.layout_signed_out).setVisibility(View.GONE);
+    displayMessage(getString(R.string.message_signed_in),false);
+  }
+ else {
+    findViewById(R.id.layout_signed_in).setVisibility(View.GONE);
+    findViewById(R.id.layout_signed_out).setVisibility(View.VISIBLE);
+    displayMessage(getString(R.string.message_sign_in),false);
+  }
+}

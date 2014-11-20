@@ -1,4 +1,0 @@
-{
-  log("Sign-in failed. Showing sign-in button.");
-  showSignInBar();
-}

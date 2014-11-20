@@ -1,4 +1,0 @@
-{
-  Log.d(TAG,"Sign-in failed.");
-  switchToScreen(R.id.screen_sign_in);
-}

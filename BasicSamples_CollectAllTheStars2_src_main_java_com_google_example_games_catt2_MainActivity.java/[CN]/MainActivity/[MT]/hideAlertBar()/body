@@ -1,3 +1,6 @@
 {
-  ((TextView)findViewById(R.id.alert_bar)).setVisibility(View.GONE);
+  View alertBar=findViewById(R.id.alert_bar);
+  if (alertBar != null && alertBar.getVisibility() != View.GONE) {
+    alertBar.setVisibility(View.GONE);
+  }
 }

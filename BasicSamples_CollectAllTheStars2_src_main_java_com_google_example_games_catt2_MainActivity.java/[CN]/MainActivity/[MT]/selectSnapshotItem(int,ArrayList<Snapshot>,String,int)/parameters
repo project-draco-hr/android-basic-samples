@@ -1,0 +1,4 @@
+int requestCode
+ArrayList<Snapshot> items
+String conflictId
+int retryCount

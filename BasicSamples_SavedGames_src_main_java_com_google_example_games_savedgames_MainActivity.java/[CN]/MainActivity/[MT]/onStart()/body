@@ -1,0 +1,5 @@
+{
+  super.onStart();
+  mGoogleApiClient.connect();
+  updateUI();
+}

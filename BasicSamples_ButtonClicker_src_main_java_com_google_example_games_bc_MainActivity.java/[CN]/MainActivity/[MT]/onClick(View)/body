@@ -7,23 +7,27 @@ case R.id.button_single_player_2:
   startGame(false);
 break;
 case R.id.button_sign_in:
-if (!verifyPlaceholderIdsReplaced()) {
-showAlert("Error: sample not set up correctly. Please see README.");
-return;
+if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id)) {
+Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
 }
-beginUserInitiatedSignIn();
+Log.d(TAG,"Sign-in button clicked");
+mSignInClicked=true;
+mGoogleApiClient.connect();
 break;
 case R.id.button_sign_out:
-signOut();
+Log.d(TAG,"Sign-out button clicked");
+mSignInClicked=false;
+Games.signOut(mGoogleApiClient);
+mGoogleApiClient.disconnect();
 switchToScreen(R.id.screen_sign_in);
 break;
 case R.id.button_invite_players:
-intent=Games.RealTimeMultiplayer.getSelectOpponentsIntent(getApiClient(),1,3);
+intent=Games.RealTimeMultiplayer.getSelectOpponentsIntent(mGoogleApiClient,1,3);
 switchToScreen(R.id.screen_wait);
 startActivityForResult(intent,RC_SELECT_PLAYERS);
 break;
 case R.id.button_see_invitations:
-intent=Games.Invitations.getInvitationInboxIntent(getApiClient());
+intent=Games.Invitations.getInvitationInboxIntent(mGoogleApiClient);
 switchToScreen(R.id.screen_wait);
 startActivityForResult(intent,RC_INVITATION_INBOX);
 break;

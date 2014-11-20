@@ -9,5 +9,5 @@
   }
   String st=retVal.toString();
   Log.d(TAG,"==== PERSISTING\n" + st);
-  return st.getBytes(Charset.forName("UTF-16"));
+  return st.getBytes(Charset.forName("UTF-8"));
 }
