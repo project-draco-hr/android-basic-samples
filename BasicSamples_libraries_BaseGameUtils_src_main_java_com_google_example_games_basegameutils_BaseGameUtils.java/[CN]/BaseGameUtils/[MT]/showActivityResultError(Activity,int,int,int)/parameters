@@ -1,5 +1,4 @@
 Activity activity
 int requestCode
 int actResp
-int errorCode
 int errorDescription
