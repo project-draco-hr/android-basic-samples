@@ -5,7 +5,7 @@
   }
   String st=null;
   try {
-    st=new String(byteArray,"UTF-16");
+    st=new String(byteArray,"UTF-8");
   }
  catch (  UnsupportedEncodingException e1) {
     e1.printStackTrace();

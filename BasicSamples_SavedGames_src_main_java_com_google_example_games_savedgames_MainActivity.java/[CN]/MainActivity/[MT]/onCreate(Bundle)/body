@@ -1,0 +1,12 @@
+{
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Games.API).addScope(Games.SCOPE_GAMES).addApi(AppStateManager.API).addScope(AppStateManager.SCOPE_APP_STATE).addScope(Drive.SCOPE_APPFOLDER).build();
+  findViewById(R.id.button_sign_in).setOnClickListener(this);
+  findViewById(R.id.button_cloud_save_load).setOnClickListener(this);
+  findViewById(R.id.button_cloud_save_update).setOnClickListener(this);
+  findViewById(R.id.button_cloud_save_migrate).setOnClickListener(this);
+  findViewById(R.id.button_saved_games_load).setOnClickListener(this);
+  findViewById(R.id.button_saved_games_update).setOnClickListener(this);
+  findViewById(R.id.button_saved_games_select).setOnClickListener(this);
+}

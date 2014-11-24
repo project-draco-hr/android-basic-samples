@@ -1,0 +1,4 @@
+{
+  EditText dataEditText=(EditText)findViewById(R.id.edit_game_data);
+  return dataEditText.getText().toString();
+}
