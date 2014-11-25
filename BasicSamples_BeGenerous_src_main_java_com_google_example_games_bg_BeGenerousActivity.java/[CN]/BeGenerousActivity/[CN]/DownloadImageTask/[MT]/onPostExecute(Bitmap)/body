@@ -1,0 +1,3 @@
+{
+  bmImage.setImageBitmap(result);
+}

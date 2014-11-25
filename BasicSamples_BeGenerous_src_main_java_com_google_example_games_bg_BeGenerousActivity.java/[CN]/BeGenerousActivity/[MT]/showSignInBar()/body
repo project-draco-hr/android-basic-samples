@@ -1,4 +1,10 @@
 {
   findViewById(R.id.sign_in_bar).setVisibility(View.VISIBLE);
   findViewById(R.id.sign_out_bar).setVisibility(View.GONE);
+  ImageView vw=(ImageView)findViewById(R.id.avatar);
+  vw.setImageBitmap(null);
+  TextView name=(TextView)findViewById(R.id.playerName);
+  name.setText("");
+  TextView email=(TextView)findViewById((R.id.playerEmail));
+  email.setText("");
 }
