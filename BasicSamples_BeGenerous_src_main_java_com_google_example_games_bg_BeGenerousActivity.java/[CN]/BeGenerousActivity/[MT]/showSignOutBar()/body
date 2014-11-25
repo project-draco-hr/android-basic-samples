@@ -1,4 +1,15 @@
 {
   findViewById(R.id.sign_in_bar).setVisibility(View.GONE);
   findViewById(R.id.sign_out_bar).setVisibility(View.VISIBLE);
+  Player player=Games.Players.getCurrentPlayer(mGoogleApiClient);
+  String url=player.getIconImageUrl();
+  TextView name=(TextView)findViewById(R.id.playerName);
+  name.setText(player.getDisplayName());
+  if (url != null) {
+    ImageView vw=(ImageView)findViewById(R.id.avatar);
+    new DownloadImageTask(vw).execute(url);
+  }
+  String email=Plus.AccountApi.getAccountName(mGoogleApiClient);
+  TextView emailView=(TextView)findViewById((R.id.playerEmail));
+  emailView.setText(email);
 }
