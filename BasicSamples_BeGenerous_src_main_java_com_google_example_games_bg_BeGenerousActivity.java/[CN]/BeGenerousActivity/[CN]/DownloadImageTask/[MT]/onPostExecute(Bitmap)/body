@@ -1,3 +1,4 @@
 {
   bmImage.setImageBitmap(result);
+  bmImage.setVisibility(View.VISIBLE);
 }

@@ -2,10 +2,10 @@
   Bitmap mIcon11=null;
   String url=strings[0];
   try {
-    InputStream in=new java.net.URL(url).openStream();
+    InputStream in=new URL(url).openStream();
     mIcon11=BitmapFactory.decodeStream(in);
   }
- catch (  Exception e) {
+ catch (  IOException e) {
     Log.e(TAG,e.getMessage());
   }
   return mIcon11;
