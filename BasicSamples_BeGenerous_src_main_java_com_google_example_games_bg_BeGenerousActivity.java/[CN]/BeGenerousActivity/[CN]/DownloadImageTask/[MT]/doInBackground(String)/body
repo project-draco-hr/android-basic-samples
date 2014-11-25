@@ -1,0 +1,12 @@
+{
+  Bitmap mIcon11=null;
+  String url=strings[0];
+  try {
+    InputStream in=new URL(url).openStream();
+    mIcon11=BitmapFactory.decodeStream(in);
+  }
+ catch (  IOException e) {
+    Log.e(TAG,e.getMessage());
+  }
+  return mIcon11;
+}
