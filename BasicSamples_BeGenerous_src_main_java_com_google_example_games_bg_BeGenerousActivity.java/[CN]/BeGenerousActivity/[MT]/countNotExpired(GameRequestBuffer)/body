@@ -1,0 +1,12 @@
+{
+  if (buf == null) {
+    return 0;
+  }
+  int giftCount=0;
+  for (  GameRequest gr : buf) {
+    if (gr.getExpirationTimestamp() > System.currentTimeMillis()) {
+      giftCount++;
+    }
+  }
+  return giftCount;
+}
