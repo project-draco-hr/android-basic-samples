@@ -7,7 +7,7 @@
       mGoogleApiClient.connect();
     }
  else {
-      BaseGameUtils.showActivityResultError(this,requestCode,resultCode,R.string.signin_failure,R.string.signin_other_error);
+      BaseGameUtils.showActivityResultError(this,requestCode,resultCode,R.string.signin_other_error);
     }
   }
  else   if (requestCode == RC_LIST_SAVED_GAMES) {
