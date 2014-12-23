@@ -1,15 +1,17 @@
 {
-  Log.i(TAG,"Resolving conflict retry count = " + retryCount);
+  Log.i(TAG,"Resolving conflict retry count = " + retryCount + " conflictid = "+ conflictId);
   AsyncTask<Void,Void,Snapshots.OpenSnapshotResult> task=new AsyncTask<Void,Void,Snapshots.OpenSnapshotResult>(){
     @Override protected Snapshots.OpenSnapshotResult doInBackground(    Void... voids){
       Snapshots.OpenSnapshotResult result;
       if (snapshotMetadata.getUniqueName() != null) {
+        Log.d(TAG,"Opening unique name " + snapshotMetadata.getUniqueName());
         result=Games.Snapshots.open(mGoogleApiClient,snapshotMetadata).await();
       }
  else {
+        Log.d(TAG,"Opening current save name " + currentSaveName);
         result=Games.Snapshots.open(mGoogleApiClient,currentSaveName,true).await();
       }
-      Log.d(TAG,"opening from metadata - tesult is " + result.getStatus());
+      Log.d(TAG,"opening from metadata - result is " + result.getStatus() + " snapshot is "+ result.getSnapshot());
       return Games.Snapshots.resolveConflict(mGoogleApiClient,conflictId,result.getSnapshot()).await();
     }
     @Override protected void onPostExecute(    Snapshots.OpenSnapshotResult openSnapshotResult){
