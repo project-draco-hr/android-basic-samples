@@ -5,7 +5,13 @@
     @Override public void onResult(    Snapshots.OpenSnapshotResult openSnapshotResult){
       if (openSnapshotResult.getStatus().isSuccess()) {
         displayMessage(getString(R.string.saved_games_load_success),false);
-        byte[] data=openSnapshotResult.getSnapshot().readFully();
+        byte[] data=new byte[0];
+        try {
+          data=openSnapshotResult.getSnapshot().getSnapshotContents().readFully();
+        }
+ catch (        IOException e) {
+          displayMessage("Exception reading snapshot: " + e.getMessage(),true);
+        }
         setData(new String(data));
         displaySnapshotMetadata(openSnapshotResult.getSnapshot().getMetadata());
       }

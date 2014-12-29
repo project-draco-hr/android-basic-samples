@@ -13,7 +13,7 @@
         return false;
       }
       Snapshot snapshot=open.getSnapshot();
-      snapshot.writeBytes(data);
+      snapshot.getSnapshotContents().writeBytes(data);
       Snapshots.CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,SnapshotMetadataChange.EMPTY_CHANGE).await();
       if (!commit.getStatus().isSuccess()) {
         Log.w(TAG,"Failed to commit Snapshot.");

@@ -1,4 +1,4 @@
 {
-  mSaveGame=new SaveGame(snapshot.readFully());
+  mSaveGame=new SaveGame(snapshot.getSnapshotContents().readFully());
   mAlreadyLoadedState=true;
 }

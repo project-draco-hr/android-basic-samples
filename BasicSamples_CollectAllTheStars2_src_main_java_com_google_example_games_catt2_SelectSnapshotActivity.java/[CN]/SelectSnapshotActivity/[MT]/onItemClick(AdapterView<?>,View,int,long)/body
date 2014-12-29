@@ -6,6 +6,7 @@
     intent.putExtra(CONFLICT_ID,mConflictId);
     intent.putExtra(RETRY_COUNT,mRetryCount);
   }
+  Log.d(TAG,"Finishing item at position " + position + " clicked");
   setResult(RESULT_OK,intent);
   finish();
 }
