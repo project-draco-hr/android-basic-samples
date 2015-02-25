@@ -21,7 +21,7 @@
         return false;
       }
       Snapshot snapshot=open.getSnapshot();
-      snapshot.writeBytes(data);
+      snapshot.getSnapshotContents().writeBytes(data);
       SnapshotMetadataChange metadataChange=new SnapshotMetadataChange.Builder().fromMetadata(snapshot.getMetadata()).setCoverImage(bitmap).setDescription(description).setPlayedTimeMillis(playedTimeMillis).build();
       Snapshots.CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange).await();
       if (!commit.getStatus().isSuccess()) {

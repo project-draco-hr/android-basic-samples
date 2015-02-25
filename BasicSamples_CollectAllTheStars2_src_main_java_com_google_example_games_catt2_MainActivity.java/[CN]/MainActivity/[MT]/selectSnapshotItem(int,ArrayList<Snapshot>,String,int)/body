@@ -7,5 +7,6 @@
   intent.putParcelableArrayListExtra(SelectSnapshotActivity.SNAPSHOT_METADATA_LIST,snapshotList);
   intent.putExtra(SelectSnapshotActivity.CONFLICT_ID,conflictId);
   intent.putExtra(SelectSnapshotActivity.RETRY_COUNT,retryCount);
+  Log.d(TAG,"Starting activity to select snapshot");
   startActivityForResult(intent,requestCode);
 }

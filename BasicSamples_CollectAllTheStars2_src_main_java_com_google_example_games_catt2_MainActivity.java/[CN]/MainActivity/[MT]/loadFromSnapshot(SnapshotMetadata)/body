@@ -33,7 +33,12 @@
         Log.e(TAG,"Error while loading: " + status);
       }
       if (snapshot != null) {
-        readSavedGame(snapshot);
+        try {
+          readSavedGame(snapshot);
+        }
+ catch (        IOException e) {
+          Log.e(TAG,"Error while reading snapshot contents: " + e.getMessage());
+        }
       }
       return status;
     }
