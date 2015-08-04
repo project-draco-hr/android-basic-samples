@@ -1,6 +1,5 @@
 {
   Log.d(TAG,"onConnectedToRoom.");
-  mRoomId=room.getRoomId();
   mParticipants=room.getParticipants();
   mMyId=room.getParticipantId(Games.Players.getCurrentPlayerId(mGoogleApiClient));
   Log.d(TAG,"Room ID: " + mRoomId);
