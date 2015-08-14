@@ -1,6 +1,7 @@
 {
   Log.d(TAG,"onConnected() called. Sign in successful!");
   showSignOutBar();
+  checkPlayerStats();
   Games.Requests.registerRequestListener(mGoogleApiClient,mRequestListener);
   if (connectionHint != null) {
     ArrayList<GameRequest> requests;
