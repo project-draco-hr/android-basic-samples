@@ -1,0 +1,24 @@
+{
+  PendingResult<Stats.LoadPlayerStatsResult> result=Games.Stats.loadPlayerStats(mGoogleApiClient,false);
+  result.setResultCallback(new ResultCallback<Stats.LoadPlayerStatsResult>(){
+    public void onResult(    Stats.LoadPlayerStatsResult result){
+      Status status=result.getStatus();
+      if (status.isSuccess()) {
+        PlayerStats stats=result.getPlayerStats();
+        if (stats != null) {
+          Log.d(TAG,"Player stats loaded");
+          if (stats.getDaysSinceLastPlayed() > 7) {
+            Log.d(TAG,"It's been longer than a week");
+          }
+          if (stats.getNumberOfSessions() > 1000) {
+            Log.d(TAG,"Veteran player");
+          }
+        }
+      }
+ else {
+        Log.d(TAG,"Failed to fetch Stats Data status: " + status.getStatusMessage());
+      }
+    }
+  }
+);
+}
