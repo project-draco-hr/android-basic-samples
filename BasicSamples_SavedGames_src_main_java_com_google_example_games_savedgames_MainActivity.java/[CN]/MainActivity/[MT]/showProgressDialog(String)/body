@@ -1,8 +1,0 @@
-{
-  if (mProgressDialog == null) {
-    mProgressDialog=new ProgressDialog(this);
-    mProgressDialog.setIndeterminate(true);
-  }
-  mProgressDialog.setMessage(msg);
-  mProgressDialog.show();
-}

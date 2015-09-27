@@ -1,6 +1,0 @@
-{
-  EditText dataEditText=(EditText)findViewById(R.id.edit_game_data);
-  TextView metaDataView=(TextView)findViewById(R.id.text_metadata);
-  dataEditText.setText("");
-  metaDataView.setText("");
-}

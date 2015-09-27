@@ -1,5 +1,0 @@
-{
-  Log.d(TAG,"onConnectionSuspended: " + i);
-  mGoogleApiClient.connect();
-  updateUI();
-}

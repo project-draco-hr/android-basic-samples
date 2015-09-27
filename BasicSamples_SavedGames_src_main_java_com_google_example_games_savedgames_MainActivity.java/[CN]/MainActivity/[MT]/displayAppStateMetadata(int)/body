@@ -1,5 +1,0 @@
-{
-  TextView metaDataView=(TextView)findViewById(R.id.text_metadata);
-  String metadataStr="Source: Cloud Save" + '\n' + "State Key: "+ stateKey;
-  metaDataView.setText(metadataStr);
-}

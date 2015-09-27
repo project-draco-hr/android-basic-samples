@@ -1,7 +1,0 @@
-{
-  final boolean allowAddButton=false;
-  final boolean allowDelete=false;
-  Intent intent=Games.Snapshots.getSelectSnapshotIntent(mGoogleApiClient,"Saved Games",allowAddButton,allowDelete,Snapshots.DISPLAY_LIMIT_NONE);
-  showProgressDialog("Loading");
-  startActivityForResult(intent,RC_SELECT_SNAPSHOT);
-}

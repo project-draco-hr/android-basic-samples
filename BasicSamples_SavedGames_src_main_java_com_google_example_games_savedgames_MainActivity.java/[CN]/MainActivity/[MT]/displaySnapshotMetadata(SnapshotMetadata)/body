@@ -1,9 +1,0 @@
-{
-  TextView metaDataView=(TextView)findViewById(R.id.text_metadata);
-  if (metadata == null) {
-    metaDataView.setText("");
-    return;
-  }
-  String metadataStr="Source: Saved Games" + '\n' + "Description: "+ metadata.getDescription()+ '\n'+ "Name: "+ metadata.getUniqueName()+ '\n'+ "Last Modified: "+ String.valueOf(metadata.getLastModifiedTimestamp())+ '\n'+ "Played Time: "+ String.valueOf(metadata.getPlayedTime())+ '\n'+ "Cover Image URL: "+ metadata.getCoverImageUrl();
-  metaDataView.setText(metadataStr);
-}

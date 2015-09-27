@@ -1,3 +1,0 @@
-{
-  return (mGoogleApiClient != null && mGoogleApiClient.isConnected());
-}

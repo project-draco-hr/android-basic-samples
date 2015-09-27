@@ -1,9 +1,0 @@
-{
-  Log.d(TAG,"beginUserInitiatedSignIn");
-  if (!BaseGameUtils.verifySampleSetup(this,R.string.app_id)) {
-    Log.w(TAG,"*** Warning: setup problems detected. Sign in may not work!");
-  }
-  showProgressDialog("Signing in.");
-  mSignInClicked=true;
-  mGoogleApiClient.connect();
-}
