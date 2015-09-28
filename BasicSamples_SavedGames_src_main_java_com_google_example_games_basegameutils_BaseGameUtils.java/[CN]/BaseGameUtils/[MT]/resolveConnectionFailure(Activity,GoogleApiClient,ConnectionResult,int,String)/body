@@ -1,0 +1,23 @@
+{
+  if (result.hasResolution()) {
+    try {
+      result.startResolutionForResult(activity,requestCode);
+      return true;
+    }
+ catch (    IntentSender.SendIntentException e) {
+      client.connect();
+      return false;
+    }
+  }
+ else {
+    int errorCode=result.getErrorCode();
+    Dialog dialog=GooglePlayServicesUtil.getErrorDialog(errorCode,activity,requestCode);
+    if (dialog != null) {
+      dialog.show();
+    }
+ else {
+      showAlert(activity,fallbackErrorMessage);
+    }
+    return false;
+  }
+}

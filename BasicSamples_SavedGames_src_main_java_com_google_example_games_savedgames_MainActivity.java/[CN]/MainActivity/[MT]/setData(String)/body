@@ -1,0 +1,9 @@
+{
+  EditText dataEditText=(EditText)findViewById(R.id.edit_game_data);
+  if (data == null) {
+    dataEditText.setText("");
+  }
+ else {
+    dataEditText.setText(data);
+  }
+}

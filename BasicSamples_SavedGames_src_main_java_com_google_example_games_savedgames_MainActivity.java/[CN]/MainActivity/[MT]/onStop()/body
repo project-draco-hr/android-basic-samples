@@ -1,0 +1,6 @@
+{
+  super.onStop();
+  if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+    mGoogleApiClient.disconnect();
+  }
+}

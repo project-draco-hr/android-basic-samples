@@ -1,0 +1,46 @@
+{
+  final boolean createIfMissing=true;
+  final String snapshotName=makeSnapshotName(APP_STATE_KEY);
+  final String description="Saved game #" + APP_STATE_KEY;
+  final long playedTimeMillis=60 * 60 * 1000;
+  final Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher);
+  AsyncTask<Void,Void,Boolean> migrateTask=new AsyncTask<Void,Void,Boolean>(){
+    @Override protected void onPreExecute(){
+      showProgressDialog("Migrating");
+    }
+    @Override protected Boolean doInBackground(    Void... params){
+      AppStateManager.StateResult load=AppStateManager.load(mGoogleApiClient,APP_STATE_KEY).await();
+      if (!load.getStatus().isSuccess()) {
+        Log.w(TAG,"Could not load App State for migration.");
+        return false;
+      }
+      byte[] data=load.getLoadedResult().getLocalData();
+      Snapshots.OpenSnapshotResult open=Games.Snapshots.open(mGoogleApiClient,snapshotName,createIfMissing).await();
+      if (!open.getStatus().isSuccess()) {
+        Log.w(TAG,"Could not open Snapshot for migration.");
+        return false;
+      }
+      Snapshot snapshot=open.getSnapshot();
+      snapshot.getSnapshotContents().writeBytes(data);
+      SnapshotMetadataChange metadataChange=new SnapshotMetadataChange.Builder().fromMetadata(snapshot.getMetadata()).setCoverImage(bitmap).setDescription(description).setPlayedTimeMillis(playedTimeMillis).build();
+      Snapshots.CommitSnapshotResult commit=Games.Snapshots.commitAndClose(mGoogleApiClient,snapshot,metadataChange).await();
+      if (!commit.getStatus().isSuccess()) {
+        Log.w(TAG,"Failed to commit Snapshot.");
+        return false;
+      }
+      return true;
+    }
+    @Override protected void onPostExecute(    Boolean result){
+      if (result) {
+        displayMessage(getString(R.string.cloud_save_migrate_success),false);
+      }
+ else {
+        displayMessage(getString(R.string.cloud_save_migrate_failure),true);
+      }
+      dismissProgressDialog();
+      clearDataUI();
+    }
+  }
+;
+  migrateTask.execute();
+}
