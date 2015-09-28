@@ -13,10 +13,6 @@
     builder.addApi(Plus.API);
     builder.addScope(Plus.SCOPE_PLUS_LOGIN);
   }
-  if (0 != (mRequestedClients & CLIENT_APPSTATE)) {
-    builder.addApi(AppStateManager.API);
-    builder.addScope(AppStateManager.SCOPE_APP_STATE);
-  }
   if (0 != (mRequestedClients & CLIENT_SNAPSHOT)) {
     builder.addScope(Drive.SCOPE_APPFOLDER);
     builder.addApi(Drive.API);
