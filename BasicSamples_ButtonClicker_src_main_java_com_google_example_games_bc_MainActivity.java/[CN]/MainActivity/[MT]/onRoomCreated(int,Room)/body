@@ -5,6 +5,5 @@
     showGameError();
     return;
   }
-  mRoomId=room.getRoomId();
   showWaitingRoom(room);
 }
