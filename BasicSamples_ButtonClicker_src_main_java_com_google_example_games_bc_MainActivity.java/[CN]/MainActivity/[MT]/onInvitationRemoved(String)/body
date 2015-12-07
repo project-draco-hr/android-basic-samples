@@ -1,8 +1,6 @@
 {
-  if (mIncomingInvitationId != null) {
-    if (mIncomingInvitationId.equals(invitationId)) {
-      mIncomingInvitationId=null;
-      switchToScreen(mCurScreen);
-    }
+  if (mIncomingInvitationId.equals(invitationId) && mIncomingInvitationId != null) {
+    mIncomingInvitationId=null;
+    switchToScreen(mCurScreen);
   }
 }
