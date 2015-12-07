@@ -1,5 +1,5 @@
 {
-  if (mIncomingInvitationId.equals(invitationId)) {
+  if (mIncomingInvitationId.equals(invitationId) && mIncomingInvitationId != null) {
     mIncomingInvitationId=null;
     switchToScreen(mCurScreen);
   }
