@@ -1,7 +1,8 @@
 {
   super.onCreate(savedInstanceState);
   Log.d(TAG,"onCreate()");
-  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).build();
+  Games.GamesOptions gamesOptions=Games.GamesOptions.builder().setRequireGooglePlus(true).build();
+  mGoogleApiClient=new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API,gamesOptions).addScope(Games.SCOPE_GAMES).build();
   setContentView(R.layout.activity_main);
   findViewById(R.id.button_open_inbox).setOnClickListener(this);
   findViewById(R.id.button_send_gift).setOnClickListener(this);

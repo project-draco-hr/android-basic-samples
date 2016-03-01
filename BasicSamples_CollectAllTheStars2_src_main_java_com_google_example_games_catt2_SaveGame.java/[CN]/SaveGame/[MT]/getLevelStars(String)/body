@@ -1,4 +1,4 @@
 {
   Integer r=mLevelStars.get(levelName);
-  return r == null ? 0 : r.intValue();
+  return r == null ? 0 : r;
 }

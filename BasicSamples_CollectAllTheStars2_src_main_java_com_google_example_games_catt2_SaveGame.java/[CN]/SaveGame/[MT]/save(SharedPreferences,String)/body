@@ -1,5 +1,5 @@
 {
   SharedPreferences.Editor spe=sp.edit();
   spe.putString(key,toString());
-  spe.commit();
+  spe.apply();
 }

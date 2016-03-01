@@ -3,7 +3,7 @@ switch (statusCode) {
 case GamesStatusCodes.STATUS_OK:
     return true;
 case GamesStatusCodes.STATUS_NETWORK_ERROR_OPERATION_DEFERRED:
-  Toast.makeText(this,"Stored action for later.  (Please remove this toast before release.)",TOAST_DELAY).show();
+  Toast.makeText(this,"Stored action for later.  (Please remove this toast before release.)",Toast.LENGTH_SHORT).show();
 return true;
 case GamesStatusCodes.STATUS_MULTIPLAYER_ERROR_NOT_TRUSTED_TESTER:
 showErrorMessage(match,statusCode,R.string.status_multiplayer_error_not_trusted_tester);
